@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CanDe – Coming Soon</title>
+    <meta name="description" content="New experience is coming soon." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .glass { backdrop-filter: blur(12px); background: rgba(255,255,255,0.75); }
+      .gradient-text { background: linear-gradient(90deg, #2563eb, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900">
+    <!-- Navigation -->
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <a href="index.html" class="text-2xl font-extrabold gradient-text">CanDe</a>
+
+          <div class="hidden md:flex items-center space-x-8 font-medium">
+            <a href="index.html#features" class="hover:text-blue-600">Features</a>
+            <a href="index.html#how-it-works" class="hover:text-blue-600">How It Works</a>
+            <a href="index.html#pricing" class="hover:text-blue-600">Pricing</a>
+            <a href="index.html#community" class="hover:text-blue-600">Community</a>
+          </div>
+
+          <div class="hidden md:block">
+            <a href="https://editor.lycium.ai" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700">Start Creating</a>
+          </div>
+
+          <button id="mobileMenuButton" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden hidden glass rounded-2xl mt-2 p-4 shadow-xl">
+          <div class="flex flex-col space-y-4 font-medium">
+            <a href="index.html#features" class="hover:text-blue-600">Features</a>
+            <a href="index.html#how-it-works" class="hover:text-blue-600">How It Works</a>
+            <a href="index.html#pricing" class="hover:text-blue-600">Pricing</a>
+            <a href="index.html#community" class="hover:text-blue-600">Community</a>
+            <a href="https://editor.lycium.ai" class="mt-2 inline-block text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700">Start Creating</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-24">
+      <!-- Coming Soon Hero -->
+      <section class="relative py-24">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50"></div>
+        <div class="relative max-w-3xl mx-auto px-4 text-center space-y-8">
+          <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight">
+            <span class="gradient-text">Coming Soon</span>
+          </h1>
+          <p class="text-xl text-gray-600">We're crafting a new premium experience. Stay tuned.</p>
+        </div>
+      </section>
+
+      <!-- Timeline / Highlights -->
+      <section class="py-16 bg-white/40">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="grid md:grid-cols-3 gap-8 text-center">
+            <div class="p-8 rounded-2xl bg-white/70 shadow">
+              <h3 class="text-xl font-bold mb-2">Premium Templates</h3>
+              <p class="text-gray-600">Curated designs crafted by professionals for every use case.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-white/70 shadow">
+              <h3 class="text-xl font-bold mb-2">Faster AI Renders</h3>
+              <p class="text-gray-600">Optimized model pipeline to deliver results in seconds.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-white/70 shadow">
+              <h3 class="text-xl font-bold mb-2">Team Workflows</h3>
+              <p class="text-gray-600">Collaborate with roles, approvals, and shared assets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <a href="index.html" class="text-2xl font-extrabold gradient-text block mb-4">CanDe</a>
+              <p class="text-gray-400">Where Creativity Meets AI</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Product</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="index.html#features" class="hover:text-white">Features</a></li>
+                <li><a href="index.html#pricing" class="hover:text-white">Pricing</a></li>
+                <li><a href="#" class="hover:text-white">API</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Company</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">About</a></li>
+                <li><a href="#" class="hover:text-white">Blog</a></li>
+                <li><a href="#" class="hover:text-white">Careers</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Support</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">Help Center</a></li>
+                <li><a href="#" class="hover:text-white">Privacy</a></li>
+                <li><a href="#" class="hover:text-white">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400">© 2024 CanDe. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+              <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+              <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+              <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // Sticky nav background on scroll
+      const nav = document.getElementById('nav');
+      const toggleNavBg = () => {
+        if (window.scrollY > 20) {
+          nav.classList.add('glass', 'shadow');
+        } else {
+          nav.classList.remove('glass', 'shadow');
+        }
+      };
+      window.addEventListener('scroll', toggleNavBg);
+      toggleNavBg();
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobileMenuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    </script>
+  </body>
+  </html>
+
+

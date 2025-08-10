@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CanDe – AI Creative</title>
+    <meta name="description" content="Create Without Limits — Powered by AI" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { scroll-behavior: smooth; }
+      .glass { backdrop-filter: blur(12px); background: rgba(255,255,255,0.75); }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900">
+    <!-- Navigation -->
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <div class="text-2xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            CanDe
+          </div>
+
+          <!-- Desktop -->
+          <div class="hidden md:flex items-center space-x-8 font-medium">
+            <a href="#features" class="hover:text-blue-600">Features</a>
+            <a href="#how-it-works" class="hover:text-blue-600">How It Works</a>
+            <a href="#pricing" class="hover:text-blue-600">Pricing</a>
+            <a href="#community" class="hover:text-blue-600">Community</a>
+          </div>
+
+          <div class="hidden md:block">
+            <a href="https://editor.lycium.ai" class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700">Start Creating</a>
+          </div>
+
+          <!-- Mobile button -->
+          <button id="mobileMenuButton" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden glass rounded-2xl mt-2 p-4 shadow-xl">
+          <div class="flex flex-col space-y-4 font-medium">
+            <a href="#features" class="hover:text-blue-600">Features</a>
+            <a href="#how-it-works" class="hover:text-blue-600">How It Works</a>
+            <a href="#pricing" class="hover:text-blue-600">Pricing</a>
+            <a href="#community" class="hover:text-blue-600">Community</a>
+            <a href="https://editor.lycium.ai" class="mt-2 inline-block text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-700">Start Creating</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="pt-20">
+      <!-- Hero -->
+      <section class="relative overflow-hidden pt-16 pb-16 lg:pt-28 lg:pb-24">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50"></div>
+        <div class="relative max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight">Create Without Limits — <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Powered by AI</span></h1>
+            <p class="text-xl text-gray-600 max-w-xl">Transform ideas into stunning visuals instantly. CanDe combines multiple AI models with intuitive editing tools for limitless creativity.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://editor.lycium.ai" class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-600 hover:to-purple-700">Start Creating Free
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a href="#how-it-works" class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold text-lg border-2 border-gray-300 hover:border-blue-500 hover:text-blue-600">Watch Demo</a>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="relative rotate-12 hover:rotate-6 transition-transform duration-500">
+              <div class="w-full max-w-lg mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-8 shadow-2xl">
+                <div class="bg-white rounded-2xl p-6 space-y-4">
+                  <div class="h-40 bg-gradient-to-br from-blue-200 to-purple-200 rounded-xl"></div>
+                  <div class="grid grid-cols-3 gap-2">
+                    <div class="h-16 bg-gradient-to-br from-pink-200 to-orange-200 rounded-lg"></div>
+                    <div class="h-16 bg-gradient-to-br from-green-200 to-blue-200 rounded-lg"></div>
+                    <div class="h-16 bg-gradient-to-br from-purple-200 to-pink-200 rounded-lg"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl shadow-lg animate-bounce"></div>
+              <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-400 to-orange-500 rounded-xl shadow-lg animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="py-20 bg-white/40">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4">Powerful Features for Creative Minds</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to bring your creative vision to life, powered by cutting-edge AI technology.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="p-8 rounded-2xl bg-white/70 shadow hover:shadow-lg transition">
+              <h3 class="text-xl font-bold mb-3">AI Image Generation & Editing</h3>
+              <p class="text-gray-600">Generate stunning visuals with DALL·E, Stable Diffusion, and more. Edit and refine with intelligent AI assistance.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-white/70 shadow hover:shadow-lg transition">
+              <h3 class="text-xl font-bold mb-3">Smart Design Automation</h3>
+              <p class="text-gray-600">Intelligent layouts, color matching, and style suggestions that accelerate your creative workflow automatically.</p>
+            </div>
+            <div class="p-8 rounded-2xl bg-white/70 shadow hover:shadow-lg transition">
+              <h3 class="text-xl font-bold mb-3">Collaborative Creative Workspace</h3>
+              <p class="text-gray-600">Real-time collaboration with cloud sync. Create together from anywhere with intuitive drag-and-drop editing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section id="how-it-works" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4">How It Works</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">From idea to finished design in three simple steps</p>
+          </div>
+          <div class="grid lg:grid-cols-3 gap-12 max-w-5xl mx-auto text-center">
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-6"></div>
+              <h3 class="text-xl font-bold mb-3">Describe Your Idea</h3>
+              <p class="text-gray-600 max-w-xs">Simply tell CanDe what you want to create using natural language prompts.</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-6"></div>
+              <h3 class="text-xl font-bold mb-3">AI Generates & Optimizes</h3>
+              <p class="text-gray-600 max-w-xs">Our AI analyzes your request and generates optimized visuals in seconds.</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-6"></div>
+              <h3 class="text-xl font-bold mb-3">You Edit & Export</h3>
+              <p class="text-gray-600 max-w-xs">Fine-tune your creation with our intuitive editor and export in any format.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Community (Gallery) -->
+      <section id="community" class="py-20 bg-white/40">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4">Created with CanDe</h2>
+            <p class="text-xl text-gray-600">See what our community has been creating</p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6N1ndcoFhgkIdonRJSVPe39tzM8GqNF0BE1i4" target="_blank" rel="noopener noreferrer">
+                <img src="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6N1ndcoFhgkIdonRJSVPe39tzM8GqNF0BE1i4" alt="Teaser poster concept" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Teaser Poster</h3>
+                <p class="text-sm text-gray-600">Teaser campaign concept</p>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6Rb81PH0dDInHx38JyTYjGZwvzg6hFmVAkN9s" target="_blank" rel="noopener noreferrer">
+                <img src="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6Rb81PH0dDInHx38JyTYjGZwvzg6hFmVAkN9s" alt="Sale poster layout" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Sale Poster</h3>
+                <p class="text-sm text-gray-600">Promotional sale layout</p>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI60ziKyjHGKjuF93EnDe6NdTlbgUa57V8BmfzH" target="_blank" rel="noopener noreferrer">
+                <img src="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI60ziKyjHGKjuF93EnDe6NdTlbgUa57V8BmfzH" alt="Product promote visual" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Product Promote</h3>
+                <p class="text-sm text-gray-600">Promotion visual for product launch</p>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6IrgUFc0bJTmKPycx2jUQXCzngpoHliZ8NuGb" target="_blank" rel="noopener noreferrer">
+                <img src="https://tkuaag2hh9.ufs.sh/f/xhMBrFT7kMI6IrgUFc0bJTmKPycx2jUQXCzngpoHliZ8NuGb" alt="Travel poster design" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Travel Poster</h3>
+                <p class="text-sm text-gray-600">Destination travel poster design</p>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=70" target="_blank" rel="noopener noreferrer">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=60" alt="Social media post on smartphone" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Social Media Post</h3>
+                <p class="text-sm text-gray-600">Marketing</p>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-white/70 shadow hover:shadow-lg transition">
+              <a href="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=70" target="_blank" rel="noopener noreferrer">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=60" alt="Website hero section on laptop" class="w-full aspect-square object-cover" loading="lazy" />
+              </a>
+              <div class="p-4">
+                <h3 class="font-semibold">Website Hero</h3>
+                <p class="text-sm text-gray-600">Web Design</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-extrabold mb-4">Choose Your Creative Journey</h2>
+            <p class="text-xl text-gray-600">Start free and scale as you grow. No hidden fees, cancel anytime.</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="relative p-8 rounded-2xl bg-white/70 shadow hover:shadow-lg transition h-full flex flex-col">
+              <h3 class="text-2xl font-bold mb-2">Free</h3>
+              <div class="mb-4"><span class="text-4xl font-bold">$0</span><span class="text-gray-600">/month</span></div>
+              <p class="text-gray-600 mb-6">Perfect for getting started</p>
+              <ul class="space-y-2 text-gray-700 mb-8 list-disc pl-5">
+                <li>5 AI generations/day</li>
+                <li>Basic templates</li>
+                <li>1GB storage</li>
+                <li>Community support</li>
+              </ul>
+              <a href="#" class="block text-center w-full py-3 rounded-xl font-semibold bg-gray-100 hover:bg-gray-200 mt-auto">Get Started</a>
+            </div>
+            <div class="relative p-8 rounded-2xl bg-white shadow-xl border border-blue-500 h-full flex flex-col">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm">Most Popular</div>
+              <h3 class="text-2xl font-bold mb-2">Pro</h3>
+              <div class="mb-4"><span class="text-4xl font-bold">$29</span><span class="text-gray-600">/month</span></div>
+              <p class="text-gray-600 mb-6">Best for professionals</p>
+              <ul class="space-y-2 text-gray-700 mb-8 list-disc pl-5">
+                <li>Unlimited AI generations</li>
+                <li>Premium templates</li>
+                <li>50GB storage</li>
+                <li>Priority support</li>
+                <li>Team collaboration</li>
+                <li>Advanced editing tools</li>
+              </ul>
+              <a href="coming-soon.html" class="block text-center w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 mt-auto">Get Started</a>
+            </div>
+            <div class="relative p-8 rounded-2xl bg-white/70 shadow hover:shadow-lg transition h-full flex flex-col">
+              <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+              <div class="mb-4"><span class="text-4xl font-bold">$99</span><span class="text-gray-600">/month</span></div>
+              <p class="text-gray-600 mb-6">For large teams</p>
+              <ul class="space-y-2 text-gray-700 mb-8 list-disc pl-5">
+                <li>Everything in Pro</li>
+                <li>Custom AI models</li>
+                <li>Unlimited storage</li>
+                <li>24/7 phone support</li>
+                <li>Advanced analytics</li>
+                <li>White-label options</li>
+              </ul>
+              <a href="coming-soon.html" class="block text-center w-full py-3 rounded-xl font-semibold bg-gray-100 hover:bg-gray-200 mt-auto">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-4xl lg:text-5xl font-extrabold mb-6">Ready to Transform Your Creative Process?</h2>
+          <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Join thousands of creators who are already using CanDe to bring their ideas to life.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://editor.lycium.ai" class="px-8 py-4 rounded-xl font-semibold text-lg bg-white text-blue-600 hover:bg-gray-100">Start Creating with AI</a>
+            <a href="#community" class="px-8 py-4 rounded-xl font-semibold text-lg border-2 border-white text-white hover:bg-white hover:text-blue-600">Contact Sales</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div class="text-2xl font-extrabold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">CanDe</div>
+              <p class="text-gray-400">Where Creativity Meets AI</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Product</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#features" class="hover:text-white">Features</a></li>
+                <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+                <li><a href="#" class="hover:text-white">API</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Company</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">About</a></li>
+                <li><a href="#" class="hover:text-white">Blog</a></li>
+                <li><a href="#" class="hover:text-white">Careers</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-4">Support</h4>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">Help Center</a></li>
+                <li><a href="#" class="hover:text-white">Privacy</a></li>
+                <li><a href="#" class="hover:text-white">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400">© 2024 CanDe. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+              <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+              <a href="#" class="text-gray-400 hover:text-white">LinkedIn</a>
+              <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      // Sticky nav background on scroll
+      const nav = document.getElementById('nav');
+      const toggleNavBg = () => {
+        if (window.scrollY > 20) {
+          nav.classList.add('glass', 'shadow');
+        } else {
+          nav.classList.remove('glass', 'shadow');
+        }
+      };
+      window.addEventListener('scroll', toggleNavBg);
+      toggleNavBg();
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobileMenuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu on link click
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    </script>
+  </body>
+  </html>
+
+
