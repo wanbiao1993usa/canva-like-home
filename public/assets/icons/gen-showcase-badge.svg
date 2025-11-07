@@ -1,0 +1,23 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_i_345_4647)">
+<circle cx="24" cy="24" r="24" fill="url(#paint0_linear_345_4647)"/>
+</g>
+<path d="M12 25C17 25 22 20 22 15C22 20 27 25 32 25C27 25 22 30 22 35C22 30 17 25 12 25Z" fill="white" stroke="white" stroke-linejoin="round"/>
+<path d="M29 16C31 16 33 14 33 12C33 14 35 16 37 16C35 16 33 18 33 20C33 18 31 16 29 16Z" fill="white" stroke="white" stroke-width="0.576923" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_i_345_4647" x="0" y="0" width="48" height="54" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="6"/>
+<feGaussianBlur stdDeviation="4"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.971696 0 0 0 0 0.822059 0 0 0 0 1 0 0 0 0.5 0"/>
+<feBlend mode="overlay" in2="shape" result="effect1_innerShadow_345_4647"/>
+</filter>
+<linearGradient id="paint0_linear_345_4647" x1="24" y1="14" x2="43" y2="48" gradientUnits="userSpaceOnUse">
+<stop stop-color="#AE89FF"/>
+<stop offset="1" stop-color="#414BFF"/>
+</linearGradient>
+</defs>
+</svg>
