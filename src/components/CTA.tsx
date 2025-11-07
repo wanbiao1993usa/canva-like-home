@@ -1,3 +1,5 @@
+'use client';
+
 // 2025-10-29: CTA 重构（Figma node 345:4992）
 // 说明：深色圆角卡片 + 顶部发光漩涡（CSSProperties 渐变实现）+ 胶囊标签 + 大标题/副标题 + 主按钮
 // 图标占位：请在 public/assets 下补齐实际资源（UTF-8）
@@ -34,7 +36,8 @@ export default function CTA() {
         {/* 主按钮：紫色圆角 58 */}
         <div className="mt-8 flex items-center justify-center">
           <a
-            href="#"
+            href="https://editor.lycium.ai"
+            target="_blank"
             className="inline-flex items-center gap-2 rounded-[58px] border border-[#A582FF]/60 bg-[#AE89FF] px-5 py-[14px] text-[18px] text-[#191919]"
           >
             开始使用
