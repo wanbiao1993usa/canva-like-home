@@ -1,6 +1,8 @@
-// 2025-10-29: 新增生成流程演示组件（依据 Figma node 345:4563）
+﻿// 2025-10-29: 新增生成流程演示组件（依据 Figma node 345:4563）
 // 说明：左侧步骤与要点卡片，右侧生成结果面板与气泡提示，尽量还原尺寸与配色
 import type { CSSProperties } from "react";
+import GlowEffect from "./GlowEffect";
+import { gradentTextXs } from "../ui";
 
 export default function GenerationShowcase() {
   // 背景高光椭圆
@@ -10,14 +12,26 @@ export default function GenerationShowcase() {
   };
 
   return (
-    <section className="py-16 xl:py-24 2xl:py-28">
+    <section className="pt-20">
       <div className="relative mx-auto flex w-full max-w-[1280px] items-center gap-12">
+        {/* 光影效果 */}
+        <GlowEffect
+          top="-10rem"
+          right="-12rem"
+          src="/assets/icons/showcase-eclipse.svg"
+          width={800}
+          height={800}
+          alt="生成演示光影"
+          priority={false}
+          className="flex w-full justify-center"
+        />
+
         {/* 2025-10-29: 左侧内容块 500×~260 */}
         <div className="w-full max-w-[500px]">
           {/* 顶部数字标签 */}
-          <div className="inline-flex items-center gap-4 rounded-[96px] border border-white/15 bg-[#181818] px-6 py-2">
+          <div className="inline-flex items-center gap-4 rounded-[96px] border border-white/15 bg-[#181818] pl-2 pr-4 py-2">
             <span className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-[#AE89FF] text-[17px] font-medium leading-none text-[#191919]">1</span>
-            <span className="text-[17px] text-white/90">在聊天中传达灵感</span>
+            <span className={`text-[18px] ${gradentTextXs}`}>在聊天中传达灵感</span>
           </div>
 
           {/* 要点卡片 */}
@@ -28,9 +42,9 @@ export default function GenerationShowcase() {
                 <span className="inline-flex h-[23px] w-[23px] items-center justify-center rounded-full ring-1 ring-[#AE89FF]/60">
                   <img src="/assets/icons/gen-showcase-camera.svg" alt="camera" className="h-[14px] w-[14px]" />
                 </span>
-                <span className="text-[17px] text-white">精准捕捉设计Vibe</span>
+                <span className="text-[18px] text-white">精准捕捉设计Vibe</span>
               </div>
-              <p className="mt-2 text-[15px] text-white/60">AI深度理解你的创意方向，匹配最适合的视觉风格</p>
+              <p className="mt-2 text-[16px] text-white/60">AI深度理解你的创意方向，匹配最适合的视觉风格</p>
             </div>
             <div>
               <div className="flex items-center gap-3">
@@ -38,22 +52,20 @@ export default function GenerationShowcase() {
                 <span className="inline-flex h-[23px] w-[23px] items-center justify-center rounded-full ring-1 ring-[#AE89FF]/60">
                   <img src="/assets/icons/gen-showcase-upload.svg" alt="upload" className="h-[14px] w-[14px]" />
                 </span>
-                <span className="text-[17px] text-white">创意自动成型</span>
+                <span className="text-[18px] text-white">创意自动成型</span>
               </div>
-              <p className="mt-2 text-[15px] text-white/60">无需手动调整，设计方案即刻生成，创作零门槛</p>
+              <p className="mt-2 text-[16px] text-white/60">无需手动调整，设计方案即刻生成，创作零门槛</p>
             </div>
           </div>
         </div>
 
         {/* 2025-10-29: 右侧信息图 712×620 */}
         <div className="relative h-[620px] w-[712px]">
-          {/* 背景光斑 */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[399px] w-[399px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={glowStyle} />
-
           {/* 海报网格容器 480×600 */}
           <div className="absolute right-[-20px] top-[1px] h-[600px] w-[480px] rounded-2xl border border-white/10 bg-[#111111] p-8 overflow-hidden">
             <div className="mb-4 flex items-center justify-between">
-              <span className="text-[18px] text-white/90">图片已生成！</span>
+              {/* 2025-11-07 21:55: 标题文字使用灰-白-灰渐变以还原设计稿 */}
+              <span className={`text-[18px] ${gradentTextXs}`}>图片已生成！</span>
               {/* 2025-10-29: 右上角关闭图标占位 -> 请将 SVG 放在 public/assets/icons/gen-showcase-close.svg */}
               <span className="inline-flex h-6 w-6 items-center justify-center">
                 <img src="/assets/icons/gen-showcase-close.svg" alt="close" className="h-full w-full" />
@@ -106,5 +118,4 @@ export default function GenerationShowcase() {
     </section>
   );
 }
-
 

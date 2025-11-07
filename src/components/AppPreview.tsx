@@ -1,4 +1,5 @@
 import { cardHover, transitionAll } from "../ui";
+import GlowEffect from "./GlowEffect";
 
 // 2025-10-30: AppPreview 外层壳体与主体结构优化
 export default function AppPreview() {
@@ -19,10 +20,10 @@ export default function AppPreview() {
   ];
 
   return (
-    <section id="app-preview" className="py-16 xl:py-24 2xl:py-28 bg-[linear-gradient(146deg, rgba(255, 255, 255, 0.05) 2.47%, rgba(255, 255, 255, 0.01) 95.54%)]">
+    <section id="app-preview" className="pt-30 bg-[linear-gradient(146deg, rgba(255, 255, 255, 0.05) 2.47%, rgba(255, 255, 255, 0.01) 95.54%)]">
 
-      <div className="relative mt-10 flex justify-center">
-        <div className="relative w-full max-w-[1080px] rounded-[44px] p-[6px] pb-10 ring-1 ring-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+      <div className="relative flex justify-center">
+        <div className="relative w-full max-w-[1280px] rounded-[44px] p-[6px] pb-10 ring-1 ring-white/10 bg-[bg-[#1D1D1D]] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
           {/* 2025-10-30: 指示灯 */}
           <div
             className="pointer-events-none absolute left-10 top-[26px] flex h-[10px] w-[10px] items-center justify-center rounded-full bg-white/18 ring-[1.5px] ring-white/10 shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
@@ -36,6 +37,37 @@ export default function AppPreview() {
           >
             <span className="h-[6px] w-[6px] rounded-full bg-white/35 shadow-[0_0_4px_rgba(255,255,255,0.3)]" />
           </div>
+          {/* 2025-11-07 21:40: 光影效果统一改用 GlowEffect 组件 */}
+          <GlowEffect
+            top="0"
+            right="0"
+            src="/assets/icons/apppreview-eclipse-rt.svg"
+            width={490}
+            height={490}
+            alt="AppPreview 光影右上"
+            priority={false}
+            imageClassName="rounded-[44px]"
+          />
+          <GlowEffect
+            bottom="0"
+            right="0"
+            src="/assets/icons/apppreview-eclipse-rb.svg"
+            width={490}
+            height={490}
+            alt="AppPreview 光影右下"
+            priority={false}
+            imageClassName="rounded-[44px]"
+          />
+          <GlowEffect
+            bottom="0"
+            left="0"
+            src="/assets/icons/apppreview-eclipse-lb.svg"
+            width={490}
+            height={490}
+            alt="AppPreview 光影左下"
+            priority={false}
+            imageClassName="rounded-[44px]"
+          />
 
           {/* 外框内部：上部标签+标题、下部预览窗口卡片 */}
           <div className="px-4 pt-10 xl:px-6 2xl:px-8">
@@ -100,7 +132,7 @@ export default function AppPreview() {
               {/* 主体区：侧边栏 + 内容 - 左右布局 */}
               <div className="mt-5 px-6 flex gap-[13.156px]">
                 {/* 侧边栏 */}
-                <aside className="hidden w-[240px] shrink-0 rounded-[13.156px] bg-transparent xl:flex flex-col justify-between h-[766px]">
+                <aside className="hidden w-[240px] shrink-0 rounded-[13.156px] bg-transparent xl:flex flex-col justify-between h-[800px]">
                   {/* 导航菜单区域（顶部） */}
                   <nav className="flex flex-col gap-[19.733px]">
                     {/* 顶部导航组 */}
@@ -222,10 +254,10 @@ export default function AppPreview() {
 
                       {/* 文本内容 */}
                       <div className="flex-1 flex flex-col gap-[6.578px]">
-                        <p className="text-[26.311px] leading-[36.178px] font-semibold text-white tracking-tight">
+                        <p className="text-[26.311px] leading-[36.178px] font-semibold text-[#111111] tracking-tight">
                           一句话的灵感，一秒钟的设计
                         </p>
-                        <p className="text-[13.156px] leading-[18.089px] font-medium text-white/70">
+                        <p className="text-[13.156px] leading-[18.089px] font-medium text-[#707175]">
                           告诉 Canvas Design™ 你想要什么，AI 立即生成专属海报模板，让创意不再受限。
                         </p>
                       </div>
@@ -294,23 +326,22 @@ export default function AppPreview() {
 
                     {/* 文件列表容器 */}
                     <div className="flex flex-col gap-[13.156px]">
-                      {/* 表头 */}
-                      <div className="flex gap-[19.733px] items-center opacity-50">
-                        <div className="flex-1 flex gap-[19.733px] items-center">
+                      {/* 2025-11-07 21:21: 统一使用 grid 规格保证表头与内容列对齐 */}
+                      <div className="grid grid-cols-[1.6fr_0.65fr_0.85fr_auto] gap-[19.733px] items-center opacity-50">
+                        <div className="flex items-center gap-[19.733px]">
                           <span className="text-[11.511px] leading-[14.8px] font-medium text-white">名称</span>
                         </div>
-                        <div className="flex-1 flex gap-[19.733px]">
-                          <span className="flex-1 text-[11.511px] leading-[14.8px] font-medium text-white">大小</span>
-                          <span className="flex-1 text-[11.511px] leading-[14.8px] font-medium text-white">更新时间</span>
-                        </div>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white">大小</span>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-center">更新时间</span>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-right">操作</span>
                       </div>
 
                       {/* 文件行列表：只显示1.5个item */}
                       <div className="flex flex-col gap-[16.444px] overflow-hidden">
                         {recentFiles.map((row) => (
-                          <div key={row.name} className="flex gap-[19.733px] items-center">
+                          <div key={row.name} className="grid grid-cols-[1.6fr_0.65fr_0.85fr_auto] gap-[19.733px] items-center">
                             {/* 左侧：缩略图 + 文件名 */}
-                            <div className="flex-1 flex gap-[19.733px] items-center">
+                            <div className="flex items-center gap-[19.733px]">
                               <div className="relative rounded-[8px] p-[14.8px] shrink-0 overflow-hidden">
                                 <img
                                   src={row.imageSrc}
@@ -325,17 +356,13 @@ export default function AppPreview() {
                             </div>
 
                             {/* 中间：文件大小和更新时间 */}
-                            <div className="flex-1 flex gap-[19.733px]">
-                              <p className="flex-1 text-[13.156px] leading-[18.089px] font-medium text-white h-[19.556px]">
-                                {row.size}
-                              </p>
-                              <p className="flex-1 text-[13.156px] leading-[18.089px] font-medium text-white h-[19.556px] text-center">
-                                {row.time}
-                              </p>
-                            </div>
+                            <p className="text-[13.156px] leading-[18.089px] font-medium text-white h-[19.556px]">{row.size}</p>
+                            <p className="text-[13.156px] leading-[18.089px] font-medium text-white h-[19.556px] text-center">
+                              {row.time}
+                            </p>
 
                             {/* 右侧：更多操作按钮 */}
-                            <div className="w-[19.733px] h-[19.733px] flex items-center justify-center">
+                            <div className="w-[19.733px] h-[19.733px] flex items-center justify-center ml-auto">
                               <img src="/assets/icons/more.svg" alt="更多" className="w-full h-full" />
                             </div>
                           </div>

@@ -1,40 +1,26 @@
 // 2025-10-29: CTA 重构（Figma node 345:4992）
 // 说明：深色圆角卡片 + 顶部发光漩涡（CSSProperties 渐变实现）+ 胶囊标签 + 大标题/副标题 + 主按钮
 // 图标占位：请在 public/assets 下补齐实际资源（UTF-8）
-import type { CSSProperties } from "react";
+import GlowEffect from "./GlowEffect";
 
 export default function CTA() {
   return (
-    <section id="cta" className="py-16 2xl:py-20">
-      <div className="relative overflow-hidden rounded-[48px] border border-white/15 bg-[#181818] px-10 py-16 text-center xl:px-16 xl:py-20">
-        {/* 顶部发光漩涡：CSSProperties 实现（481×220，向上溢出） */}
-        {(() => {
-          // 基础白色光晕（黑白风格）
-          const swirlBase: CSSProperties = {
-            background:
-              "radial-gradient(60% 70% at 50% 50%, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.12) 28%, rgba(255,255,255,0.06) 48%, rgba(255,255,255,0) 68%)",
-            filter: "blur(4px)",
-            borderRadius: "9999px",
-            mixBlendMode: "screen",
-          };
-          // 同心环纹，增强‘漩涡’层次（黑白）
-          const swirlRings: CSSProperties = {
-            backgroundImage:
-              "repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, rgba(255,255,255,0) 8px, rgba(255,255,255,0) 14px)",
-            opacity: 0.25,
-            borderRadius: "9999px",
-            mixBlendMode: "screen",
-          };
-          return (
-            <div className="pointer-events-none absolute left-1/2 top-[-60px] h-[220px] w-[481px] -translate-x-1/2">
-              <div aria-hidden className="absolute inset-0" style={swirlBase} />
-              <div aria-hidden className="absolute inset-0" style={swirlRings} />
-            </div>
-          );
-        })()}
+    <section id="cta" className="pt-20">
+      <div className="relative overflow-hidden rounded-[48px] border border-white/15 bg-[#181818] px-10 py-16 text-center">
+        {/* 光影效果 */}
+        <GlowEffect
+          top="0"
+          left="0"
+          src="/assets/icons/cat-eclipse.svg"
+          width={900}
+          height={900}
+          alt="生成演示光影"
+          priority={false}
+          className="flex w-full justify-center"
+        />
 
         {/* 顶部胶囊标签：左紫色小胶囊 + 右侧文案 */}
-        <div className="mx-auto inline-flex items-center gap-[10px] rounded-[100px] border border-white/20 bg-[#191919] pl-1 pr-4 py-1">
+        <div className="mx-auto inline-flex items-center gap-[10px] rounded-[100px] border-t-2 border-[#3D3D3D] bg-[#191919] pl-1 pr-4 py-1">
           <span className="rounded-[23px] bg-[#AE89FF] px-3 py-1.5 text-[14px] text-[#191919]">开始吧！</span>
           <span className="text-[16px] text-white">加入创意革命！</span>
         </div>

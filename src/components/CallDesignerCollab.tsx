@@ -2,22 +2,27 @@
 // 说明：左侧为信息图区域（呼叫设计师卡片 + 大图卡片 + 光晕与指针标签），右侧为标题与两条说明卡。
 // 图标与图片均为占位命名，后续请在 public/assets 下按路径补齐资源（UTF-8）。
 import type { CSSProperties } from "react";
+import GlowEffect from "./GlowEffect";
+import { gradentTextXs } from "../ui";
 
 export default function CallDesignerCollab() {
-  // 中央光晕（参考 Ellipse 312），用于提升画面层次感
-  const halo: CSSProperties = {
-    background:
-      "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.04) 48%, rgba(255,255,255,0.00) 68%)",
-  };
-
   return (
-    <section className="py-16 xl:py-24 2xl:py-28">
+    <section className="py-12">
       <div className="relative mx-auto flex w-full max-w-[1280px] items-center gap-12">
+        {/* 光影效果 */}
+        <GlowEffect
+          top="-10rem"
+          left="-18rem"
+          src="/assets/icons/template-eclipse.svg"
+          width={900}
+          height={900}
+          alt="生成演示光影"
+          priority={false}
+          className="flex w-full justify-center"
+        />
+
         {/* 左侧：信息图（参考 712×575） */}
         <div className="relative h-[575px] w-[712px] rounded-[32px]">
-          {/* 中央光晕 399×399 */}
-          <div className="absolute left-1/2 top-1/2 h-[399px] w-[399px] -translate-x-1/2 -translate-y-1/2 rounded-full" style={halo} />
-
           {/* 顶部小卡片：呼叫设计师... 450×154 */}
           <div className="absolute left-0 top-0 w-[450px] rounded-[24px] border border-white/10 bg-[#111111] p-8">
             {/* 2025-10-29: CSS 实现的 Loading 圆环（外圈轨道 + 旋转高亮扇形） */}
@@ -61,7 +66,7 @@ export default function CallDesignerCollab() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
                   <g filter="url(#filter0_d_345_4849)">
                     <path d="M16.1445 20.289L9.89717 18.5717C6.2939 17.5811 4.49226 17.0859 4.43675 16.0058C4.38123 14.9256 6.13542 14.2433 9.64379 12.8786C10.6883 12.4722 11.2107 12.269 11.5443 11.8571C11.878 11.4451 11.9681 10.8919 12.1484 9.78561C12.7538 6.07027 13.0565 4.21255 14.1246 4.04228C15.1927 3.872 16.0517 5.53129 17.7697 8.84989L20.7485 14.6036C22.5472 18.078 23.4465 19.8152 22.6249 20.8299C21.8032 21.8446 19.917 21.326 16.1445 20.289Z" fill="#2BB6FF" />
-                    <path d="M16.1445 20.289L9.89717 18.5717C6.2939 17.5811 4.49226 17.0859 4.43675 16.0058C4.38123 14.9256 6.13542 14.2433 9.64379 12.8786C10.6883 12.4722 11.2107 12.269 11.5443 11.8571C11.878 11.4451 11.9681 10.8919 12.1484 9.78561C12.7538 6.07027 13.0565 4.21255 14.1246 4.04228C15.1927 3.872 16.0517 5.53129 17.7697 8.84989L20.7485 14.6036C22.5472 18.078 23.4465 19.8152 22.6249 20.8299C21.8032 21.8446 19.917 21.326 16.1445 20.289Z" stroke="white" stroke-width="0.7" stroke-linejoin="round" />
+                    <path d="M16.1445 20.289L9.89717 18.5717C6.2939 17.5811 4.49226 17.0859 4.43675 16.0058C4.38123 14.9256 6.13542 14.2433 9.64379 12.8786C10.6883 12.4722 11.2107 12.269 11.5443 11.8571C11.878 11.4451 11.9681 10.8919 12.1484 9.78561C12.7538 6.07027 13.0565 4.21255 14.1246 4.04228C15.1927 3.872 16.0517 5.53129 17.7697 8.84989L20.7485 14.6036C22.5472 18.078 23.4465 19.8152 22.6249 20.8299C21.8032 21.8446 19.917 21.326 16.1445 20.289Z" stroke="white" strokeWidth="0.7" strokeLinejoin="round" />
                   </g>
                   <defs>
                     <filter id="filter0_d_345_4849" x="2.08546" y="2.68018" width="23.1958" height="22.0479" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -146,7 +151,7 @@ export default function CallDesignerCollab() {
               <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
                 <g filter="url(#filter0_d_345_4878)">
                   <path d="M10.2327 6.08843L16.48 7.80578C20.0833 8.7963 21.8849 9.29155 21.9405 10.3717C21.996 11.4519 20.2418 12.1342 16.7334 13.4989C15.6889 13.9052 15.1665 14.1084 14.8329 14.5203C14.4992 14.9324 14.4091 15.4855 14.2288 16.5918C13.6234 20.3072 13.3207 22.1649 12.2526 22.3352C11.1845 22.5054 10.3255 20.8461 8.60746 17.5276L5.62876 11.7739C3.83005 8.29941 2.93069 6.56221 3.75234 5.54754C4.574 4.53289 6.46025 5.0514 10.2327 6.08843Z" fill="#F3785D" />
-                  <path d="M10.2327 6.08843L16.48 7.80578C20.0833 8.7963 21.8849 9.29155 21.9405 10.3717C21.996 11.4519 20.2418 12.1342 16.7334 13.4989C15.6889 13.9052 15.1665 14.1084 14.8329 14.5203C14.4992 14.9324 14.4091 15.4855 14.2288 16.5918C13.6234 20.3072 13.3207 22.1649 12.2526 22.3352C11.1845 22.5054 10.3255 20.8461 8.60746 17.5276L5.62876 11.7739C3.83005 8.29941 2.93069 6.56221 3.75234 5.54754C4.574 4.53289 6.46025 5.0514 10.2327 6.08843Z" stroke="white" stroke-width="0.8" stroke-linejoin="round" />
+                  <path d="M10.2327 6.08843L16.48 7.80578C20.0833 8.7963 21.8849 9.29155 21.9405 10.3717C21.996 11.4519 20.2418 12.1342 16.7334 13.4989C15.6889 13.9052 15.1665 14.1084 14.8329 14.5203C14.4992 14.9324 14.4091 15.4855 14.2288 16.5918C13.6234 20.3072 13.3207 22.1649 12.2526 22.3352C11.1845 22.5054 10.3255 20.8461 8.60746 17.5276L5.62876 11.7739C3.83005 8.29941 2.93069 6.56221 3.75234 5.54754C4.574 4.53289 6.46025 5.0514 10.2327 6.08843Z" stroke="white" strokeWidth="0.8" strokeLinejoin="round" />
                 </g>
                 <defs>
                   <filter id="filter0_d_345_4878" x="1.0459" y="3.59961" width="23.2958" height="22.1475" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -170,7 +175,7 @@ export default function CallDesignerCollab() {
           {/* 数字胶囊标题 */}
           <div className="inline-flex w-74 items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6">
             <span className="flex h-12 w-12 items-center justify-center rounded-[40px] bg-[#AE89FF] text-[18px] text-[#191919]">4</span>
-            <span className="text-[18px] text-white">呼叫设计大师，同屏共创</span>
+            <span className={`text-[18px] ${gradentTextXs}`}>呼叫设计大师，同屏共创</span>
           </div>
 
           <div className="border border-white/15 bg-[#181818] rounded-[24px]">

@@ -11,7 +11,7 @@ import Footer from "../components/Footer";
 
 export default function Page() {
   return (
-    <main className="mx-auto max-w-[1280px] px-6 sm:px-8 xl:max-w-[1440px] xl:px-10 2xl:max-w-[1680px] 2xl:px-16">
+    <main className="mx-auto max-w-[1280px] xl:max-w-[1440px] 2xl:max-w-[1680px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-[48px] font-[PingFang SC]">
       <Header />
 
       <Hero />

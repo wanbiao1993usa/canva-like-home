@@ -1,2 +1,34 @@
 @import "tailwindcss";
 
+/* 2025-11-07 22:05: 自定义全局滚动条，延续 #111111 背景与 #AE89FF 高光 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a3a #0f0f0f;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-button {
+  height: 0;
+  display: none;
+}
+
+html::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #050505 0%, #111111 100%);
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(41, 41, 41, 0.85) 100%);
+  border-radius: 999px;
+  border: 2px solid rgba(8, 8, 8, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ae89ff 0%, #6b4ff0 100%);
+  border-color: rgba(12, 12, 12, 0.95);
+}

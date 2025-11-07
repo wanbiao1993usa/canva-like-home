@@ -2,13 +2,10 @@
 // 说明：左侧编辑器面板 + 右侧说明卡片 + 底部动作栏 + 浮动提示卡
 // 图标/图片使用占位文件，请按命名在 public/assets 下补充资源
 import type { CSSProperties } from "react";
+import GlowEffect from "./GlowEffect";
+import { gradentTextXs } from "../ui";
 
 export default function CustomDesignPanel() {
-  const glow: CSSProperties = {
-    background:
-      "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 35%, rgba(255,255,255,0) 70%)",
-  };
-
   const thumbs = [
     "/assets/images/custom-design-thumb-01.png",
     "/assets/images/custom-design-thumb-02.png",
@@ -21,13 +18,21 @@ export default function CustomDesignPanel() {
   ];
 
   return (
-    <section className="py-16 xl:py-24 2xl:py-28">
+    <section className="relative pt-16">
+      {/* 光影特效 */}
+      <GlowEffect
+        left="-15rem"
+        top="-20rem"
+        src="/assets/icons/design-eclipse.svg"
+        width={1200}
+        height={1200}
+        alt="Custom Design Panel 光影"
+        priority={false}
+        className="flex w-full justify-center"
+      />
       <div className="relative mx-auto flex w-full max-w-[1280px] items-center gap-12">
         {/* 左侧：编辑器面板 720×598 */}
         <div className="relative h-[598px] w-[720px] rounded-[32px]">
-          {/* 背景高光椭圆 */}
-          <div className="pointer-events-none absolute left-[calc(50%+20px)] top-[calc(50%-31px)] h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2" style={glow} />
-
           {/* 顶部主画布卡片 620×498 */}
           <div className="absolute left-0 top-0 h-[498px] w-[620px] rounded-2xl border border-white/10 bg-[#111111] p-6">
             <div className="flex h-full gap-2.5 rounded-xl">
@@ -69,8 +74,14 @@ export default function CustomDesignPanel() {
 
               {/* 中部主画布 */}
               <div className="flex flex-1 items-center justify-center bg-[#1C1C1C] px-15 py-16">
-                <div className="h-[312.95px] w-[329.38px] overflow-hidden rounded-[9.66px]">
+                <div className="relative h-[312.95px] w-[329.38px] overflow-hidden rounded-[9.66px]">
                   <img src="/assets/images/custom-design-canvas.png" alt="canvas" className="h-full w-full rounded-[9.66px] object-cover" />
+                  {/* 2025-11-07 22:30: 叠加图层标记，突出画布中选中元素 */}
+                  <img
+                    src="/assets/icons/layer-mark.svg"
+                    alt="图层标记"
+                    className="pointer-events-none absolute left-40 top-1 w-32 -translate-x-1/2"
+                  />
                 </div>
               </div>
             </div>
@@ -112,26 +123,29 @@ export default function CustomDesignPanel() {
         {/* 右侧：标题与说明卡 */}
         <div className="flex flex-1 flex-col gap-6">
           {/* 数字胶囊标题 */}
-          <div className="inline-flex items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6">
+          <div className="inline-flex w-fit items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6 self-start">
             <span className="flex h-12 w-12 items-center justify-center rounded-[40px] bg-[#AE89FF] text-[18px] text-[#191919]">2</span>
-            <span className="text-[18px] text-white">随心所欲的自由定制设计</span>
+            <span className={`text-[18px] w-auto ${gradentTextXs}`}>随心所欲的自由定制设计</span>
           </div>
 
-          {/* 两张说明卡 */}
-          <div className="rounded-2xl border border-white/15 bg-[#181818] p-6">
-            <div className="flex items-center gap-3">
-              <img src="/assets/icons/custom-design-sparkles-accent.svg" alt="sparkles" className="h-6 w-6" />
-              <span className="text-[18px] text-white">每个图层都是智能体</span>
-            </div>
-            <p className="mt-3 text-[16px] text-white/60">每个图层独立识别内容，精准响应局部编辑指令</p>
-          </div>
 
-          <div className="rounded-2xl border border-white/15 bg-[#181818] p-6">
-            <div className="flex items-center gap-3">
-              <img src="/assets/icons/custom-design-robot.svg" alt="robot" className="h-6 w-6" />
-              <span className="text-[18px] text-white">想改就改，想绘就绘</span>
+          {/* 2025-11-07 22:15: 合并说明卡，统一信息层级 */}
+          <div className="rounded-2xl border border-white/15 bg-[#181818] p-6 space-y-6">
+            <div>
+              <div className="flex items-center gap-3">
+                <img src="/assets/icons/custom-design-sparkles-accent.svg" alt="sparkles" className="h-6 w-6" />
+                <span className="text-[18px] text-white">每个图层都是智能体</span>
+              </div>
+              <p className="mt-3 text-[16px] text-white/60">每个图层独立识别内容，精准响应局部编辑指令</p>
             </div>
-            <p className="mt-3 text-[16px] text-white/60">说出编辑想法，AI智能判断并执行：局部修改、完整重绘或细节优化</p>
+
+            <div>
+              <div className="flex items-center gap-3">
+                <img src="/assets/icons/custom-design-robot.svg" alt="robot" className="h-6 w-6" />
+                <span className="text-[18px] text-white">想改就改，想绘就绘</span>
+              </div>
+              <p className="mt-3 text-[16px] text-white/60">说出编辑想法，AI智能判断并执行：局部修改、完整重绘或细节优化</p>
+            </div>
           </div>
         </div>
       </div>
