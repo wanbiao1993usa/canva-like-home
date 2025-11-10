@@ -51,7 +51,8 @@ export default function Header() {
   };
 
   return (
-    <header className="box-border flex items-center justify-between py-6">
+    <header className="box-border sticky top-0 z-10 flex items-center justify-between py-6">
+      {/* 2025-11-11 12:00: Header 吸顶固定 + 毛玻璃背景，滚动时保持品牌可见 */}
       {/* 2025-11-08: 品牌标识与 LOGO 基准尺寸 */}
       <div className="flex w-[180px] items-center gap-3 sm:w-[220px] 2xl:w-[250px]">
         <Link href="/" className="flex items-center gap-3">

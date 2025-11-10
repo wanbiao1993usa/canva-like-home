@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import Header from "../../components/common/Header";
 import Footer from "../../components/common/Footer";
 import ContactHero from "../../components/contact/ContactHero";
@@ -7,7 +8,7 @@ import SocialMedia from "../../components/contact/SocialMedia";
 import CustomerSupport from "../../components/contact/CustomerSupport";
 
 /**
- * 2025-11-10 20:40: 联系我们页面骨架，统一管理 Header/Footer 及四个功能区块
+ * 2025-11-10 20:40: 联系我们页面骨架，串联 Header/Footer 与四个功能区块
  */
 export const metadata: Metadata = {
   title: "联系我们 - CanDe | AI设计平台客户支持",
@@ -37,28 +38,24 @@ const contactPageJsonLd = {
     contactType: "Customer Service",
     availableLanguage: ["zh-CN", "en-US"],
   },
-};
+} as const;
 
 export default function ContactPage() {
   return (
     <>
-      {/* 2025-11-10 20:40: Header 区域保持与首页一致的最大宽度与内边距 */}
-      <div className="mx-auto w-full px-4 md:px-6 lg:px-12">
+      <main className="mx-auto max-w-[1280px] xl:max-w-[1440px] 2xl:max-w-[1680px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-[48px] font-[PingFang SC]">
         <Header />
-      </div>
 
-      {/* 2025-11-10 20:40: 主内容串联四个联系页模块 */}
-      <main className="mx-auto w-full px-4 md:px-6 lg:px-12">
         <ContactHero />
-        <ContactForm />
-        <SocialMedia />
-        <CustomerSupport />
-      </main>
 
-      {/* 2025-11-10 20:40: Footer 区域复用统一容器 */}
-      <div className="mx-auto w-full px-4 md:px-6 lg:px-12">
+        <ContactForm />
+
+        <SocialMedia />
+
+        <CustomerSupport />
+
         <Footer />
-      </div>
+      </main>
 
       {/* 2025-11-10 20:40: 注入 Contact 页面 JSON-LD，便于搜索引擎识别 */}
       <script
