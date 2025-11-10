@@ -201,7 +201,7 @@ export default function AppPreview() {
                     <div className="flex flex-col gap-[9.867px]">
                       <a
                         href="#"
-                        className={`text-[11.511px] leading-[19.733px] font-medium text-white uppercase text-right ${transitionAll} hover:text-white/80`}
+                        className={`text-[11.511px] leading-[19.733px] font-medium text-white uppercase text-left ${transitionAll} hover:text-white/80`}
                       >
                         管理计划
                       </a>
