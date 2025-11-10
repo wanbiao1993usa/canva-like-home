@@ -1,5 +1,5 @@
-import { cardHover, transitionAll } from "../ui";
-import GlowEffect from "./GlowEffect";
+﻿import { cardHover, transitionAll } from "../../ui";
+import GlowEffect from "../common/GlowEffect";
 
 // 2025-10-30: AppPreview 外层壳体与主体结构优化
 export default function AppPreview() {
@@ -23,7 +23,8 @@ export default function AppPreview() {
     <section id="app-preview" className="pt-30 bg-[linear-gradient(146deg, rgba(255, 255, 255, 0.05) 2.47%, rgba(255, 255, 255, 0.01) 95.54%)]">
 
       <div className="relative flex justify-center">
-        <div className="relative w-full max-w-[1280px] rounded-[44px] p-[6px] pb-10 ring-1 ring-white/10 bg-[bg-[#1D1D1D]] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+        {/* 2025-11-10 12:30: 修正容器背景类名，避免无效的 bg-[bg[...] 语法 */}
+        <div className="relative w-full max-w-[1280px] rounded-[44px] p-[6px] pb-10 ring-1 ring-white/10 bg-[#1D1D1D] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
           {/* 2025-10-30: 指示灯 */}
           <div
             className="pointer-events-none absolute left-10 top-[26px] flex h-[10px] w-[10px] items-center justify-center rounded-full bg-white/18 ring-[1.5px] ring-white/10 shadow-[0_3px_6px_rgba(0,0,0,0.25)]"
@@ -87,9 +88,10 @@ export default function AppPreview() {
             </div>
 
             {/* 下半区：预览窗口卡片 */}
-            <div className="mt-6 rounded-[24px] bg-[linear-gradient(146deg, rgba(255, 255, 255, 0.05) 2.47%, rgba(255, 255, 255, 0.01) 95.54%)]/ shadow-[inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-1px_0_rgba(0,0,0,0.3)] ring-1 ring-white/12 xl:py-6 2xl:py-8">
+            {/* 2025-11-10 12:30: 去掉 bg 与 shadow 之间的多余斜杠，避免编译报错 */}
+            <div className="mt-6 rounded-[24px] bg-[linear-gradient(146deg, rgba(255, 255, 255, 0.05) 2.47%, rgba(255, 255, 255, 0.01) 95.54%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06),inset_0_-1px_0_rgba(0,0,0,0.3)] ring-1 ring-white/12 xl:py-6 2xl:py-8">
 
-              {/* 2025-10-30: 顶部工具栏重构 —— 上：三色圆点；下：搜索与图标，并与内容区用分割线隔开 */}
+              {/* 2025-10-30: 顶部工具栏重构 ——  上：三色圆点；下：搜索与图标，并与内容区用分割线隔开 */}
               <div className="px-6 border-b border-white/10 pb-4">
                 {/* 三色圆点（独立一行） */}
                 <div className="flex items-center gap-2 ">
@@ -99,7 +101,7 @@ export default function AppPreview() {
                 </div>
               </div>
 
-              {/* 2025-10-30: 主工具行（Logo+品牌 | 搜索 | 图标）- 独立一行 */}
+              {/* 2025-10-30: 主工具栏（Logo+品牌 | 搜索 | 图标） 独立一行 */}
               <div className="mt-3 px-6 flex items-center">
                 {/* 左侧：Logo + 品牌名称 */}
                 <div className="flex items-center gap-2 text-white/80">
@@ -163,7 +165,7 @@ export default function AppPreview() {
                     <div className="flex flex-col gap-[6.578px]">
                       {[
                         { icon: "nav-trash.svg", label: "垃圾箱" },
-                        { icon: "settings.svg", label: "删除" },
+                        { icon: "settings.svg", label: "设置" },
                         { icon: "nav-help.svg", label: "帮助" },
                       ].map((item) => (
                         <a
@@ -216,7 +218,7 @@ export default function AppPreview() {
 
                 {/* 内容 */}
                 <div className="min-w-0 flex-1 bg-[rgba(36,36,36,0.5)] rounded-[13.156px] p-[26.311px] flex flex-col gap-[26.311px] h-[800px] overflow-hidden">
-                  {/* 2025-10-31: 顶部横幅卡片重写 —— 深色主题、右侧玻璃背景 */}
+                  {/* 2025-10-31: 顶部横幅卡片重写 ——  深色主题、右侧玻璃背景 */}
                   <div className="relative overflow-hidden rounded-[13.156px] px-[26.311px] py-[42.756px] flex flex-col gap-[8.222px]">
                     {/* 背景图片：右侧玻璃纹理 */}
                     <img

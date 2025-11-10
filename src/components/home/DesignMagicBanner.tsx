@@ -1,4 +1,4 @@
-import { gradentText } from "../ui";
+﻿import { gradentText } from "../../ui";
 // 2025-10-29: 调整命名与配色，组件用于渲染设计魔法横幅
 /**
  * 2025-10-29: 设计魔法条幅，凸显产品特色与序号信息。
@@ -25,5 +25,3 @@ export default function DesignMagicBanner() {
     </section>
   );
 }
-
-

@@ -1,9 +1,9 @@
-// 2025-10-29: 从模版开始创建分区（Figma node 345:4758）
+﻿// 2025-10-29: 从模版开始创建分区（Figma node 345:4758）
 // 说明：左侧为标题与要点说明，右侧为圆形卡片信息图；
 // 图标与图片均使用占位路径，后续请在 public/assets 下补齐资源文件（UTF-8）。
 import type { CSSProperties } from "react";
-import GlowEffect from "./GlowEffect";
-import { gradentTextXs } from "../ui";
+import GlowEffect from "../common/GlowEffect";
+import { gradentTextXs } from "../../ui";
 
 export default function StartFromTemplates() {
   // 背景发光大环（使用径向渐变模拟 Figma Ellipse 312）
@@ -127,5 +127,3 @@ export default function StartFromTemplates() {
     </section>
   );
 }
-
-

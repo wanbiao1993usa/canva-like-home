@@ -1,3 +1,5 @@
+/* 2025-11-10 14:55: 引入 Tailwind 配置以启用自定义色板与渐变 */
+@config "../../tailwind.config.ts";
 @import "tailwindcss";
 
 /* 2025-11-07 22:05: 自定义全局滚动条，延续 #111111 背景与 #AE89FF 高光 */

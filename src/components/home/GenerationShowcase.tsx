@@ -1,8 +1,8 @@
 ﻿// 2025-10-29: 新增生成流程演示组件（依据 Figma node 345:4563）
 // 说明：左侧步骤与要点卡片，右侧生成结果面板与气泡提示，尽量还原尺寸与配色
 import type { CSSProperties } from "react";
-import GlowEffect from "./GlowEffect";
-import { gradentTextXs } from "../ui";
+import GlowEffect from "../common/GlowEffect";
+import { gradentTextXs } from "../../ui";
 
 export default function GenerationShowcase() {
   // 背景高光椭圆

@@ -1,7 +1,7 @@
 ﻿'use client';
 
-import { btnPrimary, gradentText } from "../ui";
-import GlowEffect from "./GlowEffect";
+import { btnPrimary, gradentText } from "../../ui";
+import GlowEffect from "../common/GlowEffect";
 // 2025-10-30: Hero 区块视觉细节按设计稿优化（NEW 徽标、渐变文案、海报序列与底部光影）
 export default function Hero() {
   const posters = [
@@ -41,7 +41,7 @@ export default function Hero() {
           轻松几步，即可将灵感转化为精美海报，精彩瞬间即刻呈现
         </p>
         <div className="pt-14 flex items-center justify-center">
-          <button className={`inline-flex items-center gap-2 ${btnPrimary} 2xl:px-8 2xl:py-3 2xl:text-base`} onClick={handleStartClick}>
+          <button className={`inline-flex font-bold items-center gap-2 ${btnPrimary} 2xl:px-8 2xl:py-3 2xl:text-base`} onClick={handleStartClick}>
             免费试用
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M14.1666 5.83337L5.83331 14.1667M14.1666 5.83337H6.66665M14.1666 5.83337V13.3334" stroke="#191919" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

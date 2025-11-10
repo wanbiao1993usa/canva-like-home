@@ -1,9 +1,9 @@
-// 2025-10-29: 自由定制设计分区（Figma node 345:4674）
+﻿// 2025-10-29: 自由定制设计分区（Figma node 345:4674）
 // 说明：左侧编辑器面板 + 右侧说明卡片 + 底部动作栏 + 浮动提示卡
 // 图标/图片使用占位文件，请按命名在 public/assets 下补充资源
 import type { CSSProperties } from "react";
-import GlowEffect from "./GlowEffect";
-import { gradentTextXs } from "../ui";
+import GlowEffect from "../common/GlowEffect";
+import { gradentTextXs } from "../../ui";
 
 export default function CustomDesignPanel() {
   const thumbs = [
@@ -152,5 +152,3 @@ export default function CustomDesignPanel() {
     </section>
   );
 }
-
-
