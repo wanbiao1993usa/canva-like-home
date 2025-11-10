@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,10 +11,14 @@ type NavItem = {
   matchPath?: string;
 };
 
+/**
+ * 2025-11-10 20:50: 导航新增“联系我们”，用于高亮 Contact 页面
+ */
 const navItems: NavItem[] = [
   { id: "home", href: "/", label: "主页", matchPath: "/" },
   { id: "ideas", href: "/inspiration", label: "灵感", matchPath: "/inspiration" },
-  { id: "pricing", href: "/#pricing", label: "定价", matchPath: "/pricing" },
+  { id: "pricing", href: "/pricing", label: "定价", matchPath: "/pricing" },
+  { id: "contact", href: "/contact", label: "联系我们", matchPath: "/contact" },
   { id: "about", href: "/#about", label: "关于", matchPath: "/about" },
 ];
 

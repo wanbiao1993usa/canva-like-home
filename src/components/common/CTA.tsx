@@ -4,11 +4,12 @@
 // 说明：深色圆角卡片 + 顶部发光漩涡（CSSProperties 渐变实现）+ 胶囊标签 + 大标题+副标题 + 主按钮
 // 图标占位：请在 public/assets 下补齐实际资源（UTF-8）
 import GlowEffect from "../common/GlowEffect";
+import CapsuleTagGroup from "./CapsuleTagGroup";
 
 export default function CTA() {
   return (
     <section id="cta" className="pt-20">
-      <div className="relative overflow-hidden rounded-[48px] border border-white/15 bg-[#181818] px-10 py-16 text-center">
+      <div className="relative overflow-visible rounded-[48px] border border-white/15 bg-[#181818] px-10 py-16 text-center">
         {/* 光影效果 */}
         <GlowEffect
           top="0"
@@ -22,10 +23,13 @@ export default function CTA() {
         />
 
         {/* 顶部胶囊标签：左紫色小胶囊 + 右侧文本 */}
-        <div className="mx-auto inline-flex items-center gap-[10px] rounded-[100px] border-t-2 border-[#3D3D3D] bg-[#191919] pl-1 pr-4 py-1">
-          <span className="rounded-[23px] bg-[#AE89FF] px-3 py-1.5 text-[14px] text-[#191919]">开始吧！</span>
-          <span className="text-[16px] text-white">加入创意革命！</span>
-        </div>
+        <CapsuleTagGroup
+          primaryText="开始吧！"
+          secondaryText="加入创意革命！"
+          className="mx-auto gap-[10px] pl-1 pr-4 py-1"
+          primaryClassName="rounded-[23px] bg-[#AE89FF] px-3 py-1.5 text-[14px] text-[#191919]"
+          secondaryClassName="text-[16px] text-white"
+        />
 
         {/* 文案区域 */}
         <div className="mx-auto mt-8 max-w-[980px]">

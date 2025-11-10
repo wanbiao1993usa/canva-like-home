@@ -11,16 +11,23 @@ type CardMeta = {
 };
 
 const cardLibrary: Record<string, CardMeta> = {
-  "poster-01": { title: "We Will Become Better", creator: "CineStill Lab", category: "电影质感", cover: "/assets/images/template-bubble-01.png" },
-  "poster-02": { title: "Built For Players", creator: "Storia Studio", category: "品牌主视觉", cover: "/assets/images/template-bubble-02.png" },
-  "poster-03": { title: "BRAVE Noir", creator: "MonoFrame", category: "电影质感", cover: "/assets/images/template-bubble-03.png" },
-  "poster-04": { title: "Running Through Life", creator: "Urban Motion", category: "动态/动画", cover: "/assets/images/template-bubble-04.png" },
-  "poster-05": { title: "The Silent", creator: "Parallel Film", category: "悬疑惊悚", cover: "/assets/images/template-bubble-05.png" },
-  "poster-06": { title: "Tell Me About The Mystery", creator: "Typeverse", category: "字体实验", cover: "/assets/images/template-bubble-06.png" },
-  "poster-07": { title: "Caperealys", creator: "Neon Hands", category: "插画混剪", cover: "/assets/images/template-bubble-07.png" },
-  "poster-08": { title: "Neon Retro", creator: "Flux Studio", category: "插画混剪", cover: "/assets/images/template-bubble-08.png" },
-  "poster-09": { title: "Mock Bands Flyer", creator: "Layout Guild", category: "拼贴排版", cover: "/assets/images/template-bubble-09.png" },
-  "poster-10": { title: "Objects and Power", creator: "Formless", category: "黑白人像", cover: "/assets/images/template-bubble-10.png" },
+  "poster-01": { title: "We Will Become Better", creator: "CineStill Lab", category: "电影质感", cover: "/assets/images/poster01.png" },
+  "poster-02": { title: "Built For Players", creator: "Storia Studio", category: "品牌主视觉", cover: "/assets/images/poster02.png" },
+  "poster-03": { title: "BRAVE Noir", creator: "MonoFrame", category: "电影质感", cover: "/assets/images/poster03.png" },
+  "poster-04": { title: "Running Through Life", creator: "Urban Motion", category: "动态/动画", cover: "/assets/images/poster04.png" },
+  "poster-05": { title: "The Silent", creator: "Parallel Film", category: "悬疑惊悚", cover: "/assets/images/poster05.png" },
+  "poster-06": { title: "Tell Me About The Mystery", creator: "Typeverse", category: "字体实验", cover: "/assets/images/poster06.png" },
+  "poster-07": { title: "Caperealys", creator: "Neon Hands", category: "插画混剪", cover: "/assets/images/poster07.png" },
+  "poster-08": { title: "Neon Retro", creator: "Flux Studio", category: "插画混剪", cover: "/assets/images/poster08.png" },
+  "poster-09": { title: "Mock Bands Flyer", creator: "Layout Guild", category: "拼贴排版", cover: "/assets/images/poster09.png" },
+  "poster-10": { title: "Objects and Power", creator: "Formless", category: "黑白人像", cover: "/assets/images/poster10.png" },
+  "poster-11": { title: "Urban Dreams", creator: "CityScape", category: "城市景观", cover: "/assets/images/poster11.png" },
+  "poster-12": { title: "Abstract Flow", creator: "Digital Canvas", category: "抽象艺术", cover: "/assets/images/poster12.png" },
+  "poster-13": { title: "Vintage Revival", creator: "Retro Minds", category: "复古设计", cover: "/assets/images/poster13.png" },
+  "poster-14": { title: "Nature's Call", creator: "Green Studio", category: "自然摄影", cover: "/assets/images/poster14.png" },
+  "poster-15": { title: "Tech Future", creator: "Cyber Vision", category: "科技未来", cover: "/assets/images/poster15.png" },
+  "poster-16": { title: "Minimalist Beauty", creator: "Simple Form", category: "极简主义", cover: "/assets/images/poster16.png" },
+  "poster-17": { title: "Cultural Fusion", creator: "World Arts", category: "文化融合", cover: "/assets/images/poster17.png" },
 };
 
 type CardKey = keyof typeof cardLibrary;
@@ -36,6 +43,7 @@ const galleryColumns: ColumnItem[][] = [
     { key: "poster-01", heightClass: "h-[320px]", liked: true },
     { key: "poster-07", heightClass: "h-[240px]" },
     { key: "poster-06", heightClass: "h-[300px]" },
+    { key: "poster-11", heightClass: "h-[280px]" },
     { key: "poster-07", heightClass: "h-[240px]" },
     { key: "poster-06", heightClass: "h-[300px]" },
     { key: "poster-04", heightClass: "h-[260px]" },
@@ -43,14 +51,17 @@ const galleryColumns: ColumnItem[][] = [
   [
     { key: "poster-02", heightClass: "h-[260px]" },
     { key: "poster-04", heightClass: "h-[300px]" },
+    { key: "poster-12", heightClass: "h-[280px]" },
     { key: "poster-05", heightClass: "h-[260px]" },
     { key: "poster-02", heightClass: "h-[280px]" },
+    { key: "poster-15", heightClass: "h-[300px]" },
     { key: "poster-04", heightClass: "h-[260px]" },
     { key: "poster-09", heightClass: "h-[300px]" },
   ],
   [
     { key: "poster-03", heightClass: "h-[240px]" },
     { key: "poster-10", heightClass: "h-[260px]" },
+    { key: "poster-13", heightClass: "h-[280px]" },
     { key: "poster-08", heightClass: "h-[280px]" },
     { key: "poster-10", heightClass: "h-[260px]" },
     { key: "poster-08", heightClass: "h-[320px]" },
@@ -58,8 +69,10 @@ const galleryColumns: ColumnItem[][] = [
   ],
   [
     { key: "poster-02", heightClass: "h-[260px]" },
+    { key: "poster-14", heightClass: "h-[300px]" },
     { key: "poster-04", heightClass: "h-[300px]" },
     { key: "poster-09", heightClass: "h-[300px]" },
+    { key: "poster-16", heightClass: "h-[280px]" },
     { key: "poster-01", heightClass: "h-[280px]" },
     { key: "poster-09", heightClass: "h-[300px]" },
     { key: "poster-04", heightClass: "h-[260px]" },
@@ -67,6 +80,7 @@ const galleryColumns: ColumnItem[][] = [
   [
     { key: "poster-07", heightClass: "h-[240px]" },
     { key: "poster-06", heightClass: "h-[300px]", liked: true },
+    { key: "poster-17", heightClass: "h-[280px]" },
     { key: "poster-09", heightClass: "h-[300px]" },
     { key: "poster-08", heightClass: "h-[280px]" },
     { key: "poster-06", heightClass: "h-[320px]" },
@@ -101,9 +115,9 @@ export default function GalleryGrid() {
   }, []);
 
   return (
-    <section id="gallery" className="w-full px-4 pb-24 sm:px-6 lg:px-8">
+    <section id="gallery" className="w-full px-4 pb-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1440px]">
-        <div className="mb-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="py-20 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
             className="inline-flex cursor-pointer h-[50px] items-center gap-2 rounded-full bg-[#171719] px-5 py-3 text-sm font-semibold text-white/85 shadow-[0_16px_34px_rgba(0,0,0,0.45)] hover:border-white/30 hover:text-white"
@@ -178,7 +192,7 @@ export default function GalleryGrid() {
           ))}
         </div>
 
-        <div ref={sentinelRef} className="mt-12 flex flex-col items-center gap-3">
+        <div ref={sentinelRef} className="pt-10 flex flex-col items-center gap-3">
           <button
             type="button"
             className={`inline-flex items-center gap-2 px-8 py-3 text-base font-semibold ${btnPrimary}`}

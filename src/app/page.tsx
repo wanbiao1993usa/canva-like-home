@@ -8,7 +8,7 @@ import GenerationShowcase from "../components/home/GenerationShowcase"; // 2025-
 import CustomDesignPanel from "../components/home/CustomDesignPanel"; // 2025-10-29: 引入自由定制设计分区（Figma 345:4674）
 import StartFromTemplates from "../components/home/StartFromTemplates"; // 2025-10-29: 引入从模版开始创建分区（Figma 345:4758）
 import CallDesignerCollab from "../components/home/CallDesignerCollab"; // 2025-10-29: 引入呼叫设计大师分区（Figma 345:4797）
-import CTA from "../components/home/CTA";
+import CTA from "../components/common/CTA";
 
 export default function Page() {
   return (
@@ -19,19 +19,19 @@ export default function Page() {
 
       <AppPreview />
 
-      {/* 2025-10-29: 鏂板璁捐榄旀硶灞曠ず鍖哄潡 */}
+      {/* 2025-10-29: 新增设计魔法展示区块 */}
       <DesignMagicBanner />
 
-      {/* 2025-10-29: 鏂板鐢熸垚娴佺▼婕旂ず鍖哄潡 */}
+      {/* 2025-10-29: 新增生成流程演示区块 */}
       <GenerationShowcase />
 
-      {/* 2025-10-29: 鏂板鑷敱瀹氬埗璁捐鍒嗗尯 */}
+      {/* 2025-10-29: 新增自由定制设计分区 */}
       <CustomDesignPanel />
 
-      {/* 2025-10-29: 鏂板浠庢ā鐗堝紑濮嬪垱寤哄垎鍖?*/}
+      {/* 2025-10-29: 新增从模版开始创建分区 */}
       <StartFromTemplates />
 
-      {/* 2025-10-29: 鏂板鍛煎彨璁捐澶у笀锛屽悓灞忓叡鍒涘垎鍖?*/}
+      {/* 2025-10-29: 新增呼叫设计大师，同屏共创分区 */}
       <CallDesignerCollab />
 
       <CTA />
@@ -40,6 +40,3 @@ export default function Page() {
     </main>
   );
 }
-
-
-

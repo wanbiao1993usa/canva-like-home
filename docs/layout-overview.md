@@ -1,41 +1,89 @@
-﻿# Canva-like 页面布局说明
+# Canva-like 页面布局与样式说明
 
-> 更新时间：2025-11-10
+> 更新时间：2025-11-10 20:30（UTC+8）
 
-## 1. 全局骨架
-- src/app/layout.tsx：RootLayout 注入 Inter 字体并在 <body> 添加噪点/粒子伪元素背景，确保整站统一基底与滚动表现。
-- src/app/globals.css：追加滚动条渐变、高光描边等全局样式；src/app/fonts.ts 暂时使用 Google 字体占位，后续可切换本地字体。
-- src/app/page.tsx：页面主容器按 Header→Hero→AppPreview→DesignMagicBanner→GenerationShowcase→CustomDesignPanel→StartFromTemplates→CallDesignerCollab→CTA→Footer 顺序渲染，宽度随断点调节。
+本文档在梳理 `canva-like-home` 项目源码后整理，覆盖整体布局、公共样式资产以及 Tailwind 配置，便于后续扩展保持一致性。
 
-## 2. 公共 UI 与光影
-- src/ui.ts：封装常用过渡、按钮、卡片与渐变文字类，组件通过模板字串快速复用。
-- src/components/GlowEffect.tsx：集中管理光影背景定位、尺寸与 Next Image 加载策略，所有特效图片统一走该组件，避免重复 CSS。
+## 1. 页面架构速览
 
-## 3. 主要分区职责
-| 区块 | 组件 | 说明 |
-| --- | --- | --- |
-| 导航 | Header | 胶囊导航 + 语言切换 + 多端 CTA，使用 	ransitionAll 与 focus-visible 风格。 |
-| 首屏 | Hero | NEW 标签、渐变标题、开场文案与 5 列海报排列，CTA 打开在线编辑器。 |
-| 体验预览 | AppPreview | 外层玻璃拟态壳体，内部含浏览器工具条、左栏项目导航/配额卡、右侧横幅 + 海报网格 + “最近的文件”表格，数据来源本地数组。 |
-| 设计魔法 | DesignMagicBanner | 渐变标题 + 胶囊标签，用于承上启下。 |
-| 生成流程 | GenerationShowcase | 左侧序号说明卡，右侧 2×3 生成样图与文字说明，叠加光影。 |
-| 自由定制 | CustomDesignPanel | 还原编辑器 UI：图层列表、画布、动作条与浮窗提示，右侧信息卡解释 AI 编辑逻辑。 |
-| 模板起步 | StartFromTemplates | 左侧说明 + 右侧泡泡信息图，展示多模板缩略图与发光环。 |
-| 设计共创 | CallDesignerCollab | 左侧多层互动卡（呼叫状态、协作者标签、指针），右侧两条说明描述实时协作。 |
-| 行动号召 & 底部 | CTA / Footer | CTA 用大圆角卡、发光与主按钮驱动转化；Footer 展示品牌、导航与社交图标。 |
+1. **根布局（`src/app/layout.tsx`）**  
+   - 通过 `fontSans` 注入临时的 Google Inter 字体，等待提供品牌字体后切换到 `next/font/local`。  
+   - `<body>` 应用深色背景（`#111111`）与噪点网格伪元素，`min-h-screen` + `relative` 确保所有内容位于纹理层之上。  
+   - `className="overflow-x-hidden"` 结合 `main` 的自适应内边距，避免 GlowEffect 等绝对定位元素造成横向滚动。
 
-## 4. 资源依赖
-- 静态资源分布在 public/assets/icons 与 public/assets/images，多为占位图。上线前需确认文件存在并优化尺寸（可结合 
-ext/image）。
-- 文字内容含大量中文渐变/高光效果，需确保字体与编码统一（UTF-8），避免出现 �? 字符。
+2. **主容器（`src/app/page.tsx`）**  
+   - `<main>` 采用 `max-w-[1280px] xl:max-w-[1440px] 2xl:max-w-[1680px]` 与 `px-6 → 2xl:px-[48px]` 的阶梯式内边距，保证不同断点下内容不贴边。  
+   - 字体暂时强制为 `PingFang SC` 以模拟 UI 设计稿，后续可改为全局变量。  
+   - 各内容区块自上而下依次为：`Header → Hero → AppPreview → DesignMagicBanner → GenerationShowcase → CustomDesignPanel → StartFromTemplates → CallDesignerCollab → CTA → Footer`。
 
-## 5. 风险与注意事项
-1. **编码问题**：Header, Hero 等组件存在 �? 乱码，需排查源文件或编辑器编码设置。
-2. **资源缺失**：若缺少 PNG/SVG，会导致主要区块空白。建议引入 lint/脚本在构建前校验文件存在。
-3. **交互占位**：多数 href="#"、只读输入与空按钮尚未接入真实逻辑，需在接入后统一做可访问性测试。
+## 2. 公共样式资产
 
-## 6. 下一步建议
-1. 补齐 public/assets 资源并考虑用 Sprite/
-ext/image 做懒加载，降低首屏体积。
-2. 解决中文乱码并引入更贴合品牌的本地字体。
-3. 把 AppPreview、模板/协作区块的数据源抽象为配置或 API 响应，避免硬编码数组。
+### 2.1 全局 CSS（`src/app/globals.css`）
+
+- 首行 `@config "../../tailwind.config.ts"` 与 `@import "tailwindcss"` 确保全局可使用项目级 Tailwind 配置。  
+- 自定义滚动条沿用深色基调与 #AE89FF 高光；`scrollbar-width: thin` 配合 WebKit 伪类消除跨浏览器视觉差。  
+- 其余原子类依赖 Tailwind Utilities，故无需在这里重复定义。
+
+### 2.2 UI 工具类（`src/ui.ts`）
+
+- `transitionAll`：统一 200ms ease-out 过渡，供按钮、卡片复用。  
+- `btnPrimary / btnSecondary`：设定圆角、配色与 hover 效果，页面 CTA、Hero 按钮等保持一致。  
+- `cardBase / cardHover`：卡片默认背景与 hover 轻浮起阴影，用在 AppPreview、GenerationShowcase 等模块。  
+- `gradentText / gradentTextXs`：标题与说明文的渐变文字，避免手写重复 CSS。
+
+### 2.3 复用组件
+
+- `GlowEffect`：封装 Next Image + 绝对定位参数，负责光晕/噪点素材的定位与懒加载。  
+- `CapsuleTagGroup`：胶囊标签组合的排版基座，CTA 与若干 Banner 使用。  
+- `transitionAll` 需与 `focus-visible` 样式搭配，Header 导航、按钮均已实现可访问性高亮，新增组件时保持一致。
+
+## 3. Tailwind 配置概览（`tailwind.config.ts`）
+
+| 配置项 | 说明 |
+| --- | --- |
+| `content` | 扫描 `./src/**/*.{js,ts,jsx,tsx,mdx}` 与 `./docs/**/*.{md,mdx}`，确保文档示例类名同样被产出。 |
+| `theme.extend.colors.primary` | `DEFAULT #AE89FF`、`accent #414BFF`，对应品牌主色及渐变终点。 |
+| `theme.extend.colors.secondary` | 950 → 600 定义背景、描边与文案颜色的灰阶带。 |
+| `theme.extend.backgroundImage["primary-gradient"]` | `linear-gradient(107deg, #AE89FF 11.55%, #414BFF 88.45%)`，用于按钮或大模块背景。 |
+| `plugins` | 暂无额外插件，如需 Typography/Form 等可在此扩展。 |
+
+**使用建议**
+
+1. 保持 `bg-primary-gradient` 与 `text-primary` 等语义类在多个区块复用，避免内联色值分散。  
+2. 若新增尺寸变量，优先写入 `theme.extend`，避免在组件内硬编码多个 `px` 值。  
+3. 需要在 Markdown 示例中渲染 Tailwind 样式时，无需额外配置，已包含 `docs` 目录。
+
+## 4. 首页区块拆解
+
+| 区块 | 文件 | 布局与内容要点 | 关键素材/交互 |
+| --- | --- | --- | --- |
+| 顶部导航 | `src/components/common/Header.tsx` | 左侧 Logo + 文案，中段圆角导航（自动高亮当前路由），右侧语言切换 + CTA。Mobile 仅保留 CTA。 | `transitionAll`、`focus-visible` 边框；按钮触发 `window.open("https://editor.lycium.ai")`。 |
+| Hero | `src/components/home/Hero.tsx` | 居中标题、描述、主按钮，下方 5 列海报按 `grid-cols-2/3/5` 响应式排布。 | `GlowEffect` 处理底部光晕；按钮使用 `btnPrimary`。 |
+| App 预览 | `src/components/home/AppPreview.tsx` | 大型工作区卡片：顶部标签/标题，中间为多栏界面（侧边栏、主画布、右侧设定），底部附最近文件列表。 | 三组 `GlowEffect` 营造边缘光；`cardHover` 提升交互反馈。 |
+| 品牌魔法横幅 | `.../DesignMagicBanner.tsx` | 居中胶囊标签 + 渐变标题，为下方生成流程做导入。 | 依赖 `CapsuleTagGroup` 与 `gradentText`。 |
+| 生成流程展示 | `.../GenerationShowcase.tsx` | 左侧步骤/文字卡片（含 1 号徽章），右侧两层信息叠加：上层网格图、下层评价卡片。 | 自定义 `glowStyle` 背景、多个 SVG 占位，需确保 `/assets/icons` 补齐。 |
+| 自定义设计面板 | `.../CustomDesignPanel.tsx` | 左侧模拟编辑器（Layer 列表 + 画布 + 快捷提示），右侧说明卡片。 | 多个 `thumb` 图片来自 `/assets/images/custom-design-*.png`，含按钮“重新生成”。 |
+| 模板集合 | `.../StartFromTemplates.tsx` | 左列说明卡片，右列为 10 个圆角气泡围绕渐变光环排布，强调多模板入口。 | `GlowEffect` + `radial-gradient` 背景，图片来源 `template-bubble-*.png`。 |
+| 设计师协作 | `.../CallDesignerCollab.tsx` | 左侧包含多个叠放卡片（设计师头像、进度、视频窗口等），右侧为说明卡与三段要点。 | 复用 `gradentTextXs`，含 loading SVG、自定义圆环动画。 |
+| 最终 CTA | `src/components/common/CTA.tsx` | 圆角深色卡片，内含 `CapsuleTagGroup`、标题、说明与按钮。 | `GlowEffect` 叠加背景，按钮跳转同 Header。 |
+| Footer | `src/components/common/Footer.tsx` | 左侧品牌版权，右侧链接 + 简易社交图标，使用 `new Date().getFullYear()` 实时年份。 | SVG 占位符需替换成正式图标后保持尺寸一致。 |
+
+## 5. 静态资产与内容约束
+
+- 图标与插画分别位于 `public/assets/icons` 与 `public/assets/images`，命名与组件中的引用保持一一对应。  
+- GlowEffect 使用 `.svg` 背景渐变，若替换请确保尺寸与透视匹配，以免超出容器。  
+- 所有占位图片均假设为 PNG，若改为 Next Image 需配置 `next.config.ts` 的远程域名或保留本地路径。  
+- 字体目前为 Inter 占位，设计稿中的中文展示依赖系统字体 `PingFang SC`。后续若接入自定义字体，需要在 `fonts.ts` 中增加 `next/font/local` 并同步更新 `globals.css`。
+
+## 6. 注意事项
+
+1. **资源完整性**：缺失的 PNG/SVG 会直接导致构建失败或 FOUC，提交前请检查 `public/assets`。  
+2. **可访问性**：按钮、链接已实现 `focus-visible` 样式，新增组件时务必沿用这套可访问性基线。  
+3. **响应断点**：部分绝对定位元素（尤其是 Template 气泡、GlowEffect）在窄屏会被裁剪，如需移动端适配需提供替代布局。  
+4. **国际化占位**：当前导航语言切换仅展示“中文（简体）”，若后续接入 i18n，需要抽离文案与状态管理。
+
+## 7. 后续建议
+
+1. 将 AppPreview、CustomDesignPanel 中的硬编码数据抽离到 `data/*.ts`，方便与真实 API 对接。  
+2. 在 Tailwind 配置中加入 `boxShadow`、`borderRadius` token，替代大量 `[24px]` 这类硬编码，便于统一调整。  
+3. 引入 `@tailwindcss/typography` 处理文档类 markdown 展示，确保 `docs` 内案例与页面风格一致。

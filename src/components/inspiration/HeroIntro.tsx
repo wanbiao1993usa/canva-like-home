@@ -1,6 +1,8 @@
-'use client';
+﻿'use client';
 
 import { btnPrimary } from "../../ui";
+import GlowEffect from "../common/GlowEffect";
+import CapsuleTagGroup from "../common/CapsuleTagGroup";
 
 /**
  * 2025-11-10 16:40: HeroIntro 参照 home/Hero 布局，聚焦标题、副文案与 CTA。
@@ -13,21 +15,28 @@ export default function HeroIntro() {
   };
 
   return (
-    <section id="inspiration-hero" className="py-16 sm:py-20">
+    <section id="inspiration-hero" className="relative py-20 overflow-visible">
+      {/* 2025-11-07 21:40: 光影效果统一改用 GlowEffect 组件 */}
+      <GlowEffect
+        top="-40px"
+        src="/assets/icons/insp-hero-eclipse.svg"
+        width={1000}
+        height={1000}
+        alt="灵感光影"
+        priority={false}
+        className="left-1/2 -translate-x-1/2 z-[60]"
+        imageClassName="rounded-[44px]"
+      />
+
       <div className="mx-auto max-w-4xl text-center">
+
         {/* 2025-11-10 16:40: 顶部灵感标签 */}
-        {/* <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 shadow-[0_16px_40px_rgba(8,8,8,0.65)] backdrop-blur">
-          <div className="flex items-center rounded-[100px] bg-[#AE89FF] px-3.5 py-2">
-            <span className="text-sm font-medium text-[#191919]">灵感</span>
-          </div>
-          <span className="text-sm text-white/70">让每一张海报都富有灵魂</span>
-        </div> */}
-        <div className="inline-flex items-center overflow-hidden rounded-full border-t-2 border-[#3D3D3D] bg-[#191919] text-white">
-          <div className="flex items-center rounded-full bg-[#AE89FF] px-3.5 py-2">
-            <span className="text-sm font-medium text-secondary-900 text-[14px]">灵感</span>
-          </div>
-          <div className="px-4 text-base text-white">让每一张海报都富有灵魂</div>
-        </div>
+        <CapsuleTagGroup
+          primaryText="灵感"
+          secondaryText="让每一张海报都富有灵魂"
+          className="inline-flex rounded-full"
+          primaryClassName="rounded-full text-[14px]"
+        />
 
         <h1 className="pt-10 text-3xl font-semibold leading-tight text-white sm:text-4xl xl:text-[48px]">
           社区作品集
@@ -52,3 +61,6 @@ export default function HeroIntro() {
     </section>
   );
 }
+
+
+
