@@ -1,13 +1,14 @@
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import AppPreview from "../components/AppPreview";
-import DesignMagicBanner from "../components/DesignMagicBanner"; // 2025-10-29: 引入设计魔法条幅组件
-import GenerationShowcase from "../components/GenerationShowcase"; // 2025-10-29: 引入生成流程演示组件（Figma 345:4563）
-import CustomDesignPanel from "../components/CustomDesignPanel"; // 2025-10-29: 引入自由定制设计分区（Figma 345:4674）
-import StartFromTemplates from "../components/StartFromTemplates"; // 2025-10-29: 引入从模版开始创建分区（Figma 345:4758）
-import CallDesignerCollab from "../components/CallDesignerCollab"; // 2025-10-29: 引入呼叫设计大师分区（Figma 345:4797）
-import CTA from "../components/CTA";
-import Footer from "../components/Footer";
+﻿import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+
+import Hero from "../components/home/Hero";
+import AppPreview from "../components/home/AppPreview";
+import DesignMagicBanner from "../components/home/DesignMagicBanner"; // 2025-10-29: 引入设计魔法条幅组件
+import GenerationShowcase from "../components/home/GenerationShowcase"; // 2025-10-29: 引入生成流程演示组件（Figma 345:4563）
+import CustomDesignPanel from "../components/home/CustomDesignPanel"; // 2025-10-29: 引入自由定制设计分区（Figma 345:4674）
+import StartFromTemplates from "../components/home/StartFromTemplates"; // 2025-10-29: 引入从模版开始创建分区（Figma 345:4758）
+import CallDesignerCollab from "../components/home/CallDesignerCollab"; // 2025-10-29: 引入呼叫设计大师分区（Figma 345:4797）
+import CTA from "../components/common/CTA";
 
 export default function Page() {
   return (
@@ -39,5 +40,3 @@ export default function Page() {
     </main>
   );
 }
-
-

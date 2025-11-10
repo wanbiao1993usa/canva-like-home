@@ -11,3 +11,6 @@ export const cardHover = `${transitionAll} hover:-translate-y-0.5 hover:shadow-l
 export const gradentText = `text-transparent bg-clip-text bg-gradient-to-r from-[#bababa] via-[#FFFFFF] to-[#bababa]`;
 
 export const gradentTextXs = `text-transparent bg-clip-text bg-gradient-to-r from-[#707070] via-[#FFFFFF] to-[#707070]`;
+
+// 2025-11-10 22:30: FAQ/定价等区域的统一高光渐变文本样式
+export const gradentTextHighlight = `text-transparent bg-clip-text bg-gradient-to-r from-white via-[rgba(114, 192 ,255, 0.5)] to-[#826FDC]`;
