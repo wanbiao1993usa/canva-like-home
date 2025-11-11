@@ -16,7 +16,7 @@
       "ideas": "灵感",
       "pricing": "定价",
       "contact": "联系我们",
-      "about": "关于",
+      "tutorial": "教程",
       "ariaLabel": "主导航"
     },
     "language": {
@@ -42,8 +42,7 @@
       "inspiration": "灵感",
       "pricing": "定价",
       "contact": "联系",
-      "about": "关于",
-      "help": "帮助"
+      "tutorial": "教程"
     },
     "social": {
       "title": "关注我们",
@@ -270,7 +269,7 @@
         "title": "邮件联系我们",
         "techLabel": "技术支持",
         "generalLabel": "常规咨询",
-        "techEmail": "admin@lycium.ai",
+        "techEmail": "wan@lycium.ai",
         "generalEmail": "admin@lycium.ai"
       },
       "hoursSection": {
@@ -451,6 +450,11 @@
       "searchPlaceholder": "试试搜索“双十一”",
       "searchToast": "搜索功能开发中，敬请期待。",
       "comingSoonToast": "更多灵感即将上线，敬请期待。",
+      "controls": {
+        "sparkAria": "查看灵感滤镜（开发中）",
+        "layoutAria": "调整布局密度（开发中）",
+        "bubbleAria": "查看地域洞察（开发中）"
+      },
       "loadMore": "加载更多",
       "cards": {
         "poster01": {
@@ -547,7 +551,3 @@
     "primary": "返回首页"
   }
 }
-
-
-
-

@@ -16,7 +16,7 @@
       "ideas": "Inspiration",
       "pricing": "Pricing",
       "contact": "Contact",
-      "about": "About",
+      "tutorial": "Tutorials",
       "ariaLabel": "Primary navigation"
     },
     "language": {
@@ -42,8 +42,7 @@
       "inspiration": "Inspiration",
       "pricing": "Pricing",
       "contact": "Contact",
-      "about": "About",
-      "help": "Help"
+      "tutorial": "Tutorials"
     },
     "social": {
       "title": "Follow us",
@@ -270,7 +269,7 @@
         "title": "Email us",
         "techLabel": "Technical support",
         "generalLabel": "General inquiries",
-        "techEmail": "admin@lycium.ai",
+        "techEmail": "wan@lycium.ai",
         "generalEmail": "admin@lycium.ai"
       },
       "hoursSection": {
@@ -451,6 +450,11 @@
       "searchPlaceholder": "Try searching “Singles Day”",
       "searchToast": "Search is under construction. Stay tuned.",
       "comingSoonToast": "More inspiration is on the way. Stay tuned.",
+      "controls": {
+        "sparkAria": "Show inspiration filters (coming soon)",
+        "layoutAria": "Adjust layout density (coming soon)",
+        "bubbleAria": "Show region insights (coming soon)"
+      },
       "loadMore": "Load more",
       "cards": {
         "poster01": {

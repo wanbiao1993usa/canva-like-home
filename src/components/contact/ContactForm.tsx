@@ -4,7 +4,6 @@ import { useState } from "react";
 import { btnPrimary, transitionAll } from "../../ui";
 import GlowEffect from "../common/GlowEffect";
 import { useTranslator } from "../../hooks/useTranslator";
-import { useFeatureToast } from "../common/toast";
 
 type FormData = {
   name: string;
@@ -19,14 +18,10 @@ type FormErrors = Partial<FormData>;
  */
 export default function ContactForm() {
   const t = useTranslator("contact.form");
-  const globalT = useTranslator();
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", notes: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  // 2025-11-12 11:15: 公共提示改为读取 common.featureToast，避免写死中文
-  const notifyComingSoon = useFeatureToast(globalT("common.featureToast"));
-
   const fieldShellClass =
     `w-full mt-2 border border-white/10 bg-[#111111] px-6 py-4 text-base text-white placeholder:text-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${transitionAll} focus:border-[#AE89FF] focus:ring-2 focus:ring-[#AE89FF]/40 focus:outline-none`;
 
@@ -88,13 +83,47 @@ export default function ContactForm() {
     return Object.keys(nextErrors).length === 0;
   };
 
+  // 2025-02-15 11:40: 组装 mailto 链接，将用户输入内容填充到主题与正文
+  const buildMailtoLink = () => {
+    const subject = `[CanDe Contact] ${formData.name || "Visitor"}`;
+    const bodySegments = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      "Message:",
+      formData.notes
+    ].join("\n");
+    const params = new URLSearchParams();
+    params.set("subject", subject);
+    params.set("body", bodySegments);
+    if (formData.email.trim()) {
+      // 2025-02-15 12:35: 同步填充 from 参数，方便邮件客户端预设发件人
+      params.set("from", formData.email.trim());
+    }
+    return `mailto:admin@lycium.ai?${params.toString()}`;
+  };
+
+  /**
+   * 2025-02-15 11:40: 通过 mailto 拉起默认邮件客户端，向 admin@lycium.ai 发送内容
+   */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (typeof window !== "undefined") {
+        // 2025-02-15 13:00: 使用临时锚点触发 mailto，避免整页跳转
+        const mailtoLink = buildMailtoLink();
+        const anchor = document.createElement("a");
+        anchor.href = mailtoLink;
+        anchor.style.display = "none";
+        anchor.rel = "noopener noreferrer";
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+      }
+      await new Promise((resolve) => setTimeout(resolve, 600));
       setSubmitSuccess(true);
       setFormData({ name: "", email: "", notes: "" });
       setTimeout(() => setSubmitSuccess(false), 3000);
@@ -174,7 +203,6 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              onClick={notifyComingSoon}
               className={`${btnPrimary} inline-flex w-full items-center justify-center gap-3 px-10 py-4 text-lg font-semibold disabled:cursor-not-allowed disabled:opacity-60`}
             >
               {isSubmitting ? fieldCopy.actions.submitting : fieldCopy.actions.submit}
