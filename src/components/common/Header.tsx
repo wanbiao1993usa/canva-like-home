@@ -196,7 +196,7 @@ export default function Header() {
                           type="button"
                           role="menuitemradio"
                           aria-checked={active}
-                          className={`flex w-full items-center justify-between gap-2 rounded-xl px-4 py-2 text-sm transition-colors ${active ? "bg-white/10 text-white" : "text-white/80 hover:bg-white/10"
+                          className={`flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl px-4 py-2 text-sm transition-colors ${active ? "bg-white/10 text-white" : "text-white/80 hover:bg-white/10"
                             }`}
                           onClick={() => handleLocaleSelect(candidate)}
                         >
