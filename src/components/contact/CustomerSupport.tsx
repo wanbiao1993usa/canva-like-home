@@ -3,17 +3,15 @@
 import GlowEffect from "../common/GlowEffect";
 import CapsuleTagGroup from "../common/CapsuleTagGroup";
 import { useTranslator } from "../../hooks/useTranslator";
-import { useFeatureToast } from "../common/toast";
 
 /**
  * 2025-11-11 11:00: 客户支持模块改版——与 CTA 组件保持一致布局
  */
 export default function CustomerSupport() {
   const t = useTranslator("contact.support");
-  const globalT = useTranslator();
-  // 2025-11-11 15:45: 支持入口暂未开放，点击提示开发中
-  // 2025-11-12 11:15: 公共提示文本改为引用 common.featureToast
-  const notifyComingSoon = useFeatureToast(globalT("common.featureToast"));
+  // 2025-02-15 12:45: 复用 ContactHero 常规咨询邮箱
+  const heroT = useTranslator("contact.hero");
+  const generalEmail = heroT("emailSection.generalEmail");
 
   return (
     <section className="pt-20">
@@ -41,18 +39,15 @@ export default function CustomerSupport() {
           <p className="mx-auto mt-4 max-w-[846px] text-[18px] text-white/50">{t("description")}</p>
         </div>
 
-        {/* <div className="mt-8 flex items-center justify-center">
+        <div className="mt-8 flex items-center justify-center">
           <a
-            href="https://support.candeai.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${generalEmail}`}
             className="inline-flex items-center gap-2 rounded-[58px] border border-[#A582FF]/60 bg-[#AE89FF] px-5 py-[14px] text-[18px] font-bold text-[#191919]"
-            onClick={notifyComingSoon}
           >
             {t("cta")}
             <img src="/assets/icons/arrow-up-right-dark.svg" alt="" className="h-4 w-4" aria-hidden="true" />
           </a>
-        </div> */}
+        </div>
       </div>
     </section>
   );

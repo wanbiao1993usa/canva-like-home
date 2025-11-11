@@ -85,7 +85,7 @@ export default function ContactForm() {
 
   // 2025-02-15 11:40: 组装 mailto 链接，将用户输入内容填充到主题与正文
   const buildMailtoLink = () => {
-    const subject = encodeURIComponent(`[CanDe Contact] ${formData.name || "Visitor"}`);
+    const subject = `[CanDe Contact] ${formData.name || "Visitor"}`;
     const bodySegments = [
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
@@ -93,7 +93,14 @@ export default function ContactForm() {
       "Message:",
       formData.notes
     ].join("\n");
-    return `mailto:admin@lycium.ai?subject=${subject}&body=${encodeURIComponent(bodySegments)}`;
+    const params = new URLSearchParams();
+    params.set("subject", subject);
+    params.set("body", bodySegments);
+    if (formData.email.trim()) {
+      // 2025-02-15 12:35: 同步填充 from 参数，方便邮件客户端预设发件人
+      params.set("from", formData.email.trim());
+    }
+    return `mailto:admin@lycium.ai?${params.toString()}`;
   };
 
   /**
