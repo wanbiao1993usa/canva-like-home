@@ -1,11 +1,15 @@
-﻿// 2025-10-29: 自由定制设计分区（Figma node 345:4674）
+﻿'use client';
+
+// 2025-10-29: 自由定制设计分区（Figma node 345:4674）
 // 说明：左侧编辑器面板 + 右侧说明卡片 + 底部动作栏 + 浮动提示卡
 // 图标/图片使用占位文件，请按命名在 public/assets 下补充资源
-import type { CSSProperties } from "react";
 import GlowEffect from "../common/GlowEffect";
 import { gradentTextXs } from "../../ui";
+import { useTranslator } from "../../hooks/useTranslator";
 
 export default function CustomDesignPanel() {
+  // 2025-11-11 18:45: 接入 home.customDesignPanel 文案，支持中英文切换
+  const t = useTranslator("home.customDesignPanel");
   const thumbs = [
     "/assets/images/custom-design-thumb-01.png",
     "/assets/images/custom-design-thumb-02.png",
@@ -15,6 +19,38 @@ export default function CustomDesignPanel() {
     "/assets/images/custom-design-thumb-06.png",
     "/assets/images/custom-design-thumb-07.png",
     "/assets/images/custom-design-thumb-08.png",
+  ];
+  // 2025-11-11 18:45: 将快捷操作与亮点说明的文案统一走 t，便于多语言切换与维护
+  const quickActions = [
+    {
+      icon: "/assets/icons/custom-design-sparkles.svg",
+      title: t("quickActions.partialEdit.title"),
+      desc: t("quickActions.partialEdit.desc"),
+    },
+    {
+      icon: "/assets/icons/custom-design-refresh.svg",
+      title: t("quickActions.fullRedraw.title"),
+      desc: t("quickActions.fullRedraw.desc"),
+    },
+    {
+      icon: "/assets/icons/custom-design-resize.svg",
+      title: t("quickActions.detailPolish.title"),
+      desc: t("quickActions.detailPolish.desc"),
+    },
+  ];
+  const insightCards = [
+    {
+      icon: "/assets/icons/custom-design-sparkles-accent.svg",
+      alt: "sparkles",
+      title: t("insights.layerIntelligence.title"),
+      desc: t("insights.layerIntelligence.description"),
+    },
+    {
+      icon: "/assets/icons/custom-design-robot.svg",
+      alt: "robot",
+      title: t("insights.aiExecution.title"),
+      desc: t("insights.aiExecution.description"),
+    },
   ];
 
   return (
@@ -26,7 +62,6 @@ export default function CustomDesignPanel() {
         src="/assets/icons/design-eclipse.svg"
         width={1200}
         height={1200}
-        alt="Custom Design Panel 光影"
         priority={false}
         className="flex w-full justify-center"
       />
@@ -79,7 +114,6 @@ export default function CustomDesignPanel() {
                   {/* 2025-11-07 22:30: 叠加图层标记，突出画布中选中元素 */}
                   <img
                     src="/assets/icons/layer-mark.svg"
-                    alt="图层标记"
                     className="pointer-events-none absolute left-40 top-1 w-32 -translate-x-1/2"
                   />
                 </div>
@@ -90,12 +124,8 @@ export default function CustomDesignPanel() {
           {/* 底部动作栏 620×100 */}
           <div className="absolute left-0 top-[498px] h-[100px] w-[620px] rounded-2xl border border-white/10 bg-[#111111] px-8 py-6">
             <div className="grid grid-cols-3 gap-6">
-              {[
-                { icon: "/assets/icons/custom-design-sparkles.svg", title: "局部修改", desc: "只改需要的地方" },
-                { icon: "/assets/icons/custom-design-refresh.svg", title: "完整重绘", desc: "换个思路试试看" },
-                { icon: "/assets/icons/custom-design-resize.svg", title: "细节优化", desc: "让画面更完美" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
+              {quickActions.map((item) => (
+                <div key={item.icon} className="flex items-center gap-3">
                   <img src={item.icon} alt="" className="h-5 w-5" />
                   <div>
                     <div className="text-[18px] text-white">{item.title}</div>
@@ -109,12 +139,12 @@ export default function CustomDesignPanel() {
           {/* 浮动提示卡 240×160 */}
           <div className="absolute bottom-[158px] right-0 w-[240px] rounded-2xl border border-white/10 bg-[#111111] p-6">
             <div className="text-[16px] text-white">
-              不喜欢这个结果吗？
+              {t("promptCard.headlineLine1")}
               <br />
-              立即重新生成！
+              {t("promptCard.headlineLine2")}
             </div>
             <button className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#A582FF]/60 bg-[#AE89FF] px-5 py-2.5 text-[14px] text-[#191919]">
-              重新生成
+              {t("promptCard.button")}
               <img src="/assets/icons/custom-design-refresh-dark.svg" alt="refresh" className="h-4 w-4" />
             </button>
           </div>
@@ -125,27 +155,21 @@ export default function CustomDesignPanel() {
           {/* 数字胶囊标题 */}
           <div className="inline-flex w-fit items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6 self-start">
             <span className="flex h-12 w-12 items-center justify-center rounded-[40px] bg-[#AE89FF] text-[18px] text-[#191919]">2</span>
-            <span className={`text-[18px] w-auto ${gradentTextXs}`}>随心所欲的自由定制设计</span>
+            <span className={`text-[18px] w-auto ${gradentTextXs}`}>{t("badge")}</span>
           </div>
 
 
           {/* 2025-11-07 22:15: 合并说明卡，统一信息层级 */}
           <div className="rounded-2xl border border-white/15 bg-[#181818] p-6 space-y-6">
-            <div>
-              <div className="flex items-center gap-3">
-                <img src="/assets/icons/custom-design-sparkles-accent.svg" alt="sparkles" className="h-6 w-6" />
-                <span className="text-[18px] text-white">每个图层都是智能体</span>
+            {insightCards.map((card) => (
+              <div key={card.icon}>
+                <div className="flex items-center gap-3">
+                  <img src={card.icon} alt={card.alt} className="h-6 w-6" />
+                  <span className="text-[18px] text-white">{card.title}</span>
+                </div>
+                <p className="mt-3 text-[16px] text-white/60">{card.desc}</p>
               </div>
-              <p className="mt-3 text-[16px] text-white/60">每个图层独立识别内容，精准响应局部编辑指令</p>
-            </div>
-
-            <div>
-              <div className="flex items-center gap-3">
-                <img src="/assets/icons/custom-design-robot.svg" alt="robot" className="h-6 w-6" />
-                <span className="text-[18px] text-white">想改就改，想绘就绘</span>
-              </div>
-              <p className="mt-3 text-[16px] text-white/60">说出编辑想法，AI智能判断并执行：局部修改、完整重绘或细节优化</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

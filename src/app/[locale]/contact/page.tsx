@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
-import Header from "../../components/common/Header";
-import Footer from "../../components/common/Footer";
-import ContactHero from "../../components/contact/ContactHero";
-import ContactForm from "../../components/contact/ContactForm";
-import SocialMedia from "../../components/contact/SocialMedia";
-import CustomerSupport from "../../components/contact/CustomerSupport";
+import Header from "../../../components/common/Header";
+import Footer from "../../../components/common/Footer";
+import ContactHero from "../../../components/contact/ContactHero";
+import ContactForm from "../../../components/contact/ContactForm";
+import SocialMedia from "../../../components/contact/SocialMedia";
+import CustomerSupport from "../../../components/contact/CustomerSupport";
 
 /**
- * 2025-11-10 20:40: 联系我们页面骨架，串联 Header/Footer 与四个功能区块
+ * 2025-11-10 20:40: 联系我们页面骨架，串联 Header/Footer 与功能分区
+ * 2025-11-11 16:35: 迁移至 [locale] 路由，待接入字典
  */
 export const metadata: Metadata = {
   title: "联系我们 - CanDe | AI设计平台客户支持",
@@ -34,7 +35,7 @@ const contactPageJsonLd = {
   description: "CanDe 客户支持页面",
   contactPoint: {
     "@type": "ContactPoint",
-    email: "support@candeai.com",
+    email: "admin@lycium.ai",
     contactType: "Customer Service",
     availableLanguage: ["zh-CN", "en-US"],
   },

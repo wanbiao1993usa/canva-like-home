@@ -1,0 +1,545 @@
+{
+  "locale": {
+    "code": "en-US",
+    "name": "English"
+  },
+  "common": {
+    "brand": "CanDe",
+    "ctaPrimary": "Try now",
+    "ctaSecondary": "Book a demo",
+    "comingSoon": "Coming soon",
+    "featureToast": "Feature under development, stay tuned."
+  },
+  "header": {
+    "nav": {
+      "home": "Home",
+      "ideas": "Inspiration",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "about": "About",
+      "ariaLabel": "Primary navigation"
+    },
+    "language": {
+      "label": "Language",
+      "current": "Current language",
+      "switch": "Switch language",
+      "moreSoon": "More languages coming soon",
+      "options": {
+        "zh-CN": "Chinese",
+        "en-US": "English"
+      }
+    },
+    "cta": {
+      "primary": "Get started"
+    }
+  },
+  "footer": {
+    "brandLine": "CanDe © {{year}}",
+    "rights": "All rights reserved.",
+    "links": {
+      "ariaLabel": "Footer navigation",
+      "home": "Home",
+      "inspiration": "Inspiration",
+      "pricing": "Pricing",
+      "contact": "Contact",
+      "about": "About",
+      "help": "Help"
+    },
+    "social": {
+      "title": "Follow us",
+      "twitter": "Follow CanDe on X",
+      "discord": "Join our Discord community"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "AI inspirations",
+      "title": "Unlock limitless design with AI",
+      "description": "Generative design, collaboration, and templates in one place so anyone can deliver brand visuals within seconds.",
+      "primaryCta": "Create now"
+    },
+    "appPreview": {
+      "title": "Full-featured workspace",
+      "description": "Drag, collaborate, and version with instant previews."
+    },
+    "appPreviewSection": {
+      "badge": {
+        "primary": "How it works",
+        "secondary": "Wisdom behind aesthetics"
+      },
+      "title": "Experience limitless AI poster design",
+      "glowAlt": {
+        "topRight": "AppPreview glow top-right",
+        "bottomRight": "AppPreview glow bottom-right",
+        "bottomLeft": "AppPreview glow bottom-left"
+      },
+      "toolbar": {
+        "searchPlaceholder": "Search files",
+        "notificationsAlt": "Notifications",
+        "settingsAlt": "Settings",
+        "userAlt": "User avatar"
+      },
+      "sidebar": {
+        "navTop": {
+          "home": "Home",
+          "explore": "Explore",
+          "projects": "My projects"
+        },
+        "navBottom": {
+          "trash": "Trash",
+          "settings": "Settings",
+          "help": "Help"
+        },
+        "projectCard": {
+          "title": "Projects",
+          "resetNote": "Monthly usage resets in 29 days",
+          "managePlan": "Manage plan",
+          "upgrade": "Upgrade"
+        }
+      },
+      "banner": {
+        "title": "One-line inspiration, one-second design",
+        "description": "Tell Canvas Design™ what you need and AI instantly generates bespoke poster templates so creativity never stalls."
+      },
+      "explore": {
+        "title": "Explore",
+        "playAlt": "Play"
+      },
+      "featuredPosters": {
+        "sportsBrand": "Sports brand poster",
+        "musicWall": "Music poster wall",
+        "eventStickers": "Event sticker assets",
+        "realistic": "Photorealistic poster",
+        "maineArt": "Maine College of Art poster",
+        "naiArchitecture": "NAI architecture poster",
+        "retroHalftone": "Retro halftone style",
+        "comicHalftone": "Comic halftone print"
+      },
+      "recent": {
+        "title": "Recent files",
+        "headers": {
+          "name": "Name",
+          "size": "Size",
+          "updated": "Updated",
+          "actions": "Actions"
+        },
+        "moreAlt": "More options"
+      }
+    },
+    "designMagic": {
+      "title": "Brand magic workflow",
+      "description": "Describe your goal and receive ready-to-use assets aligned with tone and palette."
+    },
+    "designMagicBanner": {
+      "badge": {
+        "primary": "Product highlight",
+        "secondary": "Intelligence perfects every detail"
+      },
+      "title": "Behind the magic: how AI simplifies poster design"
+    },
+    "generationShowcase": {
+      "title": "Generation showcase",
+      "stepsLabel": "Three steps to publish",
+      "reviewLabel": "Real creator feedback"
+    },
+    "generationShowcaseSection": {
+      "glowAlt": "Generation showcase glow",
+      "badge": {
+        "label": "Share your idea in chat"
+      },
+      "cards": {
+        "capture": {
+          "iconAlt": "Camera icon",
+          "title": "Capture the perfect design vibe",
+          "description": "AI understands your creative direction and pairs it with the right visual style."
+        },
+        "auto": {
+          "iconAlt": "Upload icon",
+          "title": "Ideas form automatically",
+          "description": "Skip manual tweaks—design proposals appear instantly with zero friction."
+        }
+      },
+      "panel": {
+        "title": "Images ready!",
+        "closeAlt": "Close generation panel"
+      },
+      "prompt": {
+        "badgeAlt": "Prompt badge",
+        "tag": "Design a minimalist poster for a theater show",
+        "description": "Use a black backdrop for drama. Feature a single stage photo lit by natural shadows, highlighting the performer’s emotion. Keep the palette dark with selective bright beams from stage lighting."
+      }
+    },
+    "startFromTemplatesSection": {
+      "glowAlt": "Template spotlight glow",
+      "badge": {
+        "label": "Start from templates"
+      },
+      "cards": {
+        "library": {
+          "title": "Curated template library, tailored to every need",
+          "description": "Organized categories surface the right design instantly—no need to start from scratch."
+        },
+        "pro": {
+          "title": "Production-ready designs out of the box",
+          "description": "Each template is crafted by professional designers to guarantee visual polish and usability."
+        }
+      }
+    },
+    "customDesign": {
+      "title": "Custom design panel",
+      "description": "Fine-tune layers, animations, and typography for on-brand precision."
+    },
+    "customDesignPanel": {
+      "badge": "Design exactly what you imagine",
+      "quickActions": {
+        "partialEdit": {
+          "title": "Targeted edits",
+          "desc": "Touch only what matters."
+        },
+        "fullRedraw": {
+          "title": "Full redraw",
+          "desc": "Explore a different concept."
+        },
+        "detailPolish": {
+          "title": "Detail polish",
+          "desc": "Make every pixel perfect."
+        }
+      },
+      "promptCard": {
+        "headlineLine1": "Not happy with this result?",
+        "headlineLine2": "Regenerate now!",
+        "button": "Regenerate"
+      },
+      "insights": {
+        "layerIntelligence": {
+          "title": "Every layer is intelligent",
+          "description": "Each layer understands its content and responds precisely to targeted edit commands."
+        },
+        "aiExecution": {
+          "title": "Edit or redraw on command",
+          "description": "Describe the change and AI decides whether to tweak, redraw, or polish."
+        }
+      }
+    },
+    "templates": {
+      "title": "Start from templates",
+      "description": "Industry templates for social, e-commerce, and offline campaigns."
+    },
+    "callDesigner": {
+      "title": "Work with designers",
+      "description": "Invite experts for assets, feedback, and approvals to speed up launch."
+    },
+    "callDesignerCollab": {
+      "badge": "Call top designers, co-create live",
+      "callout": {
+        "status": "Calling designer...",
+        "designerSays": "Designer says:"
+      },
+      "cards": {
+        "elite": {
+          "title": "Top designers on call",
+          "description": "Connect with world-class designers who are on standby around the clock. Late-night sparks or urgent launches receive an immediate creative response."
+        },
+        "realtime": {
+          "title": "Real-time collaborative editing",
+          "description": "Jump into the canvas together, mirror cursors, and see updates instantly—designers feel right beside you for every idea."
+        }
+      }
+    },
+    "cta": {
+      "badgePrimary": "Get started",
+      "badgeSecondary": "Activate AI assistant",
+      "title": "Experience CanDe today",
+      "description": "Activate the AI design assistant and unlock the next growth curve.",
+      "primary": "Start free",
+      "secondary": "Talk to sales"
+    }
+  },
+  "contact": {
+    "hero": {
+      "tagPrimary": "CanDe",
+      "tagSecondary": "Contact us",
+      "title": "We are here to help",
+      "introLine1": "Questions about pricing, onboarding, or design workflows? We are only a message away.",
+      "introLine2": "Reach out through any channel below and our team will reply shortly.",
+      "emailSection": {
+        "title": "Email us",
+        "techLabel": "Technical support",
+        "generalLabel": "General inquiries",
+        "techEmail": "admin@lycium.ai",
+        "generalEmail": "admin@lycium.ai"
+      },
+      "hoursSection": {
+        "title": "Availability",
+        "weekdays": "Mon–Fri: 09:00 - 17:00 (UTC+8)",
+        "weekends": "Sat–Sun: offline"
+      },
+      "imageAlt": "Customer support team helping CanDe users"
+    },
+    "form": {
+      "title": "Send us a message",
+      "description": "Fill out the form and we’ll get back to you within 72 hours.",
+      "fields": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Jonas Khanwald",
+          "errors": {
+            "required": "Please enter your name",
+            "min": "Name must be at least 2 characters"
+          }
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "jonas@mail.com",
+          "errors": {
+            "required": "Please enter your email",
+            "invalid": "Please enter a valid email address"
+          }
+        },
+        "notes": {
+          "label": "Message",
+          "placeholder": "Share your ideas or questions about CanDe…",
+          "errors": {
+            "required": "Please enter a message",
+            "min": "Message must be at least 10 characters"
+          }
+        }
+      },
+      "actions": {
+        "submit": "Submit",
+        "submitting": "Submitting...",
+        "success": "Thanks! We’ll be in touch shortly."
+      }
+    },
+    "social": {
+      "title": "Social media",
+      "description": "Follow us for product updates, release notes, and community highlights.",
+      "twitterAria": "Follow CanDe on X",
+      "discordAria": "Join the CanDe Discord community"
+    },
+    "support": {
+      "badgePrimary": "Customer success",
+      "badgeSecondary": "Here for every step",
+      "title": "Customer support",
+      "description": "Our support crew is ready to help with onboarding, troubleshooting, and best practices.",
+      "cta": "Contact"
+    }
+  },
+  "pricing": {
+    "metadata": {
+      "title": "Pricing & Plans - CanDe",
+      "description": "Choose the right AI design plan for individuals, teams, or large enterprises."
+    },
+    "hero": {
+      "badgePrimary": "Pricing",
+      "badgeSecondary": "Quality within reach",
+      "title": "Choose your creative journey",
+      "description": "Start free and upgrade as you grow. Clear, transparent pricing with cancel anytime."
+    },
+    "plans": {
+      "starter": {
+        "name": "Creator",
+        "tagline": "Solo creators launch faster"
+      },
+      "pro": {
+        "name": "Pro",
+        "tagline": "Team collaboration & brand hub"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "tagline": "Custom integrations & dedicated support"
+      }
+    },
+    "cards": {
+      "popularBadge": "Popular choice",
+      "free": {
+        "name": "Free",
+        "period": "month",
+        "description": "Perfect for dipping your toes into AI design with zero barrier.",
+        "cta": "Get started",
+        "features": {
+          "dailyCredits": "5 AI generations per day",
+          "templates": "Core templates",
+          "storage": "1GB storage",
+          "support": "Community support"
+        }
+      },
+      "professional": {
+        "name": "Professional",
+        "period": "month",
+        "description": "Best for power users who need every advanced feature unlocked.",
+        "cta": "Get started",
+        "features": {
+          "unlimitedGenerations": "Unlimited AI generations",
+          "templates": "Core templates",
+          "storage": "50GB storage",
+          "prioritySupport": "Priority support",
+          "advancedEditing": "Advanced editing toolkit"
+        }
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "period": "month",
+        "description": "Built for large teams that need centralized control and seamless collaboration.",
+        "cta": "Get started",
+        "features": {
+          "allFeatures": "Everything in Professional",
+          "customModels": "Custom AI models",
+          "unlimitedStorage": "Unlimited storage",
+          "expertSupport": "24/7 expert support",
+          "analytics": "Advanced analytics"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Find answers to common questions about CanDe, pricing, and AI design workflows.",
+      "contact": "Still have questions? Talk to sales.",
+      "glowAlt": "FAQ background glow",
+      "items": {
+        "usageRights": {
+          "question": "Can I use generated posters commercially? Who owns the rights?",
+          "answer": "Yes. Anything you create with CanDe is yours. You own the full copyright, which means:\nNo additional license—you can use assets for ads, marketing, print, and more\nExclusive ownership—we never resell or reuse your generated designs\nNo hidden fees—no royalty or copyright charges\nFull freedom—edit, redistribute, or resell your designs anytime"
+        },
+        "turnaround": {
+          "question": "How long does AI poster generation take?",
+          "answer": "Most drafts are ready within minutes. You can keep iterating and polishing, but the entire flow rarely exceeds 30 minutes."
+        },
+        "exportFormats": {
+          "question": "Which export formats are supported?",
+          "answer": "Export to JSON, PNG, JPG, JPEG, and SVG. High-resolution export unlocks on the Professional plan and above."
+        },
+        "cancel": {
+          "question": "Can I cancel my subscription anytime?",
+          "answer": "Absolutely. Cancel from your account settings whenever you want. No extra fees, and you retain access until the billing cycle ends."
+        },
+        "collaboration": {
+          "question": "Does CanDe support team collaboration?",
+          "answer": "Not yet. Team collaboration is on the roadmap—stay tuned for updates."
+        },
+        "support": {
+          "question": "How do I contact technical support?",
+          "answer": "Free users can tap into the community. Professional gets priority email support, while Enterprise unlocks 24/7 phone assistance."
+        }
+      }
+    }
+  },
+  "inspiration": {
+    "metadata": {
+      "title": "Inspiration Gallery - CanDe",
+      "description": "Explore curated cases across industries to spark your next idea."
+    },
+    "hero": {
+      "badgePrimary": "Inspiration",
+      "badgeSecondary": "Give every poster a soul",
+      "title": "Community showcase",
+      "description": "Browse community submissions to see success stories and creative AI workflows.",
+      "cta": {
+        "label": "Start creating",
+        "toast": "Feature under development, stay tuned."
+      },
+      "imageAlt": "Inspiration glow"
+    },
+    "gallery": {
+      "filterAll": "All inspiration",
+      "filterBrand": "Branding",
+      "filterEcommerce": "E-commerce",
+      "searchPlaceholder": "Try searching “Singles Day”",
+      "searchToast": "Search is under construction. Stay tuned.",
+      "comingSoonToast": "More inspiration is on the way. Stay tuned.",
+      "loadMore": "Load more",
+      "cards": {
+        "poster01": {
+          "title": "We Will Become Better",
+          "creator": "CineStill Lab",
+          "category": "Cinematic tonality"
+        },
+        "poster02": {
+          "title": "Built For Players",
+          "creator": "Storia Studio",
+          "category": "Brand visual"
+        },
+        "poster03": {
+          "title": "BRAVE Noir",
+          "creator": "MonoFrame",
+          "category": "Cinematic tonality"
+        },
+        "poster04": {
+          "title": "Running Through Life",
+          "creator": "Urban Motion",
+          "category": "Motion & animation"
+        },
+        "poster05": {
+          "title": "The Silent",
+          "creator": "Parallel Film",
+          "category": "Mystery thriller"
+        },
+        "poster06": {
+          "title": "Tell Me About The Mystery",
+          "creator": "Typeverse",
+          "category": "Typography experiment"
+        },
+        "poster07": {
+          "title": "Caperealys",
+          "creator": "Neon Hands",
+          "category": "Illustration mashup"
+        },
+        "poster08": {
+          "title": "Neon Retro",
+          "creator": "Flux Studio",
+          "category": "Illustration mashup"
+        },
+        "poster09": {
+          "title": "Mock Bands Flyer",
+          "creator": "Layout Guild",
+          "category": "Collage layout"
+        },
+        "poster10": {
+          "title": "Objects and Power",
+          "creator": "Formless",
+          "category": "B&W portraiture"
+        },
+        "poster11": {
+          "title": "Urban Dreams",
+          "creator": "CityScape",
+          "category": "Urban landscape"
+        },
+        "poster12": {
+          "title": "Abstract Flow",
+          "creator": "Digital Canvas",
+          "category": "Abstract art"
+        },
+        "poster13": {
+          "title": "Vintage Revival",
+          "creator": "Retro Minds",
+          "category": "Vintage design"
+        },
+        "poster14": {
+          "title": "Nature's Call",
+          "creator": "Green Studio",
+          "category": "Nature photography"
+        },
+        "poster15": {
+          "title": "Tech Future",
+          "creator": "Cyber Vision",
+          "category": "Futuristic tech"
+        },
+        "poster16": {
+          "title": "Minimalist Beauty",
+          "creator": "Simple Form",
+          "category": "Minimalism"
+        },
+        "poster17": {
+          "title": "Cultural Fusion",
+          "creator": "World Arts",
+          "category": "Cultural fusion"
+        }
+      }
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the content you're looking for doesn't exist or has moved.",
+    "primary": "Back to home"
+  }
+}

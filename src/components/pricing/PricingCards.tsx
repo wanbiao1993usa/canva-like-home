@@ -1,4 +1,7 @@
+'use client';
+
 import PricingCard from "./PricingCard";
+import { useTranslator } from "../../hooks/useTranslator";
 
 export type PricingTier = {
   id: string;
@@ -11,6 +14,18 @@ export type PricingTier = {
   highlighted?: boolean;
   ctaText: string;
   ctaVariant: "primary" | "secondary";
+  badgeText?: string;
+};
+
+type PricingTierConfig = {
+  id: string;
+  icon: React.ReactNode;
+  price: number;
+  translationKey: "free" | "professional" | "enterprise";
+  featureKeys: string[];
+  highlighted?: boolean;
+  ctaVariant: "primary" | "secondary";
+  badgeKey?: string;
 };
 
 // 2025-11-10: 定价卡片图标占位符
@@ -38,39 +53,31 @@ const EnterpriseIcon = (
   </div>
 );
 
-const pricingData: PricingTier[] = [
+const PRICING_TIER_CONFIGS: PricingTierConfig[] = [
   {
     id: "free",
     icon: RainbowArcIcon,
-    name: "免费",
     price: 0,
-    period: "月",
-    description: "非常适合入门，零基础也能立即使用",
-    features: ["每日5次AI生成", "基础模版", "1GB存储空间", "社区支持"],
-    ctaText: "开始使用",
+    translationKey: "free",
+    featureKeys: ["dailyCredits", "templates", "storage", "support"],
     ctaVariant: "secondary",
   },
   {
     id: "professional",
     icon: LightningIcon,
-    name: "专业版",
     price: 29,
-    period: "月",
-    description: "最适合专业人士，解锁全部高级功能",
-    features: ["无限次AI生成", "高级模版", "50GB存储空间", "优先支持", "团队协作", "高级编辑工具"],
+    translationKey: "professional",
+    featureKeys: ["unlimitedGenerations", "templates", "storage", "prioritySupport", "advancedEditing"],
     highlighted: true,
-    ctaText: "开始使用",
     ctaVariant: "primary",
+    badgeKey: "pricing.cards.popularBadge",
   },
   {
     id: "enterprise",
     icon: EnterpriseIcon,
-    name: "企业版",
     price: 99,
-    period: "月",
-    description: "适合大型团队，统一管理，高效协同",
-    features: ["专业版全功能", "自定义AI模型", "无限存储空间", "全天候电话支持", "高级分析", "白标选项"],
-    ctaText: "开始使用",
+    translationKey: "enterprise",
+    featureKeys: ["allFeatures", "customModels", "unlimitedStorage", "expertSupport", "analytics"],
     ctaVariant: "secondary",
   },
 ];
@@ -79,6 +86,25 @@ const pricingData: PricingTier[] = [
  * 2025-11-10 20:00: 定价卡片容器，负责数据声明与栅格布局
  */
 export default function PricingCards() {
+  const t = useTranslator();
+  // 2025-11-12 10:36: 结合字典动态生成定价内容，保持多语言一致
+  const pricingData: PricingTier[] = PRICING_TIER_CONFIGS.map((config) => {
+    const baseKey = `pricing.cards.${config.translationKey}`;
+    return {
+      id: config.id,
+      icon: config.icon,
+      price: config.price,
+      name: t(`${baseKey}.name`),
+      period: t(`${baseKey}.period`),
+      description: t(`${baseKey}.description`),
+      features: config.featureKeys.map((featureKey) => t(`${baseKey}.features.${featureKey}`)),
+      highlighted: config.highlighted,
+      ctaText: t(`${baseKey}.cta`),
+      ctaVariant: config.ctaVariant,
+      badgeText: config.badgeKey ? t(config.badgeKey) : undefined,
+    };
+  });
+
   return (
     <section className="pb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

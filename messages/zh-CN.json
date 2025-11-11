@@ -1,0 +1,549 @@
+{
+  "locale": {
+    "code": "zh-CN",
+    "name": "中文（简体）"
+  },
+  "common": {
+    "brand": "CanDe",
+    "ctaPrimary": "立即体验",
+    "ctaSecondary": "预约演示",
+    "comingSoon": "敬请期待",
+    "featureToast": "功能开发中，敬请期待"
+  },
+  "header": {
+    "nav": {
+      "home": "首页",
+      "ideas": "灵感",
+      "pricing": "定价",
+      "contact": "联系我们",
+      "about": "关于",
+      "ariaLabel": "主导航"
+    },
+    "language": {
+      "label": "语言",
+      "current": "当前语言",
+      "switch": "切换语言",
+      "moreSoon": "更多语言即将上线",
+      "options": {
+        "zh-CN": "中文（简体）",
+        "en-US": "English"
+      }
+    },
+    "cta": {
+      "primary": "开始使用"
+    }
+  },
+  "footer": {
+    "brandLine": "CanDe © {{year}}",
+    "rights": "保留所有权利。",
+    "links": {
+      "ariaLabel": "页脚导航",
+      "home": "首页",
+      "inspiration": "灵感",
+      "pricing": "定价",
+      "contact": "联系",
+      "about": "关于",
+      "help": "帮助"
+    },
+    "social": {
+      "title": "关注我们",
+      "twitter": "在 X 上关注 CanDe",
+      "discord": "加入我们的 Discord 社区"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "AI 灵感上新",
+      "title": "用 AI 解锁无限设计灵感",
+      "description": "生成式设计、团队协作与海量模板一站式集成，让任何人都能在数秒内完成品牌视觉创作。",
+      "primaryCta": "开始创作"
+    },
+    "appPreview": {
+      "title": "全功能工作台",
+      "description": "拖拽、协作、版本管理一应俱全，实时预览让创意随时落地。"
+    },
+    "appPreviewSection": {
+      "badge": {
+        "primary": "如何使用",
+        "secondary": "美感背后的智慧"
+      },
+      "title": "体验AI海报设计的无限可能",
+      "glowAlt": {
+        "topRight": "AppPreview 光影右上",
+        "bottomRight": "AppPreview 光影右下",
+        "bottomLeft": "AppPreview 光影左下"
+      },
+      "toolbar": {
+        "searchPlaceholder": "搜索文件",
+        "notificationsAlt": "通知",
+        "settingsAlt": "设置",
+        "userAlt": "用户"
+      },
+      "sidebar": {
+        "navTop": {
+          "home": "主页",
+          "explore": "探索",
+          "projects": "我的项目"
+        },
+        "navBottom": {
+          "trash": "垃圾箱",
+          "settings": "设置",
+          "help": "帮助"
+        },
+        "projectCard": {
+          "title": "项目",
+          "resetNote": "每月使用将在29天后重置",
+          "managePlan": "管理计划",
+          "upgrade": "升级"
+        }
+      },
+      "banner": {
+        "title": "一句话的灵感，一秒钟的设计",
+        "description": "告诉 Canvas Design™ 你想要什么，AI 立即生成专属海报模板，让创意不再受限。"
+      },
+      "explore": {
+        "title": "探索",
+        "playAlt": "播放"
+      },
+      "featuredPosters": {
+        "sportsBrand": "体育品牌海报",
+        "musicWall": "音乐海报墙",
+        "eventStickers": "活动贴纸素材",
+        "realistic": "写实海报",
+        "maineArt": "缅因艺术学院海报",
+        "naiArchitecture": "NAI 建筑海报",
+        "retroHalftone": "半色调复古风格",
+        "comicHalftone": "漫画半色调印刷"
+      },
+      "recent": {
+        "title": "最近的文件",
+        "headers": {
+          "name": "名称",
+          "size": "大小",
+          "updated": "更新时间",
+          "actions": "操作"
+        },
+        "moreAlt": "更多"
+      }
+    },
+    "designMagic": {
+      "title": "品牌魔法工作流",
+      "description": "输入一句话即可生成完整宣传物料，语气、色彩与排版自动匹配品牌规范。"
+    },
+    "designMagicBanner": {
+      "badge": {
+        "primary": "产品特色",
+        "secondary": "智能成就每个细节"
+      },
+      "title": "幕后的魔法：AI如何让海报设计更简单"
+    },
+    "generationShowcase": {
+      "title": "生成流程示例",
+      "stepsLabel": "三步完成海报",
+      "reviewLabel": "真实用户反馈"
+    },
+    "generationShowcaseSection": {
+      "glowAlt": "生成演示光影",
+      "badge": {
+        "label": "在聊天中传达灵感"
+      },
+      "cards": {
+        "capture": {
+          "iconAlt": "相机图标",
+          "title": "精准捕捉设计 Vibe",
+          "description": "AI 深度理解你的创意方向，匹配最适合的视觉风格"
+        },
+        "auto": {
+          "iconAlt": "上传图标",
+          "title": "创意自动成型",
+          "description": "无需手动调整，设计方案即刻生成，创作零门槛"
+        }
+      },
+      "panel": {
+        "title": "图片已生成！",
+        "closeAlt": "关闭生成结果面板"
+      },
+      "prompt": {
+        "badgeAlt": "生成提示徽章",
+        "tag": "设计一张剧院演出的极简主义海报",
+        "description": "黑色背景，营造戏剧性氛围，使用单张舞台现场照片作为主视觉，照片采用自然光影，突出表演者的情绪和动作，暗调为主，局部强光（舞台灯光效果）"
+      }
+    },
+    "startFromTemplatesSection": {
+      "glowAlt": "生成演示光影",
+      "badge": {
+        "label": "从模版开始创建"
+      },
+      "cards": {
+        "library": {
+          "title": "精选模板库，精准匹配需求",
+          "description": "精准分类让你快速找到心仪设计，无需从零开始"
+        },
+        "pro": {
+          "title": "专业级设计，开箱即用",
+          "description": "每款模板都经专业设计师打磨，确保视觉品质与体验"
+        }
+      }
+    },
+    "customDesign": {
+      "title": "自定义设计面板",
+      "description": "细致调节图层、动画与字体，确保每个像素都符合品牌调性。"
+    },
+    "customDesignPanel": {
+      "badge": "随心所欲的自由定制设计",
+      "quickActions": {
+        "partialEdit": {
+          "title": "局部修改",
+          "desc": "只改需要的地方"
+        },
+        "fullRedraw": {
+          "title": "完整重绘",
+          "desc": "换个思路试试看"
+        },
+        "detailPolish": {
+          "title": "细节优化",
+          "desc": "让画面更完美"
+        }
+      },
+      "promptCard": {
+        "headlineLine1": "不喜欢这个结果吗？",
+        "headlineLine2": "立即重新生成！",
+        "button": "重新生成"
+      },
+      "insights": {
+        "layerIntelligence": {
+          "title": "每个图层都是智能体",
+          "description": "每个图层独立识别内容，精准响应局部编辑指令"
+        },
+        "aiExecution": {
+          "title": "想改就改，想绘就绘",
+          "description": "说出编辑想法，AI智能判断并执行：局部修改、完整重绘或细节优化"
+        }
+      }
+    },
+    "templates": {
+      "title": "从模板快速开始",
+      "description": "海量行业模板，覆盖社媒、电商、线下物料等场景。"
+    },
+    "callDesigner": {
+      "title": "与设计师协同",
+      "description": "设计师实时接入项目，提供素材、建议与审核，提升交付效率。"
+    },
+    "callDesignerCollab": {
+      "badge": "呼叫设计大师，同屏共创",
+      "callout": {
+        "status": "呼叫设计师...",
+        "designerSays": "设计师说："
+      },
+      "cards": {
+        "elite": {
+          "title": "顶级设计师在线",
+          "description": "连接世界顶尖设计师，24小时在线待命。深夜灵感或紧急需求，专业创意即刻响应。"
+        },
+        "realtime": {
+          "title": "实时协作编辑",
+          "description": "实时加入画布，同步鼠标轨迹、即改即看。设计师像在你身边，共创每一个灵感时刻。"
+        }
+      }
+    },
+    "cta": {
+      "badgePrimary": "立即体验",
+      "badgeSecondary": "激活 AI 设计助手",
+      "title": "立即体验 CanDe",
+      "description": "启用 AI 设计助手，打开下一波品牌增长曲线。",
+      "primary": "免费试用",
+      "secondary": "预约顾问"
+    }
+  },
+  "contact": {
+    "hero": {
+      "tagPrimary": "CanDe",
+      "tagSecondary": "联系我们",
+      "title": "随时为您提供帮助",
+      "introLine1": "有疑问吗？需要设计项目方面的帮助？或者只是想与我们分享您的体验？",
+      "introLine2": "我们的团队随时待命。选择任意方式与我们联系，我们会尽快回复。",
+      "emailSection": {
+        "title": "邮件联系我们",
+        "techLabel": "技术支持",
+        "generalLabel": "常规咨询",
+        "techEmail": "admin@lycium.ai",
+        "generalEmail": "admin@lycium.ai"
+      },
+      "hoursSection": {
+        "title": "工作时间",
+        "weekdays": "周一至周五：09:00 - 17:00（UTC+8）",
+        "weekends": "周六至周日：休息"
+      },
+      "imageAlt": "专业客服团队为您提供支持"
+    },
+    "form": {
+      "title": "给我们留言",
+      "description": "填写下方表单向我们发送消息，我们通常会在 72 小时内回复。",
+      "fields": {
+        "name": {
+          "label": "姓名",
+          "placeholder": "Jonas Khanwald",
+          "errors": {
+            "required": "请输入您的姓名",
+            "min": "姓名至少需要 2 个字符"
+          }
+        },
+        "email": {
+          "label": "邮箱",
+          "placeholder": "jonas@mail.com",
+          "errors": {
+            "required": "请输入您的邮箱",
+            "invalid": "请输入有效的邮箱地址"
+          }
+        },
+        "notes": {
+          "label": "留言",
+          "placeholder": "关于 CanDe 的更多想法……",
+          "errors": {
+            "required": "请输入留言内容",
+            "min": "留言内容至少需要 10 个字符"
+          }
+        }
+      },
+      "actions": {
+        "submit": "提交",
+        "submitting": "提交中...",
+        "success": "已收到您的消息，我们会尽快联系您。"
+      }
+    },
+    "social": {
+      "title": "社交媒体",
+      "description": "在社交平台关注我们，了解最新产品动态与社区故事。",
+      "twitterAria": "在 X 上关注 CanDe",
+      "discordAria": "加入我们的 Discord 社区"
+    },
+    "support": {
+      "badgePrimary": "一对一支持",
+      "badgeSecondary": "陪伴你的每一步创作",
+      "title": "客户支持",
+      "description": "我们致力于提供稳定可靠的帮助，如需协助请随时联系专属顾问。",
+      "cta": "联系客服"
+    }
+  },
+  "pricing": {
+    "metadata": {
+      "title": "定价与方案 - CanDe",
+      "description": "选择适合你的 AI 设计方案，从个人创作者到大型团队都能快速上手。"
+    },
+    "hero": {
+      "badgePrimary": "产品价格",
+      "badgeSecondary": "让品质触手可及",
+      "title": "选择你的创意之旅",
+      "description": "从免费开始，根据需求灵活升级。定价清晰无差异，随时可以取消。"
+    },
+    "plans": {
+      "starter": {
+        "name": "创作者版",
+        "tagline": "单人快速启用 AI 设计"
+      },
+      "pro": {
+        "name": "专业版",
+        "tagline": "团队协作与品牌中心"
+      },
+      "enterprise": {
+        "name": "企业版",
+        "tagline": "自定义集成与专属支持"
+      }
+    },
+    "cards": {
+      "popularBadge": "热门推荐",
+      "free": {
+        "name": "免费",
+        "period": "月",
+        "description": "非常适合入门，零基础也能立即使用",
+        "cta": "开始使用",
+        "features": {
+          "dailyCredits": "每日5次AI生成",
+          "templates": "基础模版",
+          "storage": "1GB存储空间",
+          "support": "社区支持"
+        }
+      },
+      "professional": {
+        "name": "专业版",
+        "period": "月",
+        "description": "最适合专业人士，解锁全部高级功能",
+        "cta": "开始使用",
+        "features": {
+          "unlimitedGenerations": "无限次AI生成",
+          "templates": "基础模版",
+          "storage": "50GB存储空间",
+          "prioritySupport": "优先支持",
+          "advancedEditing": "高级编辑工具"
+        }
+      },
+      "enterprise": {
+        "name": "企业版",
+        "period": "月",
+        "description": "适合大型团队，统一管理，高效协同",
+        "cta": "开始使用",
+        "features": {
+          "allFeatures": "专业版全功能",
+          "customModels": "自定义AI模型",
+          "unlimitedStorage": "无限存储空间",
+          "expertSupport": "全天候专家支持",
+          "analytics": "高级分析"
+        }
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "subtitle": "这里汇集了关于 CanDe、AI 技术以及如何助您设计海报的常见问题解答",
+      "contact": "还有疑问？联系我们的销售顾问。",
+      "glowAlt": "常见问题背景光效",
+      "items": {
+        "usageRights": {
+          "question": "生成的海报可以商用吗？版权归谁？",
+          "answer": "是的，您可以将生成的海报用于商业用途。使用我们平台生成的所有设计作品，版权完全归您所有。这意味着：\n无需商业授权——可用于广告、营销、印刷品等任何商业场景\n独家所有权——生成后的设计专属于您，我们不会再次使用或出售\n无需额外付费——不收取版权费或授权费\n自由修改分发——您可以随意编辑、转售或分享您的设计"
+        },
+        "turnaround": {
+          "question": "AI 生成的海报设计需要多长时间？",
+          "answer": "通常在几分钟内即可生成初稿，随后可继续编辑和微调，整个过程一般不超过 30 分钟。"
+        },
+        "exportFormats": {
+          "question": "支持哪些文件格式导出？",
+          "answer": "支持 JSON、PNG、JPG、JPEG、SVG 等多种格式。专业版及以上可启用高分辨率导出。"
+        },
+        "cancel": {
+          "question": "可以随时取消订阅吗？",
+          "answer": "当然可以。您可随时在账户设置中取消订阅，不会产生额外费用，并可继续使用至当前计费周期结束。"
+        },
+        "collaboration": {
+          "question": "是否支持团队协作？",
+          "answer": "暂时不支持团队协作，等待后续功能开发。"
+        },
+        "support": {
+          "question": "如何联系技术支持？",
+          "answer": "免费版用户可通过社区获得帮助，专业版享有优先邮件支持，企业版提供 7x24 电话支持。"
+        }
+      }
+    }
+  },
+  "inspiration": {
+    "metadata": {
+      "title": "灵感画廊 - CanDe",
+      "description": "浏览精选案例，发现不同风格与行业的创作灵感。"
+    },
+    "hero": {
+      "badgePrimary": "灵感",
+      "badgeSecondary": "让每一张海报都富有灵魂",
+      "title": "社区作品集",
+      "description": "查看社区用户提交的作品集，感受他们的设计成功案例和 AI 工具的创意玩法。",
+      "cta": {
+        "label": "开始创作",
+        "toast": "功能开发中，敬请期待"
+      },
+      "imageAlt": "灵感光影"
+    },
+    "gallery": {
+      "filterAll": "全部灵感",
+      "filterBrand": "品牌宣传",
+      "filterEcommerce": "电商运营",
+      "searchPlaceholder": "试试搜索“双十一”",
+      "searchToast": "搜索功能开发中，敬请期待。",
+      "comingSoonToast": "更多灵感即将上线，敬请期待。",
+      "loadMore": "加载更多",
+      "cards": {
+        "poster01": {
+          "title": "We Will Become Better",
+          "creator": "CineStill Lab",
+          "category": "电影质感"
+        },
+        "poster02": {
+          "title": "Built For Players",
+          "creator": "Storia Studio",
+          "category": "品牌主视觉"
+        },
+        "poster03": {
+          "title": "BRAVE Noir",
+          "creator": "MonoFrame",
+          "category": "电影质感"
+        },
+        "poster04": {
+          "title": "Running Through Life",
+          "creator": "Urban Motion",
+          "category": "动态/动画"
+        },
+        "poster05": {
+          "title": "The Silent",
+          "creator": "Parallel Film",
+          "category": "悬疑惊悚"
+        },
+        "poster06": {
+          "title": "Tell Me About The Mystery",
+          "creator": "Typeverse",
+          "category": "字体实验"
+        },
+        "poster07": {
+          "title": "Caperealys",
+          "creator": "Neon Hands",
+          "category": "插画混剪"
+        },
+        "poster08": {
+          "title": "Neon Retro",
+          "creator": "Flux Studio",
+          "category": "插画混剪"
+        },
+        "poster09": {
+          "title": "Mock Bands Flyer",
+          "creator": "Layout Guild",
+          "category": "拼贴排版"
+        },
+        "poster10": {
+          "title": "Objects and Power",
+          "creator": "Formless",
+          "category": "黑白人像"
+        },
+        "poster11": {
+          "title": "Urban Dreams",
+          "creator": "CityScape",
+          "category": "城市景观"
+        },
+        "poster12": {
+          "title": "Abstract Flow",
+          "creator": "Digital Canvas",
+          "category": "抽象艺术"
+        },
+        "poster13": {
+          "title": "Vintage Revival",
+          "creator": "Retro Minds",
+          "category": "复古设计"
+        },
+        "poster14": {
+          "title": "Nature's Call",
+          "creator": "Green Studio",
+          "category": "自然摄影"
+        },
+        "poster15": {
+          "title": "Tech Future",
+          "creator": "Cyber Vision",
+          "category": "科技未来"
+        },
+        "poster16": {
+          "title": "Minimalist Beauty",
+          "creator": "Simple Form",
+          "category": "极简主义"
+        },
+        "poster17": {
+          "title": "Cultural Fusion",
+          "creator": "World Arts",
+          "category": "文化融合"
+        }
+      }
+    }
+  },
+  "notFound": {
+    "title": "页面走丢了",
+    "description": "抱歉，您访问的内容不存在或已被移动。",
+    "primary": "返回首页"
+  }
+}
+
+
+
+

@@ -1,34 +1,29 @@
 ﻿'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { cardHover, transitionAll, btnPrimary } from "../../ui";
+import { cardHover, btnPrimary } from "../../ui";
+import { useFeatureToast, useGlobalToast } from "../common/toast";
+import { useTranslator } from "../../hooks/useTranslator";
 
-type CardMeta = {
-  title: string;
-  creator: string;
-  category: string;
-  cover: string;
-};
-
-const cardLibrary: Record<string, CardMeta> = {
-  "poster-01": { title: "We Will Become Better", creator: "CineStill Lab", category: "电影质感", cover: "/assets/images/poster01.png" },
-  "poster-02": { title: "Built For Players", creator: "Storia Studio", category: "品牌主视觉", cover: "/assets/images/poster02.png" },
-  "poster-03": { title: "BRAVE Noir", creator: "MonoFrame", category: "电影质感", cover: "/assets/images/poster03.png" },
-  "poster-04": { title: "Running Through Life", creator: "Urban Motion", category: "动态/动画", cover: "/assets/images/poster04.png" },
-  "poster-05": { title: "The Silent", creator: "Parallel Film", category: "悬疑惊悚", cover: "/assets/images/poster05.png" },
-  "poster-06": { title: "Tell Me About The Mystery", creator: "Typeverse", category: "字体实验", cover: "/assets/images/poster06.png" },
-  "poster-07": { title: "Caperealys", creator: "Neon Hands", category: "插画混剪", cover: "/assets/images/poster07.png" },
-  "poster-08": { title: "Neon Retro", creator: "Flux Studio", category: "插画混剪", cover: "/assets/images/poster08.png" },
-  "poster-09": { title: "Mock Bands Flyer", creator: "Layout Guild", category: "拼贴排版", cover: "/assets/images/poster09.png" },
-  "poster-10": { title: "Objects and Power", creator: "Formless", category: "黑白人像", cover: "/assets/images/poster10.png" },
-  "poster-11": { title: "Urban Dreams", creator: "CityScape", category: "城市景观", cover: "/assets/images/poster11.png" },
-  "poster-12": { title: "Abstract Flow", creator: "Digital Canvas", category: "抽象艺术", cover: "/assets/images/poster12.png" },
-  "poster-13": { title: "Vintage Revival", creator: "Retro Minds", category: "复古设计", cover: "/assets/images/poster13.png" },
-  "poster-14": { title: "Nature's Call", creator: "Green Studio", category: "自然摄影", cover: "/assets/images/poster14.png" },
-  "poster-15": { title: "Tech Future", creator: "Cyber Vision", category: "科技未来", cover: "/assets/images/poster15.png" },
-  "poster-16": { title: "Minimalist Beauty", creator: "Simple Form", category: "极简主义", cover: "/assets/images/poster16.png" },
-  "poster-17": { title: "Cultural Fusion", creator: "World Arts", category: "文化融合", cover: "/assets/images/poster17.png" },
-};
+const cardLibrary = {
+  "poster-01": { dictionaryKey: "poster01", cover: "/assets/images/poster01.png" },
+  "poster-02": { dictionaryKey: "poster02", cover: "/assets/images/poster02.png" },
+  "poster-03": { dictionaryKey: "poster03", cover: "/assets/images/poster03.png" },
+  "poster-04": { dictionaryKey: "poster04", cover: "/assets/images/poster04.png" },
+  "poster-05": { dictionaryKey: "poster05", cover: "/assets/images/poster05.png" },
+  "poster-06": { dictionaryKey: "poster06", cover: "/assets/images/poster06.png" },
+  "poster-07": { dictionaryKey: "poster07", cover: "/assets/images/poster07.png" },
+  "poster-08": { dictionaryKey: "poster08", cover: "/assets/images/poster08.png" },
+  "poster-09": { dictionaryKey: "poster09", cover: "/assets/images/poster09.png" },
+  "poster-10": { dictionaryKey: "poster10", cover: "/assets/images/poster10.png" },
+  "poster-11": { dictionaryKey: "poster11", cover: "/assets/images/poster11.png" },
+  "poster-12": { dictionaryKey: "poster12", cover: "/assets/images/poster12.png" },
+  "poster-13": { dictionaryKey: "poster13", cover: "/assets/images/poster13.png" },
+  "poster-14": { dictionaryKey: "poster14", cover: "/assets/images/poster14.png" },
+  "poster-15": { dictionaryKey: "poster15", cover: "/assets/images/poster15.png" },
+  "poster-16": { dictionaryKey: "poster16", cover: "/assets/images/poster16.png" },
+  "poster-17": { dictionaryKey: "poster17", cover: "/assets/images/poster17.png" },
+} as const;
 
 type CardKey = keyof typeof cardLibrary;
 
@@ -88,17 +83,20 @@ const galleryColumns: ColumnItem[][] = [
   ],
 ];
 
-const quickActions = [
-  { id: "shuffle", icon: "/assets/icons/custom-design-refresh.svg", label: "随机灵感" },
-  { id: "palette", icon: "/assets/icons/custom-design-sparkles.svg", label: "筛选主题" },
-];
-
 /**
  * 2025-11-10 15:45: GalleryGrid 静态占位，后续可替换为真实数据。
  */
 export default function GalleryGrid() {
-  const [isLoadReady, setIsLoadReady] = useState(false);
+  const [, setIsLoadReady] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const { showToast } = useGlobalToast();
+  const galleryT = useTranslator("inspiration.gallery");
+  const cardsT = useTranslator("inspiration.gallery.cards");
+  const notifyComingSoon = useFeatureToast(galleryT("comingSoonToast"));
+  const filterAllLabel = galleryT("filterAll");
+  const searchPlaceholder = galleryT("searchPlaceholder");
+  const searchToastMessage = galleryT("searchToast");
+  const loadMoreLabel = galleryT("loadMore");
 
   useEffect(() => {
     if (!sentinelRef.current) return;
@@ -121,8 +119,9 @@ export default function GalleryGrid() {
           <button
             type="button"
             className="inline-flex cursor-pointer h-[50px] items-center gap-2 rounded-full bg-[#171719] px-5 py-3 text-sm font-semibold text-white/85 shadow-[0_16px_34px_rgba(0,0,0,0.45)] hover:border-white/30 hover:text-white"
+            onClick={notifyComingSoon}
           >
-            全部
+            {filterAllLabel}
             <img src="/assets/icons/chevron-down.svg" alt="" className="h-3.5 w-3.5" />
           </button>
 
@@ -132,8 +131,14 @@ export default function GalleryGrid() {
             </svg>
             <input
               type="search"
-              placeholder="试试搜索双十一"
+              placeholder={searchPlaceholder}
               className="h-full flex-1 bg-transparent text-sm text-white placeholder:text-white/40 focus:outline-none"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  showToast(searchToastMessage);
+                }
+              }}
             />
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M4.33496 0.834961H3.83496C2.17811 0.834961 0.834961 2.17811 0.834961 3.83496V5.33496" stroke="#929292" strokeWidth="1.67" />
@@ -153,6 +158,8 @@ export default function GalleryGrid() {
             <div key={`gallery-column-${columnIndex}`} className="flex w-[220px] flex-col gap-6">
               {column.map((item, itemIndex) => {
                 const meta = cardLibrary[item.key];
+                const dictionaryKey = meta.dictionaryKey;
+                const title = cardsT(`${dictionaryKey}.title`);
                 const cardId = `${item.key}-${columnIndex}-${itemIndex}`;
                 return (
                   <article
@@ -160,30 +167,8 @@ export default function GalleryGrid() {
                     className={`group relative overflow-hidden rounded-[28px] p-[3px] shadow-[0_25px_60px_rgba(0,0,0,0.55)] ${cardHover}`}
                   >
                     <div className={`relative flex w-full flex-col overflow-hidden rounded-[24px] ${item.heightClass}`}>
-                      <img src={meta.cover} alt={meta.title} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                      <img src={meta.cover} alt={title} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/70 opacity-90 transition-opacity duration-200 ease-out group-hover:opacity-80" />
-
-                      {/* <div className="relative flex h-full flex-col justify-between p-4">
-                        <div className="flex items-center justify-between">
-                          <span className="rounded-full bg-black/45 px-3 py-1 text-xs font-semibold text-white/80 backdrop-blur">
-                            {meta.category}
-                          </span>
-                          <button
-                            type="button"
-                            aria-pressed={item.liked ?? false}
-                            className={`rounded-full bg-black/45 p-2 text-white/80 ${transitionAll} hover:bg-black/65`}
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M12 21s-6.5-4.35-8.7-8.13c-1.47-2.49-.68-5.75 1.74-7.25a4.5 4.5 0 0 1 6.44 1.42c.19.33.35.67.52 1 .16-.33.32-.67.52-1a4.5 4.5 0 0 1 6.44-1.42c2.42 1.5 3.21 4.76 1.74 7.25C18.5 16.65 12 21 12 21Z" />
-                            </svg>
-                          </button>
-                        </div>
-
-                        <div className="mt-auto">
-                          <p className="text-base font-semibold text-white">{meta.title}</p>
-                          <p className="text-sm text-white/60">{meta.creator}</p>
-                        </div>
-                      </div> */}
                     </div>
                   </article>
                 );
@@ -196,8 +181,9 @@ export default function GalleryGrid() {
           <button
             type="button"
             className={`inline-flex items-center gap-2 px-8 py-3 text-base font-semibold ${btnPrimary}`}
+            onClick={notifyComingSoon}
           >
-            加载更多
+            {loadMoreLabel}
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true">
               <path d="M10 5V15M10 15L6 11M10 15L14 11" stroke="#161616" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
