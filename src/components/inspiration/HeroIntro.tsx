@@ -3,7 +3,6 @@
 import { btnPrimary } from "../../ui";
 import GlowEffect from "../common/GlowEffect";
 import CapsuleTagGroup from "../common/CapsuleTagGroup";
-import { useFeatureToast } from "../common/toast";
 import { useTranslator } from "../../hooks/useTranslator";
 
 /**
@@ -12,9 +11,13 @@ import { useTranslator } from "../../hooks/useTranslator";
 export default function HeroIntro() {
   const t = useTranslator("inspiration.hero");
   /**
-   * 2025-11-11 15:10: CTA 暂未开放，点击后提示“功能开发中”
+   * 2025-02-15 12:05: CTA 直接跳转到编辑器站点
    */
-  const notifyComingSoon = useFeatureToast(t("cta.toast"));
+  const handleCtaClick = () => {
+    if (typeof window !== "undefined") {
+      window.open("https://editor.lycium.ai", "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <section id="inspiration-hero" className="relative py-20 overflow-visible">
@@ -51,7 +54,7 @@ export default function HeroIntro() {
           <button
             type="button"
             className={`inline-flex items-center gap-2 px-8 py-3 text-base font-semibold ${btnPrimary}`}
-            onClick={notifyComingSoon}
+            onClick={handleCtaClick}
           >
             {t("cta.label")}
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

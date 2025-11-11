@@ -97,6 +97,14 @@ export default function GalleryGrid() {
   const searchPlaceholder = galleryT("searchPlaceholder");
   const searchToastMessage = galleryT("searchToast");
   const loadMoreLabel = galleryT("loadMore");
+  // 2025-02-15 12:20: 顶部工具图标点击交互提示文案
+  const iconControlLabels = {
+    spark: galleryT("controls.sparkAria"),
+    layout: galleryT("controls.layoutAria"),
+    bubble: galleryT("controls.bubbleAria"),
+  };
+  const iconButtonClass =
+    "inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full text-white/80 transition-colors duration-200 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60";
 
   useEffect(() => {
     if (!sentinelRef.current) return;
@@ -126,9 +134,17 @@ export default function GalleryGrid() {
           </button>
 
           <div className="flex h-[50px] w-full max-w-[480px] items-center gap-3 rounded-full bg-[#181818] px-5 py-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
-              <path d="M12.7588 11.8838C12.9503 12.5382 13.4618 13.0497 14.1162 13.2412L15 13.5L14.1162 13.7588C13.4618 13.9503 12.9503 14.4618 12.7588 15.1162L12.5 16L12.2412 15.1162C12.0497 14.4618 11.5382 13.9503 10.8838 13.7588L10 13.5L10.8838 13.2412C11.5382 13.0497 12.0497 12.5382 12.2412 11.8838L12.5 11L12.7588 11.8838ZM7.66309 4.97852C7.85457 5.6332 8.3668 6.14543 9.02148 6.33691L13 7.5L9.02148 8.66309C8.3668 8.85457 7.85457 9.3668 7.66309 10.0215L6.5 14L5.33691 10.0215C5.14543 9.3668 4.6332 8.85457 3.97852 8.66309L0 7.5L3.97852 6.33691C4.6332 6.14543 5.14543 5.6332 5.33691 4.97852L6.5 1L7.66309 4.97852ZM12.7588 0.883789C12.9503 1.53817 13.4618 2.04967 14.1162 2.24121L15 2.5L14.1162 2.75879C13.4618 2.95033 12.9503 3.46183 12.7588 4.11621L12.5 5L12.2412 4.11621C12.0497 3.46183 11.5382 2.95033 10.8838 2.75879L10 2.5L10.8838 2.24121C11.5382 2.04967 12.0497 1.53817 12.2412 0.883789L12.5 0L12.7588 0.883789Z" fill="#929292" />
-            </svg>
+            {/* 2025-02-15 12:20: 顶部图标点击提示功能开发中 */}
+            <button
+              type="button"
+              onClick={notifyComingSoon}
+              aria-label={iconControlLabels.spark}
+              className={iconButtonClass}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                <path d="M12.7588 11.8838C12.9503 12.5382 13.4618 13.0497 14.1162 13.2412L15 13.5L14.1162 13.7588C13.4618 13.9503 12.9503 14.4618 12.7588 15.1162L12.5 16L12.2412 15.1162C12.0497 14.4618 11.5382 13.9503 10.8838 13.7588L10 13.5L10.8838 13.2412C11.5382 13.0497 12.0497 12.5382 12.2412 11.8838L12.5 11L12.7588 11.8838ZM7.66309 4.97852C7.85457 5.6332 8.3668 6.14543 9.02148 6.33691L13 7.5L9.02148 8.66309C8.3668 8.85457 7.85457 9.3668 7.66309 10.0215L6.5 14L5.33691 10.0215C5.14543 9.3668 4.6332 8.85457 3.97852 8.66309L0 7.5L3.97852 6.33691C4.6332 6.14543 5.14543 5.6332 5.33691 4.97852L6.5 1L7.66309 4.97852ZM12.7588 0.883789C12.9503 1.53817 13.4618 2.04967 14.1162 2.24121L15 2.5L14.1162 2.75879C13.4618 2.95033 12.9503 3.46183 12.7588 4.11621L12.5 5L12.2412 4.11621C12.0497 3.46183 11.5382 2.95033 10.8838 2.75879L10 2.5L10.8838 2.24121C11.5382 2.04967 12.0497 1.53817 12.2412 0.883789L12.5 0L12.7588 0.883789Z" fill="#929292" />
+              </svg>
+            </button>
             <input
               type="search"
               placeholder={searchPlaceholder}
@@ -140,20 +156,34 @@ export default function GalleryGrid() {
                 }
               }}
             />
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M4.33496 0.834961H3.83496C2.17811 0.834961 0.834961 2.17811 0.834961 3.83496V5.33496" stroke="#929292" strokeWidth="1.67" />
-              <circle cx="7.83496" cy="8.33496" r="2.5" stroke="#929292" strokeWidth="1.67" />
-              <path d="M11.335 0.834961H11.835C13.4918 0.834961 14.835 2.17811 14.835 3.83496V5.33496" stroke="#929292" strokeWidth="1.67" />
-              <path d="M4.33496 14.835H3.83496C2.17811 14.835 0.834961 13.4918 0.834961 11.835V10.335" stroke="#929292" strokeWidth="1.67" />
-              <path d="M11.335 14.835H11.835C13.4918 14.835 14.835 13.4918 14.835 11.835V10.335" stroke="#929292" strokeWidth="1.67" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-              <path d="M8 0C12.4183 0 16 3.58172 16 8C16 10.2879 12.5396 8.04191 11 9.5C9.56634 10.8577 12.5 16.5 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0ZM6.75 11.5C6.05964 11.5 5.5 12.0596 5.5 12.75C5.5 13.4404 6.05964 14 6.75 14C7.44036 14 8 13.4404 8 12.75C8 12.0596 7.44036 11.5 6.75 11.5ZM3.75 8.5C3.05964 8.5 2.5 9.05964 2.5 9.75C2.5 10.4404 3.05964 11 3.75 11C4.44036 11 5 10.4404 5 9.75C5 9.05964 4.44036 8.5 3.75 8.5ZM3.75 4.5C3.05964 4.5 2.5 5.05964 2.5 5.75C2.5 6.44036 3.05964 7 3.75 7C4.44036 7 5 6.44036 5 5.75C5 5.05964 4.44036 4.5 3.75 4.5ZM10.75 3C10.0596 3 9.5 3.55964 9.5 4.25C9.5 4.94036 10.0596 5.5 10.75 5.5C11.4404 5.5 12 4.94036 12 4.25C12 3.55964 11.4404 3 10.75 3ZM6.75 2C6.05964 2 5.5 2.55964 5.5 3.25C5.5 3.94036 6.05964 4.5 6.75 4.5C7.44036 4.5 8 3.94036 8 3.25C8 2.55964 7.44036 2 6.75 2Z" fill="#929292" />
-            </svg>
+            <button
+              type="button"
+              onClick={notifyComingSoon}
+              aria-label={iconControlLabels.layout}
+              className={iconButtonClass}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M4.33496 0.834961H3.83496C2.17811 0.834961 0.834961 2.17811 0.834961 3.83496V5.33496" stroke="#929292" strokeWidth="1.67" />
+                <circle cx="7.83496" cy="8.33496" r="2.5" stroke="#929292" strokeWidth="1.67" />
+                <path d="M11.335 0.834961H11.835C13.4918 0.834961 14.835 2.17811 14.835 3.83496V5.33496" stroke="#929292" strokeWidth="1.67" />
+                <path d="M4.33496 14.835H3.83496C2.17811 14.835 0.834961 13.4918 0.834961 11.835V10.335" stroke="#929292" strokeWidth="1.67" />
+                <path d="M11.335 14.835H11.835C13.4918 14.835 14.835 13.4918 14.835 11.835V10.335" stroke="#929292" strokeWidth="1.67" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={notifyComingSoon}
+              aria-label={iconControlLabels.bubble}
+              className={iconButtonClass}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                <path d="M8 0C12.4183 0 16 3.58172 16 8C16 10.2879 12.5396 8.04191 11 9.5C9.56634 10.8577 12.5 16.5 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0ZM6.75 11.5C6.05964 11.5 5.5 12.0596 5.5 12.75C5.5 13.4404 6.05964 14 6.75 14C7.44036 14 8 13.4404 8 12.75C8 12.0596 7.44036 11.5 6.75 11.5ZM3.75 8.5C3.05964 8.5 2.5 9.05964 2.5 9.75C2.5 10.4404 3.05964 11 3.75 11C4.44036 11 5 10.4404 5 9.75C5 9.05964 4.44036 8.5 3.75 8.5ZM3.75 4.5C3.05964 4.5 2.5 5.05964 2.5 5.75C2.5 6.44036 3.05964 7 3.75 7C4.44036 7 5 6.44036 5 5.75C5 5.05964 4.44036 4.5 3.75 4.5ZM10.75 3C10.0596 3 9.5 3.55964 9.5 4.25C9.5 4.94036 10.0596 5.5 10.75 5.5C11.4404 5.5 12 4.94036 12 4.25C12 3.55964 11.4404 3 10.75 3ZM6.75 2C6.05964 2 5.5 2.55964 5.5 3.25C5.5 3.94036 6.05964 4.5 6.75 4.5C7.44036 4.5 8 3.94036 8 3.25C8 2.55964 7.44036 2 6.75 2Z" fill="#929292" />
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6" onClick={notifyComingSoon}>
           {galleryColumns.map((column, columnIndex) => (
             <div key={`gallery-column-${columnIndex}`} className="flex w-[220px] flex-col gap-6">
               {column.map((item, itemIndex) => {

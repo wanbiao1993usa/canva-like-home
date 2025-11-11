@@ -18,8 +18,8 @@ const footerLinks: FooterLink[] = [
   { id: "inspiration", labelKey: "footer.links.inspiration", href: "/inspiration" },
   { id: "pricing", labelKey: "footer.links.pricing", href: "/pricing" },
   { id: "contact", labelKey: "footer.links.contact", href: "/contact" },
-  { id: "about", labelKey: "footer.links.about", href: "/", comingSoon: true },
-  { id: "help", labelKey: "footer.links.help", href: "/", comingSoon: true },
+  // 2025-02-15 11:10 Footer 导航项替换为“教程”并移除“帮助”
+  { id: "tutorial", labelKey: "footer.links.tutorial", href: "/tutorials", comingSoon: true },
 ];
 
 export default function Footer() {

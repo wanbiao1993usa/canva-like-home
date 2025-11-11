@@ -4,7 +4,6 @@ import { useState } from "react";
 import { btnPrimary, transitionAll } from "../../ui";
 import GlowEffect from "../common/GlowEffect";
 import { useTranslator } from "../../hooks/useTranslator";
-import { useFeatureToast } from "../common/toast";
 
 type FormData = {
   name: string;
@@ -19,14 +18,10 @@ type FormErrors = Partial<FormData>;
  */
 export default function ContactForm() {
   const t = useTranslator("contact.form");
-  const globalT = useTranslator();
   const [formData, setFormData] = useState<FormData>({ name: "", email: "", notes: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  // 2025-11-12 11:15: 公共提示改为读取 common.featureToast，避免写死中文
-  const notifyComingSoon = useFeatureToast(globalT("common.featureToast"));
-
   const fieldShellClass =
     `w-full mt-2 border border-white/10 bg-[#111111] px-6 py-4 text-base text-white placeholder:text-white/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] ${transitionAll} focus:border-[#AE89FF] focus:ring-2 focus:ring-[#AE89FF]/40 focus:outline-none`;
 
@@ -88,13 +83,32 @@ export default function ContactForm() {
     return Object.keys(nextErrors).length === 0;
   };
 
+  // 2025-02-15 11:40: 组装 mailto 链接，将用户输入内容填充到主题与正文
+  const buildMailtoLink = () => {
+    const subject = encodeURIComponent(`[CanDe Contact] ${formData.name || "Visitor"}`);
+    const bodySegments = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      "Message:",
+      formData.notes
+    ].join("\n");
+    return `mailto:admin@lycium.ai?subject=${subject}&body=${encodeURIComponent(bodySegments)}`;
+  };
+
+  /**
+   * 2025-02-15 11:40: 通过 mailto 拉起默认邮件客户端，向 admin@lycium.ai 发送内容
+   */
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (typeof window !== "undefined") {
+        window.location.href = buildMailtoLink();
+      }
+      await new Promise((resolve) => setTimeout(resolve, 600));
       setSubmitSuccess(true);
       setFormData({ name: "", email: "", notes: "" });
       setTimeout(() => setSubmitSuccess(false), 3000);
@@ -174,7 +188,6 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              onClick={notifyComingSoon}
               className={`${btnPrimary} inline-flex w-full items-center justify-center gap-3 px-10 py-4 text-lg font-semibold disabled:cursor-not-allowed disabled:opacity-60`}
             >
               {isSubmitting ? fieldCopy.actions.submitting : fieldCopy.actions.submit}

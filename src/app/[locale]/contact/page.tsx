@@ -51,7 +51,7 @@ export default function ContactPage() {
 
         <ContactForm />
 
-        <SocialMedia />
+        {/* <SocialMedia /> */}
 
         <CustomerSupport />
 

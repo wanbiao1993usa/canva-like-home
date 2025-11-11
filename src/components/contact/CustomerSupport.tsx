@@ -41,7 +41,7 @@ export default function CustomerSupport() {
           <p className="mx-auto mt-4 max-w-[846px] text-[18px] text-white/50">{t("description")}</p>
         </div>
 
-        <div className="mt-8 flex items-center justify-center">
+        {/* <div className="mt-8 flex items-center justify-center">
           <a
             href="https://support.candeai.com"
             target="_blank"
@@ -52,7 +52,7 @@ export default function CustomerSupport() {
             {t("cta")}
             <img src="/assets/icons/arrow-up-right-dark.svg" alt="" className="h-4 w-4" aria-hidden="true" />
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

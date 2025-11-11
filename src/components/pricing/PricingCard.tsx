@@ -1,6 +1,5 @@
 ﻿import type { PricingTier } from "./PricingCards";
 import { gradentTextHighlight } from "../../ui";
-import { useFeatureToast } from "../common/toast";
 import { useTranslator } from "../../hooks/useTranslator";
 
 type PricingCardProps = {
@@ -56,9 +55,12 @@ export default function PricingCard({ tier }: PricingCardProps) {
       ? `${buttonBase} bg-[#AE89FF] hover:bg-[#9B76E4] text-[#191919]`
       : `${buttonBase} bg-[#181818] hover:bg-[#3D3D3F] text-white`;
 
-  // 2025-11-11 15:35: 统一使用 Toast 提醒“功能开发中”
-  // 2025-11-12 11:15: 公共提示文案改用 common.featureToast
-  const notifyComingSoon = useFeatureToast(t("common.featureToast"));
+  // 2025-02-15 11:55: CTA 按钮直接跳转到编辑器站点
+  const handleCtaClick = () => {
+    if (typeof window !== "undefined") {
+      window.open("https://editor.lycium.ai", "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <div className={cardClass}>
@@ -105,7 +107,7 @@ export default function PricingCard({ tier }: PricingCardProps) {
         </ul>
       </div>
 
-      <button type="button" className={`${buttonClass} relative z-10`} onClick={notifyComingSoon}>
+      <button type="button" className={`${buttonClass} relative z-10`} onClick={handleCtaClick}>
         {ctaText}
       </button>
     </div>

@@ -21,7 +21,8 @@ const navItems: NavItem[] = [
   { id: "ideas", href: "/inspiration", labelKey: "header.nav.ideas", matchPath: "/inspiration" },
   { id: "pricing", href: "/pricing", labelKey: "header.nav.pricing", matchPath: "/pricing" },
   { id: "contact", href: "/contact", labelKey: "header.nav.contact", matchPath: "/contact" },
-  { id: "about", href: "/#about", labelKey: "header.nav.about", matchPath: "/about", comingSoon: true },
+  // 2025-02-15 11:00 替换原“关于”导航为“教程”，保持即将上线提示
+  { id: "tutorial", href: "/tutorials", labelKey: "header.nav.tutorial", matchPath: "/tutorials", comingSoon: true },
 ];
 
 export default function Header() {
