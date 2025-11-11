@@ -3,28 +3,35 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { transitionAll } from "../../ui";
+import { useFeatureToast } from "./toast";
 
 type NavItem = {
   id: string;
   href: string;
   label: string;
   matchPath?: string;
+  comingSoon?: boolean;
 };
 
 /**
  * 2025-11-10 20:50: 导航新增“联系我们”，用于高亮 Contact 页面
+ */
+/**
+ * 2025-11-11 14:45: comingSoon 标记统一唤起“功能开发中”提示
  */
 const navItems: NavItem[] = [
   { id: "home", href: "/", label: "主页", matchPath: "/" },
   { id: "ideas", href: "/inspiration", label: "灵感", matchPath: "/inspiration" },
   { id: "pricing", href: "/pricing", label: "定价", matchPath: "/pricing" },
   { id: "contact", href: "/contact", label: "联系我们", matchPath: "/contact" },
-  { id: "about", href: "/#about", label: "关于", matchPath: "/about" },
+  { id: "about", href: "/#about", label: "关于", matchPath: "/about", comingSoon: true },
 ];
 
 // 2025-10-30: Header 视觉与交互细节，匹配品牌基调
 export default function Header() {
   const pathname = usePathname() ?? "/";
+  const notifyLanguageFeature = useFeatureToast("多语言支持开发中，敬请期待");
+  const notifyNavFeature = useFeatureToast("功能开发中，敬请期待");
 
   const handleStartClick = () => {
     if (typeof window !== "undefined") {
@@ -74,6 +81,7 @@ export default function Header() {
           aria-label="主导航"
           className="flex items-center gap-1 rounded-[32px] border border-[#414141] bg-white/10 p-[5px] shadow-[0_16px_34px_rgba(0,0,0,0.35)] backdrop-blur-[2px]"
         >
+          {/* 2025-11-11 14:45: 未完成导航点击仅提示 */}
           {navItems.map((item) => {
             const active = isRouteActive(item);
             return (
@@ -81,7 +89,9 @@ export default function Header() {
                 key={item.id}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={active ? navActiveClass : navLinkBase}
+                aria-disabled={item.comingSoon}
+                onClick={item.comingSoon ? notifyNavFeature : undefined}
+                className={`${active ? navActiveClass : navLinkBase} ${item.comingSoon ? "cursor-not-allowed opacity-70" : ""}`}
               >
                 {item.label}
               </Link>
@@ -93,7 +103,8 @@ export default function Header() {
       {/* 2025-11-08: 右侧工具栏，包含语言切换与 CTA */}
       <div className="hidden w-auto items-center justify-end gap-2 xl:flex">
         <div className="flex items-center gap-2">
-          <button className={languageBtnClass} aria-label="切换语言" type="button">
+          {/* 2025-11-11 14:25: 语言切换暂未开放，点击提示 */}
+          <button className={languageBtnClass} aria-label="切换语言" type="button" onClick={notifyLanguageFeature}>
             <span className="whitespace-nowrap text-white">简体中文</span>
             <img src="/assets/icons/chevron-down.svg" alt="" aria-hidden />
           </button>

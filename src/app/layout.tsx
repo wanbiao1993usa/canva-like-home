@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import "./globals.css";
 import { fontSans } from "./fonts";
+import { ToastProvider } from "../components/common/toast";
 
 export const metadata = {
   title: "CanDe",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${fontSans.className} relative min-h-screen bg-[#111111] text-[#e5e5e5] antialiased before:absolute before:inset-0 before:-z-10 before:content-[''] before:pointer-events-none before:opacity-80 before:blur-[1px] before:bg-[radial-gradient(circle_at_center,_rgba(200,200,200,0.1)_1px,_transparent_1px)] before:bg-[size:6px_6px]`}
       >
-        <div className="relative z-10">{children}</div>
+        {/* 2025-11-11 14:20: ToastProvider 注入全局提示能力 */}
+        <ToastProvider>
+          <div className="relative z-10">{children}</div>
+        </ToastProvider>
       </body>
     </html>
   );

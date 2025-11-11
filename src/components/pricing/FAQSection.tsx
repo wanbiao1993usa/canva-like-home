@@ -28,12 +28,12 @@ const faqData: FAQEntry[] = [
   {
     id: "faq-2",
     question: "AI 生成的海报设计需要多长时间？",
-    answer: "通常在几秒内即可生成初稿，随后可继续编辑和微调，整个过程一般不超过 5 分钟。",
+    answer: "通常在几分钟内即可生成初稿，随后可继续编辑和微调，整个过程一般不超过 30 分钟。",
   },
   {
     id: "faq-3",
     question: "支持哪些文件格式导出？",
-    answer: "支持 PNG、JPG、PDF、SVG 等多种格式。专业版及以上可启用高分辨率导出。",
+    answer: "支持 JSON、PNG、JPG、JPEG、SVG 等多种格式。专业版及以上可启用高分辨率导出。",
   },
   {
     id: "faq-4",
@@ -43,7 +43,7 @@ const faqData: FAQEntry[] = [
   {
     id: "faq-5",
     question: "是否支持团队协作？",
-    answer: "专业版和企业版均支持团队协作，允许邀请成员共同编辑，实时同步修改内容。",
+    answer: "暂时不支持团队协作，等待后续功能开发。",
   },
   {
     id: "faq-6",
