@@ -51,6 +51,10 @@
       "discord": "Join our Discord community"
     }
   },
+  "layout": {
+    "backToTop": "Back to top",
+    "backToTopAria": "Back to the beginning of the page"
+  },
   "home": {
     "hero": {
       "badge": "AI inspirations",

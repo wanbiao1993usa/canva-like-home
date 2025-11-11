@@ -21,9 +21,11 @@ const isValidLocale = (value?: string): value is Locale => {
   return isLocale(value);
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  const headerLocale = headers().get("x-cande-locale") ?? undefined;
-  const cookieLocale = cookies().get(localeCookieName)?.value;
+export default async function RootLayout({ children }: RootLayoutProps) {
+  /** 2025-11-12 00:35: Next.js 15 开始 headers/cookies 返回 Promise，需先 await */
+  const [headerStore, cookieStore] = await Promise.all([headers(), cookies()]);
+  const headerLocale = headerStore?.get("x-cande-locale") ?? undefined;
+  const cookieLocale = cookieStore?.get(localeCookieName)?.value;
   const activeLocale = [headerLocale, cookieLocale].find(isValidLocale) ?? defaultLocale;
 
   return (

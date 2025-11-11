@@ -51,6 +51,10 @@
       "discord": "加入我们的 Discord 社区"
     }
   },
+  "layout": {
+    "backToTop": "返回顶部",
+    "backToTopAria": "返回页面顶部"
+  },
   "home": {
     "hero": {
       "badge": "AI 灵感上新",
