@@ -1,11 +1,30 @@
-﻿// 2025-10-29: 呼叫设计大师，同屏共创（Figma node 345:4797）
+﻿'use client';
+
+// 2025-10-29: 呼叫设计大师，同屏共创（Figma node 345:4797）
 // 说明：左侧为信息图区域（呼叫设计师卡片 + 大图卡片 + 光晕与指针标签），右侧为标题与两条说明卡。
 // 图标与图片均为占位命名，后续请在 public/assets 下按路径补齐资源（UTF-8）。
-import type { CSSProperties } from "react";
 import GlowEffect from "../common/GlowEffect";
 import { gradentTextXs } from "../../ui";
+import { useTranslator } from "../../hooks/useTranslator";
 
 export default function CallDesignerCollab() {
+  // 2025-11-11 19:15: 接入 home.callDesignerCollab 文案，统一支持中英文切换
+  const t = useTranslator("home.callDesignerCollab");
+  const insightCards = [
+    {
+      icon: "/assets/icons/call-sparkles.svg",
+      alt: "sparkles",
+      title: t("cards.elite.title"),
+      description: t("cards.elite.description"),
+    },
+    {
+      icon: "/assets/icons/call-robot.svg",
+      alt: "robot",
+      title: t("cards.realtime.title"),
+      description: t("cards.realtime.description"),
+    },
+  ];
+
   return (
     <section className="py-12">
       <div className="relative mx-auto flex w-full max-w-[1280px] items-center gap-12">
@@ -16,7 +35,6 @@ export default function CallDesignerCollab() {
           src="/assets/icons/template-eclipse.svg"
           width={900}
           height={900}
-          alt="生成演示光影"
           priority={false}
           className="flex w-full justify-center"
         />
@@ -44,13 +62,13 @@ export default function CallDesignerCollab() {
                 <path d="M20.0491 6.66553C19.8756 6.61865 19.6975 6.59521 19.5194 6.59521C19.3225 6.59521 19.1303 6.62334 18.9475 6.67725L19.2405 5.58037C19.5311 4.49053 18.8842 3.36787 17.7944 3.0749C17.621 3.02803 17.4428 3.00459 17.2647 3.00459C16.9999 3.00459 16.7444 3.05615 16.5077 3.1499C16.4702 2.89443 16.3858 2.646 16.2522 2.41631C15.978 1.94287 15.5374 1.60537 15.01 1.4624C14.8366 1.41553 14.6585 1.39209 14.4803 1.39209C13.5569 1.39209 12.746 2.01553 12.5069 2.9085L12.4835 2.99521C12.2327 2.73271 11.9116 2.5335 11.5342 2.43271C11.3608 2.38584 11.1827 2.3624 11.0045 2.3624C10.0811 2.3624 9.27017 2.98584 9.03111 3.87881L7.04127 11.3015L6.17642 9.80147C5.81314 9.171 5.13345 8.77959 4.40455 8.77959C4.0483 8.77959 3.69439 8.87334 3.38267 9.05381C2.91392 9.32334 2.60689 9.74522 2.4897 10.2679C2.39595 10.6944 2.42877 11.189 2.5858 11.7374C2.61392 11.8312 2.64673 11.9577 2.68892 12.1054C3.07095 13.4905 3.96392 16.7366 5.39127 18.8507C6.98502 21.2132 9.27486 22.0101 9.43189 22.0616C10.4631 22.4226 11.4803 22.603 12.4553 22.603C13.9553 22.603 15.2819 22.1812 16.4022 21.3468C17.6022 20.4515 18.5022 19.1226 19.0717 17.3929C20.5225 13.0007 21.4624 9.29521 21.4975 9.16162C21.7858 8.07881 21.1366 6.95615 20.0491 6.66553ZM20.5436 8.91553C20.5436 8.91787 20.5413 8.92022 20.5413 8.92256C20.5319 8.96006 19.5944 12.6702 18.1342 17.0882C17.628 18.621 16.8475 19.7905 15.8116 20.5616C14.867 21.2647 13.7374 21.6233 12.453 21.6233C11.5881 21.6233 10.6788 21.4593 9.75064 21.1335C9.7483 21.1335 9.74595 21.1312 9.74361 21.1312C9.73892 21.1288 9.20455 20.9507 8.50377 20.5101C7.34361 19.7812 6.6147 18.9069 6.20455 18.3022C4.86627 16.3194 4.00377 13.1835 3.6358 11.8452C3.59361 11.6952 3.55845 11.5663 3.53033 11.4655C3.4483 11.1772 3.19517 10.2983 3.87252 9.90693C4.03423 9.81318 4.21705 9.76397 4.4022 9.76397C4.78189 9.76397 5.13345 9.96787 5.3233 10.2937L6.78345 12.8226C6.88189 12.996 7.07642 13.0897 7.2733 13.064C7.47017 13.0382 7.63189 12.8952 7.68345 12.703L9.98033 4.13428C10.1045 3.67021 10.5264 3.34678 11.0045 3.34678C11.096 3.34678 11.1897 3.3585 11.2788 3.38428C11.8436 3.53662 12.1788 4.11787 12.0288 4.68271L10.3835 10.821C10.3131 11.0835 10.4678 11.353 10.7303 11.4233C10.7725 11.4351 10.8147 11.4397 10.8569 11.4397C11.0749 11.4397 11.2741 11.2944 11.3327 11.0741L12.9756 4.94053V4.93818V4.93584L13.4514 3.16162C13.5756 2.69756 13.9975 2.37412 14.4756 2.37412C14.567 2.37412 14.6608 2.38584 14.7522 2.41162C15.0264 2.48428 15.2538 2.66006 15.3967 2.90615C15.5374 3.15225 15.5772 3.43818 15.5022 3.7124L15.317 4.40381L13.3835 11.6226C13.3131 11.8851 13.4678 12.1546 13.7303 12.2249C13.7725 12.2366 13.8147 12.2413 13.8569 12.2413C14.0749 12.2413 14.2741 12.096 14.3327 11.8757L16.2358 4.77178V4.76709C16.36 4.30537 16.7819 3.98193 17.26 3.98193C17.3514 3.98193 17.4452 3.99365 17.5366 4.01943C18.1014 4.17178 18.4389 4.75303 18.2866 5.31787L17.5436 8.10928V8.11397L16.2803 12.8296C16.21 13.0921 16.3647 13.3616 16.6272 13.4319C16.6694 13.4437 16.7116 13.4483 16.7538 13.4483C16.9717 13.4483 17.171 13.303 17.2295 13.0827L18.4952 8.3624C18.6194 7.90068 19.0413 7.57959 19.517 7.57959C19.6085 7.57959 19.7022 7.59131 19.7936 7.61709C20.3585 7.76709 20.696 8.35068 20.5436 8.91553Z" fill="#111111" />
                 <path d="M6.11071 7.97379C6.15289 7.98551 6.19743 7.9902 6.23727 7.9902C6.45524 7.9902 6.65446 7.84489 6.71305 7.62457L7.87555 3.28629C7.94586 3.02379 7.79118 2.75426 7.52868 2.68395C7.26618 2.61364 6.99664 2.76832 6.92633 3.03082L5.76383 7.3691C5.69352 7.63395 5.84821 7.90348 6.11071 7.97379ZM3.43414 8.54567C3.47633 8.55739 3.51852 8.56207 3.56071 8.56207C3.77867 8.56207 3.97789 8.41676 4.03649 8.19645L5.08649 4.28004C5.1568 4.01754 5.00211 3.74801 4.73961 3.6777C4.47711 3.60739 4.20758 3.76207 4.13727 4.02457L3.08727 7.94098C3.01696 8.20348 3.17164 8.47535 3.43414 8.54567Z" fill="#AE89FF" />
               </svg>
-              <span className="text-[18px] text-white/70">呼叫设计师...</span>
+              <span className="text-[18px] text-white/70">{t("callout.status")}</span>
             </div>
           </div>
 
           {/* 大图卡片：设计师说： 576×409 @ (40,166) */}
           <div className="absolute left-[40px] top-[165.97px] h-[409px] w-[576px] rounded-[24px] border border-white/10 bg-[#111111] p-8">
-            <div className="text-[18px] text-white/90">设计师说：</div>
+            <div className="text-[18px] text-white/90">{t("callout.designerSays")}</div>
             {/* 内容图 512×296 */}
             <div className="mt-6 h-[296px] w-[512px] overflow-hidden rounded-[16px]">
               {/* 占位图片：assets/images/call-designer-sample.png */}
@@ -175,29 +193,19 @@ export default function CallDesignerCollab() {
           {/* 数字胶囊标题 */}
           <div className="inline-flex w-74 items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6">
             <span className="flex h-12 w-12 items-center justify-center rounded-[40px] bg-[#AE89FF] text-[18px] text-[#191919]">4</span>
-            <span className={`text-[18px] ${gradentTextXs}`}>呼叫设计大师，同屏共创</span>
+            <span className={`text-[18px] ${gradentTextXs}`}>{t("badge")}</span>
           </div>
 
           <div className="border border-white/15 bg-[#181818] rounded-[24px]">
-            {/* 说明卡 1：顶级设计师在线 */}
-            <div className="p-6 pb-3">
-              <div className="mb-3 flex items-center gap-3">
-                {/* 占位图标：assets/icons/call-sparkles.svg */}
-                <img src="/assets/icons/call-sparkles.svg" alt="sparkles" className="h-6 w-6" />
-                <span className="text-[18px] text-white">顶级设计师在线</span>
+            {insightCards.map((card, index) => (
+              <div key={card.icon} className={index === 0 ? "p-6 pb-3" : "p-6 pt-3"}>
+                <div className="mb-3 flex items-center gap-3">
+                  <img src={card.icon} alt={card.alt} className="h-6 w-6" />
+                  <span className="text-[18px] text-white">{card.title}</span>
+                </div>
+                <p className="text-[16px] text-white/60">{card.description}</p>
               </div>
-              <p className="text-[16px] text-white/60">连接世界顶尖设计师，24小时在线待命。深夜灵感或紧急需求，专业创意即刻响应</p>
-            </div>
-
-            {/* 说明卡 2：实时协作编辑 */}
-            <div className="p-6 pt-3">
-              <div className="mb-3 flex items-center gap-3">
-                {/* 占位图标：assets/icons/call-robot.svg */}
-                <img src="/assets/icons/call-robot.svg" alt="robot" className="h-6 w-6" />
-                <span className="text-[18px] text-white">实时协作编辑</span>
-              </div>
-              <p className="text-[16px] text-white/60">实时加入画布，同步鼠标轨迹、即改即看。设计师像在你身边，共创每一个灵感时刻</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 ﻿import type { PricingTier } from "./PricingCards";
 import { gradentTextHighlight } from "../../ui";
+import { useFeatureToast } from "../common/toast";
+import { useTranslator } from "../../hooks/useTranslator";
 
 type PricingCardProps = {
   tier: PricingTier;
@@ -15,6 +17,7 @@ const checkIcon = (
  * 2025-11-10 20:05: PricingCard 展示视觉实现
  */
 export default function PricingCard({ tier }: PricingCardProps) {
+  const t = useTranslator();
   const {
     icon,
     name,
@@ -25,6 +28,7 @@ export default function PricingCard({ tier }: PricingCardProps) {
     highlighted,
     ctaText,
     ctaVariant,
+    badgeText,
   } = tier;
   const isProfessional = tier.id === "professional";
 
@@ -52,6 +56,10 @@ export default function PricingCard({ tier }: PricingCardProps) {
       ? `${buttonBase} bg-[#AE89FF] hover:bg-[#9B76E4] text-[#191919]`
       : `${buttonBase} bg-[#181818] hover:bg-[#3D3D3F] text-white`;
 
+  // 2025-11-11 15:35: 统一使用 Toast 提醒“功能开发中”
+  // 2025-11-12 11:15: 公共提示文案改用 common.featureToast
+  const notifyComingSoon = useFeatureToast(t("common.featureToast"));
+
   return (
     <div className={cardClass}>
       {highlightedBackground}
@@ -70,9 +78,10 @@ export default function PricingCard({ tier }: PricingCardProps) {
           >
             {name}
           </span>
-          {highlighted ? (
+          {highlighted && badgeText ? (
             <span className="ml-2 inline-block rounded-full bg-[#312942] px-3 py-1 text-xs font-semibold text-primary">
-              热门推荐
+              {/* 2025-11-12 10:28: 热门推荐标签改为字典文本 */}
+              {badgeText}
             </span>
           ) : null}
         </div>
@@ -87,8 +96,8 @@ export default function PricingCard({ tier }: PricingCardProps) {
         <div className="mb-6 h-px bg-white/15" />
 
         <ul className="mb-8 space-y-3">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-3">
+          {features.map((feature, index) => (
+            <li key={`${tier.id}-feature-${index}`} className="flex items-start gap-3">
               {checkIcon}
               <span className="text-sm text-white">{feature}</span>
             </li>
@@ -96,7 +105,7 @@ export default function PricingCard({ tier }: PricingCardProps) {
         </ul>
       </div>
 
-      <button type="button" className={`${buttonClass} relative z-10`}>
+      <button type="button" className={`${buttonClass} relative z-10`} onClick={notifyComingSoon}>
         {ctaText}
       </button>
     </div>

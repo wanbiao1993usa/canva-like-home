@@ -1,11 +1,36 @@
-﻿// 2025-10-29: 从模版开始创建分区（Figma node 345:4758）
+﻿"use client";
+
+// 2025-10-29: 从模版开始创建分区（Figma node 345:4758）
 // 说明：左侧为标题与要点说明，右侧为圆形卡片信息图；
 // 图标与图片均使用占位路径，后续请在 public/assets 下补齐资源文件（UTF-8）。
 import type { CSSProperties } from "react";
 import GlowEffect from "../common/GlowEffect";
 import { gradentTextXs } from "../../ui";
+import { useTranslator } from "../../hooks/useTranslator";
+
+const infoCards = [
+  {
+    icon: "/assets/icons/gen-showcase-camera.svg",
+    titleKey: "cards.library.title",
+    descriptionKey: "cards.library.description",
+  },
+  {
+    icon: "/assets/icons/gen-showcase-upload.svg",
+    titleKey: "cards.pro.title",
+    descriptionKey: "cards.pro.description",
+  },
+] as const;
 
 export default function StartFromTemplates() {
+  const t = useTranslator("home.startFromTemplatesSection");
+  const badgeLabel = t("badge.label");
+  const glowAlt = t("glowAlt");
+  const cards = infoCards.map(({ icon, titleKey, descriptionKey }) => ({
+    icon,
+    title: t(titleKey),
+    description: t(descriptionKey),
+  }));
+
   // 背景发光大环（使用径向渐变模拟 Figma Ellipse 312）
   const glowRing: CSSProperties = {
     background:
@@ -34,28 +59,20 @@ export default function StartFromTemplates() {
           {/* 数字胶囊标题 */}
           <div className="inline-flex w-fit items-center gap-4 rounded-[100px] border border-white/15 bg-[#181818] px-2 py-2 pr-6">
             <span className="flex h-[46.15px] w-[46.15px] items-center justify-center rounded-[38.46px] bg-[#AE89FF] text-[17.3px] text-[#191919]">3</span>
-            <span className={`text-[17.3px] ${gradentTextXs}`}>从模版开始创建</span>
+            <span className={`text-[17.3px] ${gradentTextXs}`}>{badgeLabel}</span>
           </div>
 
           {/* 2025-11-07 22:20: 将两条说明并入单一卡片 */}
           <div className="rounded-2xl border border-white/15 bg-[#181818] p-[23px] space-y-[23px]">
-            <div>
-              <div className="mb-[23px] flex items-center gap-3">
-                {/* 占位图标：请提供 /assets/icons/gen-showcase-camera.svg */}
-                <img src="/assets/icons/gen-showcase-camera.svg" alt="camera" className="h-[23px] w-[23px]" />
-                <span className="text-[17.3px] text-white">精选模板库，精准匹配需求</span>
+            {cards.map((card, index) => (
+              <div key={card.title}>
+                <div className="mb-[23px] flex items-center gap-3">
+                  <img src={card.icon} alt={`template-feature-${index + 1}`} className="h-[23px] w-[23px]" />
+                  <span className="text-[17.3px] text-white">{card.title}</span>
+                </div>
+                <p className="text-[15.4px] text-white/60">{card.description}</p>
               </div>
-              <p className="text-[15.4px] text-white/60">精准分类让你快速找到心仪设计，无需从零开始</p>
-            </div>
-
-            <div>
-              <div className="mb-[23px] flex items-center gap-3">
-                {/* 占位图标：请提供 /assets/icons/gen-showcase-upload.svg */}
-                <img src="/assets/icons/gen-showcase-upload.svg" alt="upload" className="h-[23px] w-[23px]" />
-                <span className="text-[17.3px] text-white">专业级设计，开箱即用</span>
-              </div>
-              <p className="text-[15.4px] text-white/60">每款模板都经专业设计师打磨，确保视觉品质与体验</p>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -119,7 +136,7 @@ export default function StartFromTemplates() {
           src="/assets/icons/template-eclipse.svg"
           width={1200}
           height={1200}
-          alt="生成演示光影"
+          alt={glowAlt}
           priority={false}
           className="flex w-full justify-center"
         />

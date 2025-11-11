@@ -1,8 +1,9 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import FAQItem from "./FAQItem";
 import GlowEffect from "../common/GlowEffect";
+import { useTranslator } from "../../hooks/useTranslator";
 
 type FAQEntry = {
   id: string;
@@ -11,54 +12,63 @@ type FAQEntry = {
   defaultOpen?: boolean;
 };
 
-const faqData: FAQEntry[] = [
+type FAQEntryConfig = {
+  id: string;
+  questionKey: string;
+  answerKey: string;
+  defaultOpen?: boolean;
+};
+
+const FAQ_ENTRIES: FAQEntryConfig[] = [
   {
     id: "faq-1",
-    question: "生成的海报可以商用吗？版权归谁？",
-    // 2025-11-11 19:20: FAQ-1 详细说明商用权限、版权归属和使用范围
-    answer: [
-      "是的，您可以将生成的海报用于商业用途。使用我们平台生成的所有设计作品，版权完全归您所有。这意味着：",
-      "无需商业授权 - 可用于广告、营销、印刷品等任何商业场景",
-      "独家所有权 - 生成后的设计专属于您，我们不会再次使用或出售",
-      "无需额外付费 - 不收取版权费或授权费",
-      "自由修改分发 - 您可以随意编辑、转售或分享您的设计",
-    ].join("\n"),
+    questionKey: "items.usageRights.question",
+    answerKey: "items.usageRights.answer",
+    // 2025-11-11 19:20: 详细记录商用版权范围，保持问答信息完整
     defaultOpen: true,
   },
   {
     id: "faq-2",
-    question: "AI 生成的海报设计需要多长时间？",
-    answer: "通常在几分钟内即可生成初稿，随后可继续编辑和微调，整个过程一般不超过 30 分钟。",
+    questionKey: "items.turnaround.question",
+    answerKey: "items.turnaround.answer",
   },
   {
     id: "faq-3",
-    question: "支持哪些文件格式导出？",
-    answer: "支持 JSON、PNG、JPG、JPEG、SVG 等多种格式。专业版及以上可启用高分辨率导出。",
+    questionKey: "items.exportFormats.question",
+    answerKey: "items.exportFormats.answer",
   },
   {
     id: "faq-4",
-    question: "可以随时取消订阅吗？",
-    answer: "当然可以。您可随时在账户设置中取消订阅，不会产生额外费用，并可继续使用至当前计费周期结束。",
+    questionKey: "items.cancel.question",
+    answerKey: "items.cancel.answer",
   },
   {
     id: "faq-5",
-    question: "是否支持团队协作？",
-    answer: "暂时不支持团队协作，等待后续功能开发。",
+    questionKey: "items.collaboration.question",
+    answerKey: "items.collaboration.answer",
   },
   {
     id: "faq-6",
-    question: "如何联系技术支持？",
-    answer: "免费版用户可通过社区获得帮助，专业版享有优先邮件支持，企业版提供 7x24 电话支持。",
+    questionKey: "items.support.question",
+    answerKey: "items.support.answer",
   },
 ];
 
 export default function FAQSection() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>(() =>
-    faqData.reduce<Record<string, boolean>>((acc, item) => {
+    FAQ_ENTRIES.reduce<Record<string, boolean>>((acc, item) => {
       acc[item.id] = Boolean(item.defaultOpen);
       return acc;
     }, {})
   );
+  const t = useTranslator("pricing.faq");
+  // 2025-11-12 10:45: FAQSection 接入字典，确保问答内容随 locale 切换
+  const faqData: FAQEntry[] = FAQ_ENTRIES.map((entry) => ({
+    id: entry.id,
+    question: t(entry.questionKey),
+    answer: t(entry.answerKey),
+    defaultOpen: entry.defaultOpen,
+  }));
 
   /**
    * 2025-11-10 19:40: FAQSection 统一管理每个问题的展开状态
@@ -79,16 +89,14 @@ export default function FAQSection() {
         src="/assets/icons/hero-eclipse.svg"
         width={900}
         height={80}
-        alt="生成演示光影"
+        alt={t("glowAlt")}
         priority={false}
         className="flex w-full justify-center"
       />
 
       <div className="mb-12 text-center">
-        <h2 className="mb-4 text-4xl lg:text-5xl font-bold text-white">常见问题解答</h2>
-        <p className="mx-auto max-w-2xl text-lg text-white/70">
-          这里汇集了关于 CanDe、AI 技术以及如何助您设计海报的常见问题解答
-        </p>
+        <h2 className="mb-4 text-4xl lg:text-5xl font-bold text-white">{t("title")}</h2>
+        <p className="mx-auto max-w-2xl text-lg text-white/70">{t("subtitle")}</p>
       </div>
 
       <div className="mx-auto w-[900px] space-y-4">

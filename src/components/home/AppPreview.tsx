@@ -1,18 +1,67 @@
-﻿import { cardHover, transitionAll } from "../../ui";
-import GlowEffect from "../common/GlowEffect";
+"use client";
 
+import { cardHover, transitionAll } from "../../ui";
+import GlowEffect from "../common/GlowEffect";
+import CapsuleTagGroup from "../common/CapsuleTagGroup";
+import { useTranslator } from "../../hooks/useTranslator";
+
+const posterKeys = [
+  "sportsBrand",
+  "musicWall",
+  "eventStickers",
+  "realistic",
+  "maineArt",
+  "naiArchitecture",
+  "retroHalftone",
+  "comicHalftone",
+] as const;
+
+const sidebarTopNavItems = [
+  { icon: "nav-home.svg", labelKey: "home", active: true },
+  { icon: "nav-explore.svg", labelKey: "explore", active: false },
+  { icon: "nav-projects.svg", labelKey: "projects", active: false },
+] as const;
+
+const sidebarBottomNavItems = [
+  { icon: "nav-trash.svg", labelKey: "trash" },
+  { icon: "settings.svg", labelKey: "settings" },
+  { icon: "nav-help.svg", labelKey: "help" },
+] as const;
 // 2025-10-30: AppPreview 外层壳体与主体结构优化
 export default function AppPreview() {
-  const featuredTitles = [
-    "体育品牌海报",
-    "音乐海报墙",
-    "活动贴纸素材",
-    "写实海报",
-    "缅因艺术学院海报",
-    "NAI 建筑海报",
-    "半色调复古风格",
-    "漫画半色调印刷",
-  ];
+  // 2025-11-11 20:05: 接入 useTranslator 支持中英文切换
+  const t = useTranslator("home.appPreviewSection");
+  const badgePrimary = t("badge.primary");
+  const badgeSecondary = t("badge.secondary");
+  const sectionTitle = t("title");
+  const glowAltTopRight = t("glowAlt.topRight");
+  const glowAltBottomRight = t("glowAlt.bottomRight");
+  const glowAltBottomLeft = t("glowAlt.bottomLeft");
+  const searchPlaceholder = t("toolbar.searchPlaceholder");
+  const notificationsAlt = t("toolbar.notificationsAlt");
+  const settingsAlt = t("toolbar.settingsAlt");
+  const userAlt = t("toolbar.userAlt");
+  const sidebarProjectTitle = t("sidebar.projectCard.title");
+  const sidebarResetNote = t("sidebar.projectCard.resetNote");
+  const sidebarManagePlan = t("sidebar.projectCard.managePlan");
+  const sidebarUpgrade = t("sidebar.projectCard.upgrade");
+  const bannerTitle = t("banner.title");
+  const bannerDescription = t("banner.description");
+  const exploreTitle = t("explore.title");
+  const playAlt = t("explore.playAlt");
+  const recentTitle = t("recent.title");
+  const recentHeaders = {
+    name: t("recent.headers.name"),
+    size: t("recent.headers.size"),
+    updated: t("recent.headers.updated"),
+    actions: t("recent.headers.actions"),
+  };
+  const recentMoreAlt = t("recent.moreAlt");
+  const posterCards = posterKeys.map((posterKey, index) => ({
+    posterKey,
+    title: t(`featuredPosters.${posterKey}`),
+    imageSrc: `/assets/images/app-card-${String(index + 1).padStart(2, "0")}.png`,
+  }));
 
   const recentFiles = [
     { name: "BNB Corporation App", size: "4.76 MB", time: "5 days ago", imageSrc: "/assets/images/recent-file-thumb-01.png" },
@@ -45,7 +94,7 @@ export default function AppPreview() {
             src="/assets/icons/apppreview-eclipse-rt.svg"
             width={490}
             height={490}
-            alt="AppPreview 光影右上"
+            alt={glowAltTopRight}
             priority={false}
             imageClassName="rounded-[44px]"
           />
@@ -55,7 +104,7 @@ export default function AppPreview() {
             src="/assets/icons/apppreview-eclipse-rb.svg"
             width={490}
             height={490}
-            alt="AppPreview 光影右下"
+            alt={glowAltBottomRight}
             priority={false}
             imageClassName="rounded-[44px]"
           />
@@ -65,7 +114,7 @@ export default function AppPreview() {
             src="/assets/icons/apppreview-eclipse-lb.svg"
             width={490}
             height={490}
-            alt="AppPreview 光影左下"
+            alt={glowAltBottomLeft}
             priority={false}
             imageClassName="rounded-[44px]"
           />
@@ -74,16 +123,9 @@ export default function AppPreview() {
           <div className="px-4 pt-10 xl:px-6 2xl:px-8">
             {/* 上半区：标签与标题（独立于预览卡片） */}
             <div className="text-center">
-              <div className="inline-flex items-center gap-3">
-                <span className="rounded-full bg-[#7A5AF8]/20 px-3 py-1 text-xs font-medium text-[#C8B6FF] ring-1 ring-white/10">
-                  如何使用
-                </span>
-                <a href="#" className={`text-xs text-white/70 ${transitionAll} hover:text-white`}>
-                  美感背后的智慧
-                </a>
-              </div>
+              <CapsuleTagGroup primaryText={badgePrimary} secondaryText={badgeSecondary} />
               <h2 className="mt-4 text-2xl font-medium text-white sm:text-3xl xl:text-4xl 2xl:text-5xl">
-                体验AI海报设计的无限可能
+                {sectionTitle}
               </h2>
             </div>
 
@@ -114,18 +156,18 @@ export default function AppPreview() {
                   <img src="/assets/icons/search.svg" alt="" className="h-4 w-4 opacity-80" aria-hidden />
                   <input
                     className="min-w-0 flex-1 bg-transparent text-xs text-white placeholder:text-white focus:outline-none"
-                    placeholder="搜索文件"
+                    placeholder={searchPlaceholder}
                     readOnly
                   />
                 </div>
 
                 {/* 最右侧：三个图标 */}
                 <div className="flex items-center gap-2">
-                  <img src="/assets/icons/bell.svg" alt="通知" className="h-4 w-4 opacity-80" />
-                  <img src="/assets/icons/settings.svg" alt="设置" className="h-4 w-4 opacity-80" />
+                  <img src="/assets/icons/bell.svg" alt={notificationsAlt} className="h-4 w-4 opacity-80" />
+                  <img src="/assets/icons/settings.svg" alt={settingsAlt} className="h-4 w-4 opacity-80" />
                   <img
                     src="/assets/images/avatar-default.png"
-                    alt="用户"
+                    alt={userAlt}
                     className="h-7 w-7 rounded-full object-cover ring-1 ring-white/15"
                   />
                 </div>
@@ -139,22 +181,17 @@ export default function AppPreview() {
                   <nav className="flex flex-col gap-[19.733px]">
                     {/* 顶部导航组 */}
                     <div className="flex flex-col gap-[6.578px]">
-                      {[
-                        { icon: "nav-home.svg", label: "主页", active: true },
-                        { icon: "nav-explore.svg", label: "探索", active: false },
-                        { icon: "nav-projects.svg", label: "我的项目", active: false },
-                      ].map((item) => (
-                        <a
-                          key={item.label}
-                          href="#"
+                      {sidebarTopNavItems.map((item) => (
+                        <div
+                          key={item.labelKey}
                           className={`flex items-center gap-[11.511px] rounded-[9.867px] px-[13.156px] py-[9.867px] ${transitionAll} ${item.active
                             ? "bg-[#292929] text-white"
                             : "text-white hover:bg-white/10"
                             }`}
                         >
                           <img src={`/assets/icons/${item.icon}`} alt="" className="h-[23px] w-[23px]" aria-hidden />
-                          <span className="text-[14.8px] leading-[19.733px]">{item.label}</span>
-                        </a>
+                          <span className="text-[14.8px] leading-[19.733px]">{t(`sidebar.navTop.${item.labelKey}`)}</span>
+                        </div>
                       ))}
                     </div>
 
@@ -163,19 +200,14 @@ export default function AppPreview() {
 
                     {/* 底部导航组 */}
                     <div className="flex flex-col gap-[6.578px]">
-                      {[
-                        { icon: "nav-trash.svg", label: "垃圾箱" },
-                        { icon: "settings.svg", label: "设置" },
-                        { icon: "nav-help.svg", label: "帮助" },
-                      ].map((item) => (
-                        <a
-                          key={item.label}
-                          href="#"
+                      {sidebarBottomNavItems.map((item) => (
+                        <div
+                          key={item.labelKey}
                           className={`flex items-center gap-[11.511px] rounded-[9.867px] px-[13.156px] py-[9.867px] text-white ${transitionAll} hover:bg-white/10`}
                         >
                           <img src={`/assets/icons/${item.icon}`} alt="" className="h-[23px] w-[23px]" aria-hidden />
-                          <span className="text-[14.8px] leading-[19.733px]">{item.label}</span>
-                        </a>
+                          <span className="text-[14.8px] leading-[19.733px]">{t(`sidebar.navBottom.${item.labelKey}`)}</span>
+                        </div>
                       ))}
                     </div>
                   </nav>
@@ -186,7 +218,7 @@ export default function AppPreview() {
                     <div className="flex flex-col gap-[7.4px]">
                       {/* 标题和进度分数 */}
                       <div className="flex items-center justify-between">
-                        <span className="text-[14.8px] leading-[19.733px] font-semibold text-white">项目</span>
+                        <span className="text-[14.8px] leading-[19.733px] font-semibold text-white">{sidebarProjectTitle}</span>
                         <span className="text-[13.156px] leading-[18.089px] font-medium text-white">6/20</span>
                       </div>
 
@@ -196,21 +228,20 @@ export default function AppPreview() {
                       </div>
 
                       {/* 重置提示 */}
-                      <p className="text-[13.156px] leading-[19.733px] text-white/50">每月使用将在29天后重置</p>
+                      <p className="text-[13.156px] leading-[19.733px] text-white/50">{sidebarResetNote}</p>
                     </div>
 
                     {/* 管理计划和升级按钮 */}
                     <div className="flex flex-col gap-[9.867px]">
-                      <a
-                        href="#"
+                      <div
                         className={`text-[11.511px] leading-[19.733px] font-medium text-white uppercase text-left ${transitionAll} hover:text-white/80`}
                       >
-                        管理计划
-                      </a>
+                        {sidebarManagePlan}
+                      </div>
                       <button
                         className={`w-full rounded-[8.222px] border-[rgba(255,255,255,0.08)] border-[1.233px] px-[40.289px] py-[9.044px] text-[13.156px] leading-[18.089px] font-medium text-white ${transitionAll} hover:bg-white/10`}
                       >
-                        升级
+                        {sidebarUpgrade}
                       </button>
                     </div>
                   </div>
@@ -257,10 +288,10 @@ export default function AppPreview() {
                       {/* 文本内容 */}
                       <div className="flex-1 flex flex-col gap-[6.578px]">
                         <p className="text-[26.311px] leading-[36.178px] font-semibold text-[#111111] tracking-tight">
-                          一句话的灵感，一秒钟的设计
+                          {bannerTitle}
                         </p>
                         <p className="text-[13.156px] leading-[18.089px] font-medium text-[#707175]">
-                          告诉 Canvas Design™ 你想要什么，AI 立即生成专属海报模板，让创意不再受限。
+                          {bannerDescription}
                         </p>
                       </div>
                     </div>
@@ -269,30 +300,30 @@ export default function AppPreview() {
                   {/* 探索区域 */}
                   <div className="flex flex-col gap-[13.156px]">
                     {/* 区块标题 */}
-                    <div className="text-[14.8px] leading-[19.733px] font-semibold text-white">探索</div>
+                    <div className="text-[14.8px] leading-[19.733px] font-semibold text-white">{exploreTitle}</div>
 
                     {/* 海报网格：2行4列 */}
                     <div className="flex flex-col gap-[9.867px]">
                       {/* 第一行 */}
                       <div className="flex gap-[19.733px] h-[162.8px]">
-                        {featuredTitles.slice(0, 4).map((title, index) => (
-                          <div key={title} className="flex-1 flex flex-col overflow-hidden relative">
+                        {posterCards.slice(0, 4).map((card, index) => (
+                          <div key={card.posterKey} className="flex-1 flex flex-col overflow-hidden relative">
                             <div className="flex-1 relative rounded-[9.867px] overflow-hidden">
                               <img
-                                src={`/assets/images/app-card-${String(index + 1).padStart(2, "0")}.png`}
-                                alt={title}
+                                src={card.imageSrc}
+                                alt={card.title}
                                 className="absolute inset-0 object-cover w-full h-full pointer-events-none rounded-[9.867px]"
                               />
                               {/* 播放按钮：在第一行第二张（index=1，音乐海报墙）上显示，位置往左下 */}
                               {index === 1 && (
                                 <div className="absolute bottom-[10px] left-[10px] pointer-events-none">
-                                  <img src="/assets/icons/play.svg" alt="播放" className="w-[46px] h-[46px]" />
+                                  <img src="/assets/icons/play.svg" alt={playAlt} className="w-[46px] h-[46px]" />
                                 </div>
                               )}
                             </div>
                             <div className="backdrop-blur-[12.333px] py-[6.578px]">
                               <p className="text-[13.156px] leading-[18.089px] font-medium text-white">
-                                {title}
+                                {card.title}
                               </p>
                             </div>
                           </div>
@@ -301,18 +332,18 @@ export default function AppPreview() {
 
                       {/* 第二行 */}
                       <div className="flex gap-[19.733px] h-[162.8px]">
-                        {featuredTitles.slice(4, 8).map((title, index) => (
-                          <div key={title} className="flex-1 flex flex-col overflow-hidden relative">
+                        {posterCards.slice(4, 8).map((card) => (
+                          <div key={card.posterKey} className="flex-1 flex flex-col overflow-hidden relative">
                             <div className="flex-1 relative rounded-[9.867px] overflow-hidden">
                               <img
-                                src={`/assets/images/app-card-${String(index + 5).padStart(2, "0")}.png`}
-                                alt={title}
+                                src={card.imageSrc}
+                                alt={card.title}
                                 className="absolute inset-0 object-cover w-full h-full pointer-events-none rounded-[9.867px]"
                               />
                             </div>
                             <div className="backdrop-blur-[12.333px] py-[6.578px]">
                               <p className="text-[13.156px] leading-[18.089px] font-medium text-white">
-                                {title}
+                                {card.title}
                               </p>
                             </div>
                           </div>
@@ -324,18 +355,18 @@ export default function AppPreview() {
                   {/* 最近的文件 列表 */}
                   <div className="flex flex-col gap-[13.156px]">
                     {/* 标题 */}
-                    <p className="text-[14.8px] leading-[19.733px] font-semibold text-white">最近的文件</p>
+                    <p className="text-[14.8px] leading-[19.733px] font-semibold text-white">{recentTitle}</p>
 
                     {/* 文件列表容器 */}
                     <div className="flex flex-col gap-[13.156px]">
                       {/* 2025-11-07 21:21: 统一使用 grid 规格保证表头与内容列对齐 */}
                       <div className="grid grid-cols-[1.6fr_0.65fr_0.85fr_auto] gap-[19.733px] items-center opacity-50">
                         <div className="flex items-center gap-[19.733px]">
-                          <span className="text-[11.511px] leading-[14.8px] font-medium text-white">名称</span>
+                          <span className="text-[11.511px] leading-[14.8px] font-medium text-white">{recentHeaders.name}</span>
                         </div>
-                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white">大小</span>
-                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-center">更新时间</span>
-                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-right">操作</span>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white">{recentHeaders.size}</span>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-center">{recentHeaders.updated}</span>
+                        <span className="text-[11.511px] leading-[14.8px] font-medium text-white text-right">{recentHeaders.actions}</span>
                       </div>
 
                       {/* 文件行列表：只显示1.5个item */}
@@ -365,7 +396,7 @@ export default function AppPreview() {
 
                             {/* 右侧：更多操作按钮 */}
                             <div className="w-[19.733px] h-[19.733px] flex items-center justify-center ml-auto">
-                              <img src="/assets/icons/more.svg" alt="更多" className="w-full h-full" />
+                              <img src="/assets/icons/more.svg" alt={recentMoreAlt} className="w-full h-full" />
                             </div>
                           </div>
                         ))}
@@ -381,3 +412,5 @@ export default function AppPreview() {
     </section>
   );
 }
+
+
