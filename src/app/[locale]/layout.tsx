@@ -1,19 +1,24 @@
-import type { ReactNode } from "react";
+﻿import type { Metadata } from "next";
+import { cache, type ReactNode } from "react";
 import { ToastProvider } from "../../components/common/toast";
 import BackToTopButton from "../../components/common/BackToTopButton";
 import { LocaleProvider } from "../../components/providers/LocaleProvider";
-import { defaultLocale, getDictionary, isLocale, locales } from "../i18n";
-
-export const metadata = {
-  title: "CanDe",
-  description: "AI 设计创作更简单 | CanDe",
-};
+import { defaultLocale, getDictionary, isLocale, locales, type Locale } from "../i18n";
 
 type LocaleLayoutProps = {
   children: ReactNode;
   params?: Promise<{
     locale?: string | string[];
   }>;
+};
+
+type LayoutDictionary = {
+  backToTop?: string;
+  backToTopAria?: string;
+  metadata?: {
+    title?: string;
+    description?: string;
+  };
 };
 
 /**
@@ -23,24 +28,70 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// 2025-11-12 15:05: 解析路由参数中的 locale，兼容 Promise 包装
+const resolveLocaleFromParams = async (paramsPromise?: LocaleLayoutProps["params"]): Promise<Locale> => {
+  const resolvedParams = (paramsPromise ? await paramsPromise : {}) as { locale?: string | string[] };
+  const localeParam = Array.isArray(resolvedParams.locale) ? resolvedParams.locale[0] : resolvedParams.locale;
+  return localeParam && isLocale(localeParam) ? localeParam : defaultLocale;
+};
+
+// 2025-11-12 15:05: 缓存 locale 字典，避免 generateMetadata 与布局重复加载
+const getLocaleDictionary = cache(async (locale: Locale) => getDictionary(locale));
+
+const FALLBACK_METADATA = {
+  title: "CanDe",
+  description: "AI design made simple | CanDe",
+};
+
+const resolveLayoutMetadata = async (locale: Locale) => {
+  const dictionary = await getLocaleDictionary(locale);
+  const layoutDictionary = (dictionary["layout"] as LayoutDictionary | undefined) ?? {};
+  let metadata = layoutDictionary.metadata;
+
+  if ((!metadata?.title || !metadata?.description) && locale !== defaultLocale) {
+    const fallbackDictionary = await getLocaleDictionary(defaultLocale);
+    const fallbackLayoutDictionary = (fallbackDictionary["layout"] as LayoutDictionary | undefined) ?? {};
+    metadata = {
+      title: metadata?.title ?? fallbackLayoutDictionary.metadata?.title,
+      description: metadata?.description ?? fallbackLayoutDictionary.metadata?.description,
+    };
+  }
+
+  return {
+    title: metadata?.title ?? FALLBACK_METADATA.title,
+    description: metadata?.description ?? FALLBACK_METADATA.description,
+  };
+};
+
+// 2025-11-12 15:05: 多语言注入 layout metadata，保持 locale 切换一致
+export async function generateMetadata({
+  params,
+}: {
+  params?: LocaleLayoutProps["params"];
+} = {}): Promise<Metadata> {
+  const locale = await resolveLocaleFromParams(params);
+  const metadataCopy = await resolveLayoutMetadata(locale);
+  return {
+    title: metadataCopy.title,
+    description: metadataCopy.description,
+  };
+}
+
 /**
  * 2025-11-11 15:40: 根据 locale 加载字典并注入上下文
  */
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-  /** 2025-11-12 00:20: Next.js 15 将 params 包裝为 Promise，此处统一解析并兜底 */
-  const resolvedParams = (params ? await params : {}) as { locale?: string | string[] };
-  const localeParam = Array.isArray(resolvedParams.locale) ? resolvedParams.locale[0] : resolvedParams.locale;
-  const activeLocale = localeParam && isLocale(localeParam) ? localeParam : defaultLocale;
-  const dictionary = await getDictionary(activeLocale);
-  const layoutDictionary =
-    (dictionary["layout"] as { backToTop?: string; backToTopAria?: string } | undefined) ?? {};
+  /** 2025-11-12 15:05: Next.js 15 params 可能是 Promise，这里统一解析 */
+  const activeLocale = await resolveLocaleFromParams(params);
+  const dictionary = await getLocaleDictionary(activeLocale);
+  const layoutDictionary = (dictionary["layout"] as LayoutDictionary | undefined) ?? {};
 
   return (
     <LocaleProvider locale={activeLocale} dictionary={dictionary}>
       {/* 2025-11-11 14:20: ToastProvider 注入全局提示能力 */}
       <ToastProvider>
         <div className="relative z-10">{children}</div>
-        {/* 2025-11-11 23:25: 鍏ㄥ眬杩斿洖椤堕儴鎸夐挳浠ュ姞寮€甯﹁鍙嶅悜 */}
+        {/* 2025-11-11 23:25: 全局返回顶部按钮，保持滚动提示可访问 */}
         <BackToTopButton
           label={layoutDictionary.backToTop}
           ariaLabel={layoutDictionary.backToTopAria}

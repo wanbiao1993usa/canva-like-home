@@ -1,47 +1,99 @@
 import type { Metadata } from "next";
+import { cache } from "react";
 
 import Header from "../../../components/common/Header";
 import Footer from "../../../components/common/Footer";
 import ContactHero from "../../../components/contact/ContactHero";
 import ContactForm from "../../../components/contact/ContactForm";
-import SocialMedia from "../../../components/contact/SocialMedia";
 import CustomerSupport from "../../../components/contact/CustomerSupport";
+import { defaultLocale, getDictionary, isLocale, locales, type Locale } from "../../i18n";
 
-/**
- * 2025-11-10 20:40: 联系我们页面骨架，串联 Header/Footer 与功能分区
- * 2025-11-11 16:35: 迁移至 [locale] 路由，待接入字典
- */
-export const metadata: Metadata = {
-  title: "联系我们 - CanDe | AI设计平台客户支持",
-  description:
-    "通过邮件、在线表单或社交媒体联系 CanDe 团队。我们的专业客服随时为您提供帮助，解答设计相关问题。",
-  keywords: ["CanDe联系方式", "客户支持", "技术支持", "AI设计帮助"],
+type ContactMetadataCopy = {
+  title: string;
+  description: string;
+  keywords: string[];
   openGraph: {
-    title: "联系我们 - CanDe",
-    description: "随时为您提供帮助，专业团队在线支持。",
-    images: [
-      {
-        url: "/assets/images/og-contact.jpg",
-        alt: "联系我们 - CanDe",
-      },
-    ],
-  },
+    title: string;
+    description: string;
+    imageAlt: string;
+  };
+  jsonLd: {
+    name: string;
+    description: string;
+  };
 };
 
-const contactPageJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  name: "联系我们 - CanDe",
-  description: "CanDe 客户支持页面",
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "admin@lycium.ai",
-    contactType: "Customer Service",
-    availableLanguage: ["zh-CN", "en-US"],
-  },
-} as const;
+type ContactPageParams = {
+  params?: Promise<{
+    locale?: string | string[];
+  }>;
+};
 
-export default function ContactPage() {
+// 2025-11-12 14:45: 解析路由参数中的 locale，兼容 Promise 包装
+const resolveLocaleFromParams = async (paramsPromise: ContactPageParams["params"]): Promise<Locale> => {
+  const resolvedParams = (paramsPromise ? await paramsPromise : {}) as { locale?: string | string[] };
+  const localeParam = Array.isArray(resolvedParams.locale) ? resolvedParams.locale[0] : resolvedParams.locale;
+  return localeParam && isLocale(localeParam) ? localeParam : defaultLocale;
+};
+
+// 2025-11-12 14:45: 缓存 contact metadata，避免 generateMetadata 与页面重复读取
+const getContactMetadataCopy = cache(async (locale: Locale): Promise<ContactMetadataCopy> => {
+  const dictionary = await getDictionary(locale);
+  const contactDictionary = dictionary?.contact as { metadata?: ContactMetadataCopy } | undefined;
+  if (contactDictionary?.metadata) {
+    return contactDictionary.metadata;
+  }
+  if (locale !== defaultLocale) {
+    const fallbackDictionary = await getDictionary(defaultLocale);
+    const fallbackContactDictionary = fallbackDictionary?.contact as
+      | { metadata?: ContactMetadataCopy }
+      | undefined;
+    if (fallbackContactDictionary?.metadata) {
+      return fallbackContactDictionary.metadata;
+    }
+  }
+  throw new Error("[contact] Missing metadata copy.");
+});
+
+// 2025-11-12 14:45: 动态生成 SEO Metadata，依据 locale 拉取文案
+export async function generateMetadata({ params }: ContactPageParams = {}): Promise<Metadata> {
+  const locale = await resolveLocaleFromParams(params);
+  const metadataCopy = await getContactMetadataCopy(locale);
+
+  return {
+    title: metadataCopy.title,
+    description: metadataCopy.description,
+    keywords: metadataCopy.keywords,
+    openGraph: {
+      title: metadataCopy.openGraph.title,
+      description: metadataCopy.openGraph.description,
+      images: [
+        {
+          url: "/assets/images/og-contact.jpg",
+          alt: metadataCopy.openGraph.imageAlt,
+        },
+      ],
+    },
+  };
+}
+
+export default async function ContactPage({ params }: ContactPageParams = {}) {
+  const locale = await resolveLocaleFromParams(params);
+  const metadataCopy = await getContactMetadataCopy(locale);
+
+  const contactPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: metadataCopy.jsonLd.name,
+    description: metadataCopy.jsonLd.description,
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "admin@lycium.ai",
+      contactType: "Customer Service",
+      availableLanguage: locales,
+    },
+  } as const;
+
   return (
     <>
       <main className="mx-auto max-w-[1280px] xl:max-w-[1440px] 2xl:max-w-[1680px] px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-[48px] font-[PingFang SC]">
@@ -51,14 +103,12 @@ export default function ContactPage() {
 
         <ContactForm />
 
-        {/* <SocialMedia /> */}
-
         <CustomerSupport />
 
         <Footer />
       </main>
 
-      {/* 2025-11-10 20:40: 注入 Contact 页面 JSON-LD，便于搜索引擎识别 */}
+      {/* 2025-11-12 14:45: 注入 Contact 页面 JSON-LD，使用多语言 name/description */}
       <script
         type="application/ld+json"
         suppressHydrationWarning

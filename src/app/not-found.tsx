@@ -23,6 +23,27 @@ export default async function NotFoundPage() {
   const cookieLocale = cookieStore?.get(localeCookieName)?.value;
   const activeLocale = [headerLocale, cookieLocale].find(isValidLocale) ?? defaultLocale;
   const dictionary = await getDictionary(activeLocale);
+  // 2025-11-12 13:20: 定义 404 页面多语言文案结构，避免界面文本散落
+  type NotFoundCopy = {
+    title: string;
+    ariaLabel: string;
+    description: string;
+    primary: string;
+  };
+  // 2025-11-12 14:05: 缺少 locale 文案时回退到默认字典，杜绝硬编码字符串
+  const defaultDictionary =
+    activeLocale === defaultLocale ? dictionary : await getDictionary(defaultLocale);
+  const baseNotFoundCopy = defaultDictionary?.notFound as NotFoundCopy | undefined;
+  if (!baseNotFoundCopy) {
+    throw new Error('[not-found] Missing default locale copy.');
+  }
+  const localizedNotFoundCopy = dictionary?.notFound as Partial<NotFoundCopy> | undefined;
+  const notFoundCopy: NotFoundCopy = {
+    ...baseNotFoundCopy,
+    ...localizedNotFoundCopy,
+  };
+  const srOnlyHeading = `${notFoundCopy.title} - 404`;
+
 
   return (
     <LocaleProvider locale={activeLocale} dictionary={dictionary}>
@@ -37,7 +58,6 @@ export default async function NotFoundPage() {
             src="/assets/icons/404-eclipse.svg"
             width={1100}
             height={1100}
-            alt="灵感光影"
             priority={false}
             className="left-1/2 -translate-x-1/2 z-[60] w-[1100px] h-[1100px]"
             imageClassName="rounded-[44px]"
@@ -46,10 +66,11 @@ export default async function NotFoundPage() {
           <main
             className="flex-1 flex items-center justify-center px-4"
             role="main"
-            aria-label="404 错误页面"
+            aria-label={notFoundCopy.ariaLabel}
           >
             <div className="text-center">
-              <h1 className="sr-only">页面未找到 - 404</h1>
+              {/* 2025-11-12 13:25: 多语言无障碍标题 */}
+              <h1 className="sr-only">{srOnlyHeading}</h1>
 
               {/* 2025-11-11 18:05: 404 主视觉数字与星形图案 */}
               <div className="flex items-center justify-center gap-2 md:gap-4">
@@ -74,18 +95,17 @@ export default async function NotFoundPage() {
                 </svg>
               </div>
 
-              {/* 2025-11-11 18:05: 错误提示文案 */}
+              {/* 2025-11-12 13:25: 错误提示文案接入多语言 */}
               <p className="mt-6 md:mt-8 text-white text-base md:text-lg lg:text-xl font-medium">
-                抱歉，您要找的页面跑丢了
+                {notFoundCopy.description}
               </p>
 
-              {/* 2025-11-11 18:20: 回到主页 CTA，补充 focus 样式保证键盘可见 */}
+              {/* 2025-11-12 13:25: 回到主页 CTA 文案接入多语言 */}
               <Link
                 href="/"
                 className={`${btnPrimary} mt-8 md:mt-10 inline-flex font-bold items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80`}
-                aria-label="返回网站主页"
               >
-                回到主页
+                {notFoundCopy.primary}
               </Link>
             </div>
           </main>
