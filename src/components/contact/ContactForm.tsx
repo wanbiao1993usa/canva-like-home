@@ -113,7 +113,15 @@ export default function ContactForm() {
     setIsSubmitting(true);
     try {
       if (typeof window !== "undefined") {
-        window.location.href = buildMailtoLink();
+        // 2025-02-15 13:00: 使用临时锚点触发 mailto，避免整页跳转
+        const mailtoLink = buildMailtoLink();
+        const anchor = document.createElement("a");
+        anchor.href = mailtoLink;
+        anchor.style.display = "none";
+        anchor.rel = "noopener noreferrer";
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
       }
       await new Promise((resolve) => setTimeout(resolve, 600));
       setSubmitSuccess(true);
