@@ -64,6 +64,8 @@ export default function Header() {
   };
 
   const localePrefix = locale === locales[0] ? "" : `/${locale}`;
+  // 2025-02-15 15:20 根据当前语言展示按钮文案，方便用户识别
+  const languageButtonLabel = locale === "zh-CN" ? "简体中文" : "English";
 
   /**
    * 2025-11-11 18:05: 依据当前路径拼接目标 locale，保持原有层级结构
@@ -177,9 +179,7 @@ export default function Header() {
               type="button"
               onClick={toggleLanguageMenu}
             >
-              <span className="whitespace-nowrap text-white">
-                {t("header.language.switch")}
-              </span>
+              <span className="whitespace-nowrap text-white">{languageButtonLabel}</span>
               <img src="/assets/icons/chevron-down.svg" alt="" aria-hidden />
             </button>
 
