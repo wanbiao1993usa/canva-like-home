@@ -7,8 +7,8 @@ import { defaultLocale, getDictionary, isLocale, locales, type Locale } from "..
 
 type LocaleLayoutProps = {
   children: ReactNode;
-  params?: Promise<{
-    locale?: string | string[];
+  params: Promise<{
+    locale: string;
   }>;
 };
 
@@ -29,10 +29,11 @@ export function generateStaticParams() {
 }
 
 // 2025-11-12 15:05: 解析路由参数中的 locale，兼容 Promise 包装
-const resolveLocaleFromParams = async (paramsPromise?: LocaleLayoutProps["params"]): Promise<Locale> => {
-  const resolvedParams = (paramsPromise ? await paramsPromise : {}) as { locale?: string | string[] };
-  const localeParam = Array.isArray(resolvedParams.locale) ? resolvedParams.locale[0] : resolvedParams.locale;
-  return localeParam && isLocale(localeParam) ? localeParam : defaultLocale;
+const resolveLocaleFromParams = async (paramsPromise: LocaleLayoutProps["params"]): Promise<Locale> => {
+  const resolvedParams = await paramsPromise;
+  const localeParam = resolvedParams.locale;
+  // Check if valid locale
+  return isLocale(localeParam) ? (localeParam as Locale) : defaultLocale;
 };
 
 // 2025-11-12 15:05: 缓存 locale 字典，避免 generateMetadata 与布局重复加载
@@ -67,8 +68,8 @@ const resolveLayoutMetadata = async (locale: Locale) => {
 export async function generateMetadata({
   params,
 }: {
-  params?: LocaleLayoutProps["params"];
-} = {}): Promise<Metadata> {
+  params: LocaleLayoutProps["params"];
+}): Promise<Metadata> {
   const locale = await resolveLocaleFromParams(params);
   const metadataCopy = await resolveLayoutMetadata(locale);
   return {
