@@ -52,7 +52,11 @@
   },
   "layout": {
     "backToTop": "Back to top",
-    "backToTopAria": "Back to the beginning of the page"
+    "backToTopAria": "Back to the beginning of the page",
+    "metadata": {
+      "title": "CanDe",
+      "description": "AI design made simple | CanDe"
+    }
   },
   "home": {
     "hero": {
@@ -326,6 +330,25 @@
       "title": "Customer support",
       "description": "Our support crew is ready to help with onboarding, troubleshooting, and best practices.",
       "cta": "Contact"
+    },
+    "metadata": {
+      "title": "Contact Us - CanDe",
+      "description": "Reach CanDe's support team via email, form, or social channels. We help with onboarding, billing, and technical questions.",
+      "keywords": [
+        "CanDe contact",
+        "customer support",
+        "AI design help",
+        "technical support"
+      ],
+      "openGraph": {
+        "title": "Contact Us - CanDe",
+        "description": "Need help with CanDe? Our support team is ready for you.",
+        "imageAlt": "Contact CanDe support"
+      },
+      "jsonLd": {
+        "name": "Contact Us - CanDe",
+        "description": "Official support page for the CanDe design platform"
+      }
     }
   },
   "pricing": {
@@ -547,6 +570,7 @@
   },
   "notFound": {
     "title": "Page not found",
+    "ariaLabel": "404 error page",
     "description": "Sorry, the content you're looking for doesn't exist or has moved.",
     "primary": "Back to home"
   }

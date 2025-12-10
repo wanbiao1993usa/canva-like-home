@@ -52,7 +52,11 @@
   },
   "layout": {
     "backToTop": "返回顶部",
-    "backToTopAria": "返回页面顶部"
+    "backToTopAria": "返回页面顶部",
+    "metadata": {
+      "title": "CanDe",
+      "description": "AI 设计创作更简单 | CanDe"
+    }
   },
   "home": {
     "hero": {
@@ -326,6 +330,25 @@
       "title": "客户支持",
       "description": "我们致力于提供稳定可靠的帮助，如需协助请随时联系专属顾问。",
       "cta": "联系客服"
+    },
+    "metadata": {
+      "title": "联系我们 - CanDe",
+      "description": "通过邮件、表单或社交平台联系 CanDe 团队，我们随时支持入门、计费与技术问题。",
+      "keywords": [
+        "CanDe联系方式",
+        "客户支持",
+        "AI设计帮助",
+        "技术支持"
+      ],
+      "openGraph": {
+        "title": "联系我们 - CanDe",
+        "description": "需要帮助？CanDe 支持团队随时在线。",
+        "imageAlt": "联系我们 - CanDe"
+      },
+      "jsonLd": {
+        "name": "联系我们 - CanDe",
+        "description": "CanDe 设计平台官方支持页面"
+      }
     }
   },
   "pricing": {
@@ -546,8 +569,9 @@
     }
   },
   "notFound": {
-    "title": "页面走丢了",
-    "description": "抱歉，您访问的内容不存在或已被移动。",
-    "primary": "返回首页"
+    "title": "页面未找到",
+    "ariaLabel": "404 错误页面",
+    "description": "抱歉，您要找的页面跑丢了",
+    "primary": "回到主页"
   }
 }
