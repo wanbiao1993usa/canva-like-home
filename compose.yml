@@ -1,0 +1,11 @@
+services:
+  web:
+    image: canva-like-home:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+    restart: unless-stopped
